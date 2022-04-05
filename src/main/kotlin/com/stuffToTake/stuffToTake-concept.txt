@@ -1,0 +1,40 @@
+Should have:
+    1. everything that the notes-app has
+        - create items
+        - check items with a click
+        - one list for WW to Mainz and one list for Mainz to WW
+        - a view to see all items
+    2. different kinds of items
+        - every time fix (like iPad)
+        - every time optional (like ps4 games)
+        - only once (like B12)
+    3. note the items, that are checked, automatically for the return list (in own category?)
+    4. groups of items / categories
+    5. history
+    6. list of clothes that are in Mainz
+
+
+Plan:
+    1. UML Diagram
+    2. find out where to implement the classes
+    3. implement the classes
+
+
+Classes:
+    AbstractItem
+        EssentialItem - item which is (nearly) every time taken
+        OptionalItem - item which is often taken
+        OneTimeItem - item which is (nearly) only one time taken
+    ShowedItem
+    Category
+
+
+Views:
+    View 0 - Main Menu
+    View 1 - Create New Item
+    View 2 - See the full list of items (in a table to sort by categories, names, etc?)
+    View 3 - See the full list of items, that I will take
+
+
+Further:
+    - lorem ipsum
