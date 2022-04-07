@@ -2,6 +2,9 @@ package com.stuffToTake.models
 
 abstract class AbstractItem(var name: String, var amount: String, var to_take: Boolean) {
 
+    // optionally the amount can be given as an Integer instead of a String
+    constructor(name: String, amount: Int, to_take: Boolean) : this(name, amount.toString(), to_take)
+
     private var categories: MutableList<Category> = mutableListOf()
 
     /**
@@ -40,7 +43,10 @@ abstract class AbstractItem(var name: String, var amount: String, var to_take: B
      * Overrides the toString method for better (debug-) output.
      */
     override fun toString(): String {
-        TODO("Not yet implemented")
+        return "Item: $name\n" +
+                "    Amount: $amount\n" +
+                "    To Take: $to_take\n" +
+                "    Categories: $categories"
         // return super.toString()
     }
 
