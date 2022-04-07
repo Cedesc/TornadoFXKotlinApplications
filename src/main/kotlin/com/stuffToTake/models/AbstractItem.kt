@@ -5,7 +5,8 @@ abstract class AbstractItem(var name: String, var amount: String, var to_take: B
     // optionally the amount can be given as an Integer instead of a String
     constructor(name: String, amount: Int, to_take: Boolean) : this(name, amount.toString(), to_take)
 
-    private var categories: MutableList<Category> = mutableListOf()
+    var categories: MutableSet<Category> = mutableSetOf()
+        protected set
 
     /**
      * Changes the "to_take" variable to true.
@@ -43,11 +44,17 @@ abstract class AbstractItem(var name: String, var amount: String, var to_take: B
      * Overrides the toString method for better (debug-) output.
      */
     override fun toString(): String {
-        return "Item: $name\n" +
-                "    Amount: $amount\n" +
-                "    To Take: $to_take\n" +
-                "    Categories: $categories"
-        // return super.toString()
+
+        return if (hasAmount())
+            "Item: $name\n" +
+            "    Amount: $amount\n" +
+            "    To Take: $to_take\n" +
+            "    Categories: $categories"
+        else
+            "Item: $name\n" +
+            "    Amount: -\n" +
+            "    To Take: $to_take\n" +
+            "    Categories: $categories"
     }
 
 }
