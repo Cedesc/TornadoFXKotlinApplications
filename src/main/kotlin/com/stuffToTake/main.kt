@@ -5,5 +5,5 @@ import tornadofx.launch
 
 fun main() {
     println("HelloWorld!")
-    launch<MyApp>()
+//    launch<MyApp>()
 }
