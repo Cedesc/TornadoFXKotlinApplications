@@ -1,6 +1,6 @@
 package com.stuffToTake.tests.modelsTests
 
-import com.stuffToTake.models.AbstractItem
+import com.stuffToTake.models.Category
 import com.stuffToTake.models.EssentialItem
 import com.stuffToTake.models.OneTimeItem
 import com.stuffToTake.models.OptionalItem
@@ -12,15 +12,15 @@ import org.junit.Assert.*
 
 class AbstractItemTest {
 
-    lateinit var anEssentialItem: EssentialItem
-    lateinit var anOptionalItem: OptionalItem
-    lateinit var anOneTimeItem: OneTimeItem
+    lateinit var essentialItem: EssentialItem
+    lateinit var optionalItem: OptionalItem
+    lateinit var oneTimeItem: OneTimeItem
 
     @Before
     fun setUp() {
-        anEssentialItem = EssentialItem("suitcase", 1, true)
-        anOptionalItem = OptionalItem("sunglasses", "", false)
-        anOneTimeItem = OneTimeItem("B12", "two packs", true)
+        essentialItem = EssentialItem("suitcase", 1, true)
+        optionalItem = OptionalItem("sunglasses", "", false)
+        oneTimeItem = OneTimeItem("B12", "two packs", true)
     }
 
     @After
@@ -29,70 +29,125 @@ class AbstractItemTest {
 
     @Test
     fun hasAmount() {
+        assertEquals(true, essentialItem.hasAmount())
+        assertEquals(false, optionalItem.hasAmount())
+        assertEquals(true, oneTimeItem.hasAmount())
     }
 
     @Test
     fun addCategory() {
+
+        // add categories
+        assert(essentialItem.addCategory(Category.ON_PC))
+
+        // check if categories are right
+        assertEquals(1, essentialItem.categories.size)
+        assert(essentialItem.categories.contains(Category.ON_PC))
+
+
+        // add categories
+        assert(optionalItem.addCategory(Category.ON_PC))
+        assert(optionalItem.addCategory(Category.NINTENDO_SWITCH))
+
+        // check if categories are right
+        assertEquals(2, optionalItem.categories.size)
+        assert(optionalItem.categories.contains(Category.ON_PC))
+        assert(optionalItem.categories.contains(Category.NINTENDO_SWITCH))
+
+
+        // add categories
+        assert(oneTimeItem.addCategory(Category.ON_PC))
+        assert(! oneTimeItem.addCategory(Category.ON_PC))
+        assert(oneTimeItem.addCategory(Category.NINTENDO_SWITCH))
+
+        // check if categories are right
+        assertEquals(2, oneTimeItem.categories.size)
+        assert(oneTimeItem.categories.contains(Category.ON_PC))
+        assert(oneTimeItem.categories.contains(Category.NINTENDO_SWITCH))
+
     }
 
     @Test
     fun testToString() {
+        assertEquals("Item: suitcase\n" +
+                "    Amount: 1\n" +
+                "    To Take: true\n" +
+                "    Categories: []",
+            essentialItem.toString())
+        assertEquals("Item: sunglasses\n" +
+                "    Amount: -\n" +
+                "    To Take: false\n" +
+                "    Categories: []",
+            optionalItem.toString())
+        assertEquals("Item: B12\n" +
+                "    Amount: two packs\n" +
+                "    To Take: true\n" +
+                "    Categories: []",
+            oneTimeItem.toString())
     }
 
     @Test
     fun getName() {
-        assertEquals("suitcase", anEssentialItem.name)
-        assertEquals("sunglasses", anOptionalItem.name)
-        assertEquals("B12", anOneTimeItem.name)
+        assertEquals("suitcase", essentialItem.name)
+        assertEquals("sunglasses", optionalItem.name)
+        assertEquals("B12", oneTimeItem.name)
     }
 
     @Test
     fun setName() {
-        anEssentialItem.name = "not a suitcase"
-        assertEquals("not a suitcase", anEssentialItem.name)
+        essentialItem.name = "not a suitcase"
+        assertEquals("not a suitcase", essentialItem.name)
 
-        anOptionalItem.name = "glasses"
-        assertEquals("glasses", anOptionalItem.name)
+        optionalItem.name = "glasses"
+        assertEquals("glasses", optionalItem.name)
 
-        anOneTimeItem.name = "Iron"
-        assertEquals("Iron", anOneTimeItem.name)
+        oneTimeItem.name = "Iron"
+        assertEquals("Iron", oneTimeItem.name)
     }
 
     @Test
     fun getAmount() {
-        assertEquals("1", anEssentialItem.amount)
-        assertEquals("", anOptionalItem.amount)
-        assertEquals("two packs", anOneTimeItem.amount)
+        assertEquals("1", essentialItem.amount)
+        assertEquals("", optionalItem.amount)
+        assertEquals("two packs", oneTimeItem.amount)
     }
 
     @Test
     fun setAmount() {
-        anEssentialItem.amount = "2"
-        assertEquals("2", anEssentialItem.amount)
+        essentialItem.amount = "2"
+        assertEquals("2", essentialItem.amount)
 
-        anOptionalItem.amount = "5"
-        assertEquals("5", anOptionalItem.amount)
+        optionalItem.amount = "5"
+        assertEquals("5", optionalItem.amount)
 
-        anOneTimeItem.amount = "three packs"
-        assertEquals("three packs", anOneTimeItem.amount)
+        oneTimeItem.amount = "three packs"
+        assertEquals("three packs", oneTimeItem.amount)
     }
 
     @Test
     fun getTo_take() {
-        assertEquals(true, anEssentialItem.to_take)
-        assertEquals(false, anOptionalItem.to_take)
-        assertEquals(true, anOneTimeItem.to_take)
+        assertEquals(true, essentialItem.to_take)
+        assertEquals(false, optionalItem.to_take)
+        assertEquals(true, oneTimeItem.to_take)
     }
 
     @Test
     fun setTo_take() {
-        anEssentialItem.to_take = false
-        assertEquals(false, anEssentialItem.to_take)
+        essentialItem.to_take = false
+        assertEquals(false, essentialItem.to_take)
 
-        anOptionalItem.to_take = true
-        assertEquals(true, anOptionalItem.to_take)
+        optionalItem.to_take = true
+        assertEquals(true, optionalItem.to_take)
 
-        anOneTimeItem.to_take = true
-        assertEquals(true, anOneTimeItem.to_take)
+        oneTimeItem.to_take = true
+        assertEquals(true, oneTimeItem.to_take)
     }
+
+    @Test
+    fun getCategories() {
+        assert(essentialItem.categories.isEmpty())
+        assert(optionalItem.categories.isEmpty())
+        assert(oneTimeItem.categories.isEmpty())
+    }
+
 }
