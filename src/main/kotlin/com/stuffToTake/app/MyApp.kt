@@ -1,6 +1,6 @@
 package com.stuffToTake.app
 
-import com.stuffToTake.Styles
+import com.stuffToTake.styles.Styles
 import com.stuffToTake.view.MainView
 import javafx.stage.Stage
 import tornadofx.App

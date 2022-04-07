@@ -1,4 +1,4 @@
-package com.stuffToTake
+package com.stuffToTake.styles
 
 import javafx.scene.text.FontWeight
 import tornadofx.Stylesheet
