@@ -1,6 +1,6 @@
 package com.stuffToTake.models
 
-class ShowedItem(private val originalItem: AbstractItem)
+class ShowedItem(val originalItem: AbstractItem)
     : AbstractItem(originalItem.name, originalItem.amount, originalItem.to_take) {
 
     init {
@@ -10,12 +10,10 @@ class ShowedItem(private val originalItem: AbstractItem)
 
     override fun markAsToTake() {
         super.markAsToTake()
-        TODO("Not yet implemented")
     }
 
     override fun unmarkAsToTake() {
         super.unmarkAsToTake()
-        TODO("Not yet implemented")
     }
 
 }
