@@ -30,7 +30,7 @@ abstract class AbstractItem(var name: String, var amount: String, var to_take: B
     }
 
     /**
-     * Add a category. Returns false if the category was already in the list.
+     * Adds a category. Returns false if the category was already in the list.
      */
     fun addCategory(category: Category): Boolean {
         if (category in categories)
