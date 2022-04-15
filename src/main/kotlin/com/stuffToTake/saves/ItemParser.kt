@@ -56,14 +56,15 @@ fun txtToCode(filename: String = "src/main/kotlin/com/stuffToTake/saves/items.tx
     essentialItems.forEach { item ->
 
         val essItemString: List<String> = item.lines().filter { line ->
-            line.contains("NAME:") || line.contains("AMOUNT:") || line.contains("CATEGORIES:")
+            line.contains("NAME:") || line.contains("AMOUNT:") ||
+                    line.contains("CATEGORIES:") || line.contains("TAKE:")
         }
 
-        val attributes: Triple<String, String, MutableList<Category>> =
-            extractAttributesFromString(essItemString[0], essItemString[1], essItemString[2])
+        val attributes: ItemAttributes =
+            extractAttributesFromString(essItemString[0], essItemString[1], essItemString[2], essItemString[3])
 
-        val essItem: EssentialItem = EssentialItem(attributes.first, attributes.second, false)
-        attributes.third.forEach {
+        val essItem: EssentialItem = EssentialItem(attributes.name, attributes.amount, attributes.toTake)
+        attributes.categories.forEach {
             if (! essItem.addCategory(it))
                 println("Warning! In the process of parsing the categories from string to code, the program tried to " +
                         "add a same category a second time!")
@@ -85,8 +86,8 @@ fun txtToCode(filename: String = "src/main/kotlin/com/stuffToTake/saves/items.tx
 /**
  * Returns the attributes in the string as a triple.
  */
-fun extractAttributesFromString(nameLine: String, amountLine: String, categoriesLine: String):
-        Triple<String, String, MutableList<Category>> {
+fun extractAttributesFromString(nameLine: String, amountLine: String, categoriesLine: String, toTakeLine: String):
+        ItemAttributes {
 
     // extract name
     val name: String = removeBlanks(startsWithAndBeginAfterThat(nameLine, "    NAME:"))
@@ -98,7 +99,20 @@ fun extractAttributesFromString(nameLine: String, amountLine: String, categories
     val categories: MutableList<Category> =
         categoriesStringToEnum(removeBlanks(startsWithAndBeginAfterThat(categoriesLine, "    CATEGORIES:")))
 
-    return Triple(name, amount, categories)
+    // extract toTake
+    val x: String =
+        removeBlanks(startsWithAndBeginAfterThat(toTakeLine, "    TAKE:"))
+
+    val toTake: Boolean = when(removeBlanks(startsWithAndBeginAfterThat(toTakeLine, "    TAKE:"))) {
+        "O" -> true
+        "X" -> false
+        else -> {
+            throw Exception("\"TAKE\" in the text file is neither \"O\" nor \"X\"")
+        }
+    }
+
+
+    return ItemAttributes(name, amount, categories, toTake)
 }
 
 /**

@@ -29,22 +29,26 @@ class ItemParserKtTest {
 
     @Test
     fun extractAttributesFromString() {
-        var expected: Triple<String, String, MutableList<Category>> =
-            Triple("EssItem1", "", mutableListOf(Category.ON_PC, Category.NINTENDO_SWITCH))
-        var actual: Triple<String, String, MutableList<Category>> =
+        var expected: ItemAttributes =
+            ItemAttributes("EssItem1", "",
+                           mutableListOf(Category.ON_PC, Category.NINTENDO_SWITCH), true)
+        var actual: ItemAttributes =
             extractAttributesFromString(
                 "    NAME: EssItem1",
                 "    AMOUNT:",
-                "    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch")
+                "    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch",
+                "    TAKE: O")
         assertEquals(expected, actual)
 
         expected =
-            Triple("OneItem1", "2 dutzend", mutableListOf(Category.NINTENDO_SWITCH, Category.ON_PC))
+            ItemAttributes("OneItem1", "2 dutzend",
+                           mutableListOf(Category.NINTENDO_SWITCH, Category.ON_PC), false)
         actual =
             extractAttributesFromString(
                 "    NAME: OneItem1",
                 "    AMOUNT: 2 dutzend",
-                "    CATEGORIES: Sachen für Nintendo Switch ; Am PC hochladen")
+                "    CATEGORIES: Sachen für Nintendo Switch ; Am PC hochladen",
+                "    TAKE: X")
         assertEquals(expected, actual)
     }
 

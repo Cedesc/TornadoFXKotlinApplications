@@ -4,14 +4,17 @@ ITEM
     NAME: EssItem1
     AMOUNT:
     CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch
+    TAKE: O
 ITEM
     NAME: EssItem2
     AMOUNT: 3
     CATEGORIES:
+    TAKE: X
 ITEM
     NAME: EssItem3
     AMOUNT: ne Menge
     CATEGORIES: Am PC hochladen
+    TAKE: O
 
 
 OPTIONAL ITEMS
@@ -20,6 +23,7 @@ ITEM
     NAME: OptItem1
     AMOUNT:
     CATEGORIES:
+    TAKE: X
 
 
 ONE TIME ITEMS
@@ -28,7 +32,9 @@ ITEM
     NAME: OneItem1
     AMOUNT: 2 dutzend
     CATEGORIES: Sachen für Nintendo Switch ; Am PC hochladen
+    TAKE: X
 ITEM
     NAME: OneItem2
     AMOUNT:
     CATEGORIES: Am PC hochladen
+    TAKE: O
