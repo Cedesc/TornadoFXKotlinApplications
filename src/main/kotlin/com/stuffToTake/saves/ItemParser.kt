@@ -45,26 +45,60 @@ fun txtToCode(filename: String = "src/main/kotlin/com/stuffToTake/saves/items.tx
     println("\n\n###########################\n\n")
 
 
-    var essItem: List<String> = essentialItems[0].lines().filter {
-        it.contains("NAME:") || it.contains("AMOUNT:") || it.contains("CATEGORIES:")
+
+//    // print
+//    counter = 0
+//    essItem.forEach {
+//        println("$counter: $it")
+//        counter++
+//    }
+
+    essentialItems.forEach { item ->
+
+        val essItemString: List<String> = item.lines().filter { line ->
+            line.contains("NAME:") || line.contains("AMOUNT:") || line.contains("CATEGORIES:")
+        }
+
+        val attributes: Triple<String, String, MutableList<Category>> =
+            extractAttributesFromString(essItemString[0], essItemString[1], essItemString[2])
+
+        val essItem: EssentialItem = EssentialItem(attributes.first, attributes.second, false)
+        attributes.third.forEach {
+            if (! essItem.addCategory(it))
+                println("Warning! In the process of parsing the categories from string to code, the program tried to " +
+                        "add a same category a second time!")
+        }
+
+        result.add(essItem)
+
     }
 
-    // print
-    counter = 0
-    essItem.forEach {
-        println("$counter: $it")
-        counter++
+    println("-------------------------------------")
+
+    result.forEach {
+        println(it)
     }
-
-
-    println("\n\n###########################\n\n")
-
-
-    var essItemName: String = essItem[0].split("NAME: ")[1]
-
-    println(essItemName)
 
     return result
+}
+
+/**
+ * Returns the attributes in the string as a triple.
+ */
+fun extractAttributesFromString(nameLine: String, amountLine: String, categoriesLine: String):
+        Triple<String, String, MutableList<Category>> {
+
+    // extract name
+    val name: String = removeBlanks(startsWithAndBeginAfterThat(nameLine, "    NAME:"))
+
+    // extract amount
+    val amount: String = removeBlanks(startsWithAndBeginAfterThat(amountLine, "    AMOUNT:"))
+
+    // extract categories
+    val categories: MutableList<Category> =
+        categoriesStringToEnum(removeBlanks(startsWithAndBeginAfterThat(categoriesLine, "    CATEGORIES:")))
+
+    return Triple(name, amount, categories)
 }
 
 /**
