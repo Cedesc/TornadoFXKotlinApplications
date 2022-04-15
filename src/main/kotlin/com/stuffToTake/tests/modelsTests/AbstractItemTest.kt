@@ -70,19 +70,19 @@ class AbstractItemTest {
     @Test
     fun testToString() {
         assertEquals("Item: suitcase\n" +
-                "    Amount: 1\n" +
-                "    To Take: true\n" +
-                "    Categories: []",
+                "    Amount: 1\n" + //To Take: true
+                "    Categories: []\n" +
+                "    To Take: true",
             essentialItem.toString())
         assertEquals("Item: sunglasses\n" +
                 "    Amount: -\n" +
-                "    To Take: false\n" +
-                "    Categories: []",
+                "    Categories: []\n" +
+                "    To Take: false",
             optionalItem.toString())
         assertEquals("Item: B12\n" +
                 "    Amount: two packs\n" +
-                "    To Take: true\n" +
-                "    Categories: []",
+                "    Categories: []\n" +
+                "    To Take: true",
             oneTimeItem.toString())
     }
 

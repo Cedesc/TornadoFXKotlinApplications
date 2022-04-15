@@ -48,13 +48,13 @@ abstract class AbstractItem(var name: String, var amount: String, var to_take: B
         return if (hasAmount())
             "Item: $name\n" +
             "    Amount: $amount\n" +
-            "    To Take: $to_take\n" +
-            "    Categories: $categories"
+            "    Categories: $categories\n" +
+            "    To Take: $to_take"
         else
             "Item: $name\n" +
             "    Amount: -\n" +
-            "    To Take: $to_take\n" +
-            "    Categories: $categories"
+            "    Categories: $categories\n" +
+            "    To Take: $to_take"
     }
 
 }
