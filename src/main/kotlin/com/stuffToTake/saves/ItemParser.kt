@@ -4,80 +4,61 @@ import com.stuffToTake.models.*
 import java.io.File
 
 
-fun printSomething() {
-    println("Hallo")
-}
-
 /**
  * Returns a list of the saved items.
  */
-fun txtToCode(filename: String = "src/main/kotlin/com/stuffToTake/saves/items.txt"): MutableList<AbstractItem> {
+fun txtToCode(filepath: String = "src/main/kotlin/com/stuffToTake/saves/items.txt"): MutableList<AbstractItem> {
 
-    var result: MutableList<AbstractItem> = mutableListOf()
+    val result: MutableList<AbstractItem> = mutableListOf()
 
-    val text = File(filename).readText()
+    val text = File(filepath).readText()
 
+    // Creates a three element long list in which each element is the full string of the essential items, the optional
+    // items and the one time items, respectively.
     val allItems: List<String> = text.split("ESSENTIAL ITEMS", "OPTIONAL ITEMS", "ONE TIME ITEMS")
         .drop(1)
 
 
-    // print
-    var counter: Int = 0
-    allItems.forEach {
-        println("$counter: $it")
-        counter++
-    }
+    // For each of the three strings with the respective element type, adds the items to the result.
+    // The index is also needed here, because with the singleItem the type must be different depending on the list.
+    for ((index: Int, itemsString: String) in allItems.withIndex()) {
 
+        // Splits the respective list in a list of strings of a single item.
+        val itemsList: List<String> = itemsString.split("ITEM").drop(1)
 
-    println("\n\n###########################\n\n")
+        // For each string of an item...
+        itemsList.forEach { item ->
 
+            // ... splits the string into lines and delete empty / redundant lines, ...
+            val singleItemString: List<String> = item.lines().filter { line ->
+                line.contains("NAME:") || line.contains("AMOUNT:") ||
+                        line.contains("CATEGORIES:") || line.contains("TAKE:")
+            }
 
-    var essentialItems: List<String> = allItems[0].split("ITEM").drop(1)
+            // ... extracts the respective attributes of the item, ...
+            val attributes: ItemAttributes =
+                extractAttributesFromString(singleItemString[0], singleItemString[1],
+                    singleItemString[2], singleItemString[3])
 
-    // print
-    counter = 0
-    essentialItems.forEach {
-        println("$counter: $it")
-        counter++
-    }
+            // ... creates an item of the respective type, depending on the current list, ...
+            val singleItem: AbstractItem = when(index) {
+                0 -> EssentialItem(attributes.name, attributes.amount, attributes.toTake)
+                1 -> OptionalItem(attributes.name, attributes.amount, attributes.toTake)
+                2 -> OneTimeItem(attributes.name, attributes.amount, attributes.toTake)
+                else -> throw Exception("Too many lists of items, there is no 4th category.")
+            }
+            // ... adds categories to that item and ...
+            attributes.categories.forEach {
+                if (! singleItem.addCategory(it))
+                    println("Warning! In the process of parsing the categories from string to code, the program " +
+                            "tried to add a same category a second time!")
+            }
 
+            // ... adds the item to the result.
+            result.add(singleItem)
 
-    println("\n\n###########################\n\n")
-
-
-
-//    // print
-//    counter = 0
-//    essItem.forEach {
-//        println("$counter: $it")
-//        counter++
-//    }
-
-    essentialItems.forEach { item ->
-
-        val essItemString: List<String> = item.lines().filter { line ->
-            line.contains("NAME:") || line.contains("AMOUNT:") ||
-                    line.contains("CATEGORIES:") || line.contains("TAKE:")
         }
 
-        val attributes: ItemAttributes =
-            extractAttributesFromString(essItemString[0], essItemString[1], essItemString[2], essItemString[3])
-
-        val essItem: EssentialItem = EssentialItem(attributes.name, attributes.amount, attributes.toTake)
-        attributes.categories.forEach {
-            if (! essItem.addCategory(it))
-                println("Warning! In the process of parsing the categories from string to code, the program tried to " +
-                        "add a same category a second time!")
-        }
-
-        result.add(essItem)
-
-    }
-
-    println("-------------------------------------")
-
-    result.forEach {
-        println(it)
     }
 
     return result
@@ -100,9 +81,6 @@ fun extractAttributesFromString(nameLine: String, amountLine: String, categories
         categoriesStringToEnum(removeBlanks(startsWithAndBeginAfterThat(categoriesLine, "    CATEGORIES:")))
 
     // extract toTake
-    val x: String =
-        removeBlanks(startsWithAndBeginAfterThat(toTakeLine, "    TAKE:"))
-
     val toTake: Boolean = when(removeBlanks(startsWithAndBeginAfterThat(toTakeLine, "    TAKE:"))) {
         "O" -> true
         "X" -> false
