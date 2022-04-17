@@ -26,7 +26,7 @@ class ItemParserKtTest {
 
     @Test
     fun txtToCode() {
-        val filepath: String = "src/main/kotlin/com/stuffToTake/tests/savesTests/itemsTest.txt"
+        val filepath: String = "src/main/kotlin/com/stuffToTake/tests/savesTests/itemsReadTest.txt"
         val expected: MutableList<String> = mutableListOf("Item: EssItem1\n" +
                 "    Amount: -\n" +
                 "    Categories: [Am PC hochladen, Sachen für Nintendo Switch]\n" +
@@ -114,5 +114,15 @@ class ItemParserKtTest {
 
     @Test
     fun codeToTxt() {
+    }
+
+    @Test
+    fun fileOperations() {
+        // tests createFile(), deleteFile() and checkFileExists()
+        assertEquals(true,
+            createFile("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsCreateTest.txt"))
+
+        TODO("check existence")
+        TODO("delete this file")
     }
 }

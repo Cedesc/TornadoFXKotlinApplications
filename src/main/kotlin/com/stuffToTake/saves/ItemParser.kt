@@ -2,6 +2,8 @@ package com.stuffToTake.saves
 
 import com.stuffToTake.models.*
 import java.io.File
+import java.io.FileWriter
+import java.io.IOException
 
 
 /**
@@ -152,6 +154,47 @@ fun removeBlanks(string: String): String {
  * Saves the input items in a txt file.
  */
 fun codeToTxt(essentialItems: MutableList<EssentialItem>, optionalItems: MutableList<OptionalItem>,
-              oneTimeItem: MutableList<OneTimeItem>) {
-    TODO("Not yet implemented")
+              oneTimeItem: MutableList<OneTimeItem>,
+              filepath: String = "src/main/kotlin/com/stuffToTake/saves/items.txt"): Boolean {
+
+    val fileWriter: FileWriter = FileWriter(filepath)
+
+
+    return false
+}
+
+/**
+ * Creates a txt file at the given path.
+ */
+fun createFile(filepath: String): Boolean {
+    try {
+        val file: File = File(filepath)
+        return file.createNewFile()
+    } catch (e: IOException) {
+        throw Exception("An error occurred while creating the txt file.")
+    }
+}
+
+/**
+ * Deletes a txt file at the given path.
+ */
+fun deleteFile(filepath: String): Boolean {
+    try {
+        val file: File = File(filepath)
+        return file.delete()
+    } catch (e: IOException) {
+        throw Exception("An error occurred while deleting the txt file.")
+    }
+}
+
+/**
+ * Checks if the txt file at the given path exists.
+ */
+fun checkFileExists(filepath: String): Boolean {
+    try {
+        val file: File = File(filepath)
+        return file.exists()
+    } catch (e: IOException) {
+        throw Exception("An error occurred while deleting the txt file.")
+    }
 }
