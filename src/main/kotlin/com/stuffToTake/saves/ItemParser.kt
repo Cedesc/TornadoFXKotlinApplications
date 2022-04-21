@@ -154,13 +154,66 @@ fun removeBlanks(string: String): String {
  * Saves the input items in a txt file.
  */
 fun codeToTxt(essentialItems: MutableList<EssentialItem>, optionalItems: MutableList<OptionalItem>,
-              oneTimeItem: MutableList<OneTimeItem>,
-              filepath: String = "src/main/kotlin/com/stuffToTake/saves/items.txt"): Boolean {
+              oneTimeItems: MutableList<OneTimeItem>,
+              filepath: String = "src/main/kotlin/com/stuffToTake/saves/items.txt") {
 
-    val fileWriter: FileWriter = FileWriter(filepath)
+    if (! checkFileExists(filepath))
+        throw Exception("File doesn't exist.")
 
+    val fileWriter = FileWriter(filepath)
 
-    return false
+    fileWriter.write(
+        "ESSENTIAL ITEMS\n" +
+            "\n" +
+            convertItemsToString(essentialItems) +
+            "\n" +
+            "\n" +
+            "OPTIONAL ITEMS\n" +
+            "\n" +
+            convertItemsToString(optionalItems) +
+            "\n" +
+            "\n" +
+            "ONE TIME ITEMS\n" +
+            "\n" +
+            convertItemsToString(oneTimeItems)
+    )
+
+    fileWriter.flush()
+    fileWriter.close()
+
+}
+
+/**
+ * Converts a mutable list of multiple categories to a string of these categories.
+ */
+fun categoriesEnumToString(enumCategories: MutableSet<Category>): String {
+
+    var result = ""
+        enumCategories.forEach { category ->
+            result += "$category ; "
+        }
+    // return the string without the last 3 characters, because they are " ; "
+    return result.dropLast(3)
+
+}
+
+/**
+ * Converts a full list of items to a String including all these items.
+ */
+fun  convertItemsToString(items: List<AbstractItem>): String {
+
+    var result = ""
+
+    items.forEach { item ->
+        result +=
+            "ITEM\n" +
+                    "    NAME: ${item.name}\n" +
+                    "    AMOUNT: ${item.amount}\n" +
+                    "    CATEGORIES: ${categoriesEnumToString(item.categories)}\n" +
+                    "    TAKE: ${if(item.to_take) "O" else "X"}\n"
+    }
+
+    return result
 }
 
 /**
@@ -168,7 +221,7 @@ fun codeToTxt(essentialItems: MutableList<EssentialItem>, optionalItems: Mutable
  */
 fun createFile(filepath: String): Boolean {
     try {
-        val file: File = File(filepath)
+        val file = File(filepath)
         return file.createNewFile()
     } catch (e: IOException) {
         throw Exception("An error occurred while creating the txt file.")
@@ -180,7 +233,7 @@ fun createFile(filepath: String): Boolean {
  */
 fun deleteFile(filepath: String): Boolean {
     try {
-        val file: File = File(filepath)
+        val file = File(filepath)
         return file.delete()
     } catch (e: IOException) {
         throw Exception("An error occurred while deleting the txt file.")
@@ -192,7 +245,7 @@ fun deleteFile(filepath: String): Boolean {
  */
 fun checkFileExists(filepath: String): Boolean {
     try {
-        val file: File = File(filepath)
+        val file = File(filepath)
         return file.exists()
     } catch (e: IOException) {
         throw Exception("An error occurred while deleting the txt file.")
