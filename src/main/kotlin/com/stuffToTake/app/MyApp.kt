@@ -1,18 +1,7 @@
 package com.stuffToTake.app
 
 import com.stuffToTake.styles.Styles
-import com.stuffToTake.view.MainView
-import javafx.stage.Stage
+import com.stuffToTake.view.MenuView
 import tornadofx.App
 
-class MyApp : App(MainView::class, Styles::class) {
-
-    override fun start(stage: Stage) {
-        with(stage) {
-            width = 1200.0
-            height = 600.0
-        }
-        super.start(stage)
-    }
-
-}
+class MyApp : App(MenuView::class, Styles::class)
