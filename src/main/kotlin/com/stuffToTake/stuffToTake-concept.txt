@@ -16,8 +16,18 @@ Should have:
 
 Plan:
     1. UML Diagram
-    2. find out where to implement the classes
-    3. implement the classes
+    ...
+
+
+To Do List:
+    -3- create the first beta views (just functional, not pretty)
+    -3- check out what to implement in controllers
+    -3- make better views
+    -2- add a method to AbstractItem to add multiple categories at once?
+    -2- add a constructor to AbstractItem to add categories at the beginning?
+    -2- add a method to convert a item type to another
+    -2- fill Category.kt
+    -1- fill items.txt with ItemParser.kt
 
 
 Classes:
