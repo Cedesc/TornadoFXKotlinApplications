@@ -21,8 +21,12 @@ Plan:
 
 To Do List:
     -3- create the first beta views (just functional, not pretty)
+            https://edvin.gitbooks.io/tornadofx-guide/content/part1/4_Basic_Controls.html
+            https://edvin.gitbooks.io/tornadofx-guide/content/part1/5_Data_Controls.html
         - main view
         - add item view
+            - change the class of itemType to a better than just a string ?
+            - radio buttons instead of a view list for categories
         - full list of items view
         - edit item view
         - item list for choosing
