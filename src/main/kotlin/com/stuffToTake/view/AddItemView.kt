@@ -4,8 +4,9 @@ import com.stuffToTake.controllers.AddItemController
 import com.stuffToTake.controllers.MenuController
 import com.stuffToTake.models.Category
 import javafx.beans.property.SimpleBooleanProperty
-import javafx.beans.property.SimpleListProperty
 import javafx.beans.property.SimpleStringProperty
+import javafx.scene.control.ListView
+import javafx.scene.control.SelectionMode
 import tornadofx.*
 
 class AddItemView : View("Add Item") {
@@ -13,9 +14,10 @@ class AddItemView : View("Add Item") {
     private val model = ViewModel()
     private val itemName = model.bind { SimpleStringProperty() }
     private val itemAmount = model.bind { SimpleStringProperty() }
-    private val itemType = model.bind { SimpleStringProperty() }  // TODO use better type? (class?)
-    private val itemCategories = model.bind { SimpleListProperty<Category>() }
+    private val itemType = model.bind { SimpleStringProperty() }
     private val itemToTake = model.bind { SimpleBooleanProperty() }
+    private val categoriesListView = ListView(Category.values().toList().toObservable())
+
     private val menuController: MenuController by inject()
     private val addItemController: AddItemController by inject()
 
@@ -27,13 +29,14 @@ class AddItemView : View("Add Item") {
             textfield(itemAmount)
         }
         fieldset("Type") {
-            // TODO find a meaningful form for "choose from 3 elements" - rotate box (?)
+            combobox(itemType, observableListOf("Essential Item", "Optional Item", "One Time Item")).required()
         }
         fieldset("Categories") {
-            // TODO find a meaningful form for "pick multiple categories" - ???
+            categoriesListView.selectionModel.selectionMode = SelectionMode.MULTIPLE
+            add(categoriesListView)
         }
-        fieldset("To Take") {
-            // TODO add checkbox
+        fieldset {
+            checkbox("To Take", itemToTake)
         }
 
         button("Create Item") {
@@ -42,7 +45,7 @@ class AddItemView : View("Add Item") {
             action {
                 addItemController.addItem(
                     itemName.value, itemAmount.value, itemType.value,
-                    itemCategories.value, itemToTake.value
+                    categoriesListView.selectionModel.selectedItems, itemToTake.value
                 )
             }
         }
@@ -57,8 +60,8 @@ class AddItemView : View("Add Item") {
     override fun onDock() {
         itemName.value = ""
         itemAmount.value = ""
-        itemType.value = ""
-        itemCategories.value = observableListOf()
+        itemType.value = null
+        categoriesListView.selectionModel.clearSelection()
         itemToTake.value = true
         model.clearDecorators()
     }

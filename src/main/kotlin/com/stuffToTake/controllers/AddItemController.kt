@@ -5,6 +5,8 @@ import tornadofx.Controller
 
 class AddItemController : Controller() {
 
+    val items : ItemsListModel by inject()  // TODO is this correct?
+
     fun addItem(name: String, amount: String, type: String, categories: List<Category>, toTake: Boolean) {
 
         val item: AbstractItem = when(type) {
@@ -15,11 +17,15 @@ class AddItemController : Controller() {
         }
 
         categories.forEach { category ->
-            if (item.addCategory(category))
+            if (! item.addCategory(category))
                 println("Warning! Tried to add a category twice to an item.")
         }
 
-        // TODO Add somewhere, but where ?!?
+        println(item)  // TODO delete
+
+        // TODO Add somewhere, but where ?!? Is this correct???
+        items.item = ItemsList(mutableListOf(), mutableListOf(), mutableListOf())
+        items.item.addItem(item)
 
     }
 
