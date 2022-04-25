@@ -28,5 +28,11 @@ class MenuView : View("Menu") {
                 menuController.toHistoryView()
             }
         }
+
+        button("Test View") {  // TODO delete
+            action {
+                menuController.toTestView()
+            }
+        }
     }
 }

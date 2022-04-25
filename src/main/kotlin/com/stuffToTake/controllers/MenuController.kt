@@ -2,6 +2,7 @@ package com.stuffToTake.controllers
 
 import com.stuffToTake.view.AddItemView
 import com.stuffToTake.view.MenuView
+import com.stuffToTake.view.TestView
 import tornadofx.Controller
 import tornadofx.UIComponent
 import tornadofx.uiComponent
@@ -22,6 +23,10 @@ class MenuController : Controller() {
 
     fun toHistoryView() {
         println("Not yet implemented")
+    }
+
+    fun toTestView() {  // TODO delete
+        find(MenuView::class).replaceWith(TestView::class, sizeToScene = true, centerOnScreen = true)
     }
 
 
