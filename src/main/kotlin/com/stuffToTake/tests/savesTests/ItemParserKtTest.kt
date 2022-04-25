@@ -42,27 +42,27 @@ class ItemParserKtTest {
     @Test
     fun txtToCode() {
         val filepath = "src/main/kotlin/com/stuffToTake/tests/savesTests/itemsReadTest.txt"
-        val expected: MutableList<String> = mutableListOf("Item: EssItem1\n" +
+        val expected: MutableList<String> = mutableListOf("Essential Item: EssItem1\n" +
                 "    Amount: -\n" +
                 "    Categories: [Am PC hochladen, Sachen für Nintendo Switch]\n" +
                 "    To Take: true",
-                "Item: EssItem2\n" +
+                "Essential Item: EssItem2\n" +
                 "    Amount: 3\n" +
                 "    Categories: []\n" +
                 "    To Take: false",
-                "Item: EssItem3\n" +
+                "Essential Item: EssItem3\n" +
                 "    Amount: ne Menge\n" +
                 "    Categories: [Am PC hochladen]\n" +
                 "    To Take: true",
-                "Item: OptItem1\n" +
+                "Optional Item: OptItem1\n" +
                 "    Amount: -\n" +
                 "    Categories: []\n" +
                 "    To Take: false",
-                "Item: OneItem1\n" +
+                "One Time Item: OneItem1\n" +
                 "    Amount: 2 dutzend\n" +
                 "    Categories: [Sachen für Nintendo Switch, Am PC hochladen]\n" +
                 "    To Take: false",
-                "Item: OneItem2\n" +
+                "One Time Item: OneItem2\n" +
                 "    Amount: -\n" +
                 "    Categories: [Am PC hochladen]\n" +
                 "    To Take: true")

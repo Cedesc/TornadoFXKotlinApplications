@@ -16,7 +16,7 @@ class OneTimeItem(name: String, amount: String, to_take: Boolean)
         TODO("Not yet implemented")
     }
 
-    override fun toString(): String {  // TODO write tests
+    override fun toString(): String {
         return "One Time ${super.toString()}"
     }
 

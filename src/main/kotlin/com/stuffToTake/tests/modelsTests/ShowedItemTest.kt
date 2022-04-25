@@ -105,9 +105,9 @@ class ShowedItemTest {
 
     @Test
     fun testToString() {
-        assertEquals(essentialItem.toString(), essentialShowItem.toString())
-        assertEquals(optionalItem.toString(), optionalShowItem.toString())
-        assertEquals(oneTimeItem.toString(), oneTimeShowItem.toString())
+        assertEquals("Showed $essentialItem", essentialShowItem.toString())
+        assertEquals("Showed $optionalItem", optionalShowItem.toString())
+        assertEquals("Showed $oneTimeItem", oneTimeShowItem.toString())
     }
 
 }

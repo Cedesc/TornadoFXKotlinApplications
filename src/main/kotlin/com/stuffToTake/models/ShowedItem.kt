@@ -16,7 +16,7 @@ class ShowedItem(val originalItem: AbstractItem)
         super.unmarkAsToTake()
     }
 
-    override fun toString(): String {  // TODO write tests
+    override fun toString(): String {
         return "Showed $originalItem"
     }
 

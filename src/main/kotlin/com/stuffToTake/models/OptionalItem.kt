@@ -16,7 +16,7 @@ class OptionalItem(name: String, amount: String, to_take: Boolean)
         TODO("Not yet implemented")
     }
 
-    override fun toString(): String {  // TODO write tests
+    override fun toString(): String {
         return "Optional ${super.toString()}"
     }
 
