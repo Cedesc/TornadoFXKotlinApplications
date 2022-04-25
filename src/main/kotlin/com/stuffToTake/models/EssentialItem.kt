@@ -16,4 +16,8 @@ class EssentialItem(name: String, amount: String, to_take: Boolean)
         TODO("Not yet implemented")
     }
 
+    override fun toString(): String {  // TODO write tests
+        return "Essential ${super.toString()}"
+    }
+
 }
