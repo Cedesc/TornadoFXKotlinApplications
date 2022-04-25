@@ -4,10 +4,11 @@ import tornadofx.ItemViewModel
 
 class ItemsList(val essentialItems: MutableList<EssentialItem>,
                 val optionalItems: MutableList<OptionalItem>,
-                val oneTimeItems: MutableList<OneTimeItem>) {  // TODO create tests
-    // TODO fill the lists in a constructor with no parameters with the txt file??
+                val oneTimeItems: MutableList<OneTimeItem>) {
 
-    var hey: String = "Hey"  // TODO delete
+    constructor() : this(mutableListOf(), mutableListOf(), mutableListOf())
+
+    // TODO add function that fill the lists with the txt file
 
     fun addEssentialItem(item: EssentialItem): Boolean {
         return essentialItems.add(item)
@@ -23,9 +24,9 @@ class ItemsList(val essentialItems: MutableList<EssentialItem>,
 
     fun addArbitraryItem(item: AbstractItem): Boolean {
         return when (item) {
-            is EssentialItem -> essentialItems.add(item)
-            is OptionalItem -> optionalItems.add(item)
-            is OneTimeItem -> oneTimeItems.add(item)
+            is EssentialItem -> addEssentialItem(item)
+            is OptionalItem -> addOptionalItem(item)
+            is OneTimeItem -> addOneTimeItem(item)
             is ShowedItem -> {
                 println("Warning! Tried to add a ShowedItem to the item list.")
                 false
