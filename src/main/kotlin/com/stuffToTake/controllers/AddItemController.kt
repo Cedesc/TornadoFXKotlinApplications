@@ -25,7 +25,7 @@ class AddItemController : Controller() {
 
         // TODO Add somewhere, but where ?!? Is this correct???
         items.item = ItemsList(mutableListOf(), mutableListOf(), mutableListOf())
-        items.item.addItem(item)
+        items.item.addArbitraryItem(item)
 
     }
 

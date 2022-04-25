@@ -23,6 +23,7 @@ To Do List:
     -3- create the first beta views (just functional, not pretty)
             https://edvin.gitbooks.io/tornadofx-guide/content/part1/4_Basic_Controls.html
             https://edvin.gitbooks.io/tornadofx-guide/content/part1/5_Data_Controls.html
+            TODO https://youtu.be/-y0F-wkrryo?t=2320  bind label
         - main view
         - add item view
             - change the class of itemType to a better than just a string ?

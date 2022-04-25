@@ -21,7 +21,7 @@ class ItemsList(val essentialItems: MutableList<EssentialItem>,
         return oneTimeItems.add(item)
     }
 
-    fun addItem(item: AbstractItem): Boolean {
+    fun addArbitraryItem(item: AbstractItem): Boolean {
         return when (item) {
             is EssentialItem -> essentialItems.add(item)
             is OptionalItem -> optionalItems.add(item)
