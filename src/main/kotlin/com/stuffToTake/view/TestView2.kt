@@ -1,17 +1,21 @@
 package com.stuffToTake.view
 
 import com.stuffToTake.controllers.MenuController
+import com.stuffToTake.controllers.TestController
 import tornadofx.*
 
 class TestView2 : View("My View") {  // TODO delete
 
     private val menuController: MenuController by inject()
+    private val testController: TestController by inject()
 
     override val root = vbox {
-        button("Back to Menu") {
-            action {
-                menuController.backToMenuView()
-            }
+
+        hbox {
+            label("Controller Counter: ")
+            label { bind(testController.testCounter) }
         }
+
+        button("Back to Menu") { action { menuController.backToMenuView() } }
     }
 }

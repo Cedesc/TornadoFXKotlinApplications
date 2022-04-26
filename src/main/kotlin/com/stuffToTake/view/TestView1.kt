@@ -1,32 +1,32 @@
 package com.stuffToTake.view
 
 import com.stuffToTake.controllers.MenuController
+import com.stuffToTake.controllers.TestController
 import javafx.beans.property.SimpleIntegerProperty
 import tornadofx.*
 
 class TestView1 : View("My View") {  // TODO delete
 
-    var test = SimpleIntegerProperty(1)
+    var localCounter = SimpleIntegerProperty(0)
 
     private val menuController: MenuController by inject()
+    private val testController: TestController by inject()
 
     override val root = vbox {
 
-        button("plus one") {
-            action {
-                test.value++
-            }
+        hbox {
+            label("Local Counter: ")
+            label { bind(localCounter) }
         }
+        button("Plus One") { action { localCounter.value++ } }
 
-        label("Value: ${test.value}") {
-            bind(test)
+        hbox {
+            label("Controller Counter: ")
+            label { bind(testController.testCounter) }
         }
+        button("Plus One") { action { testController.incrementCounter() } }
 
-        button("Back to Menu") {
-            action {
-                menuController.backToMenuView()
-            }
-        }
+        button("Back to Menu") { action { menuController.backToMenuView() } }
 
     }
 }
