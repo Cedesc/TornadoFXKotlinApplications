@@ -2,7 +2,8 @@ package com.stuffToTake.controllers
 
 import com.stuffToTake.view.AddItemView
 import com.stuffToTake.view.MenuView
-import com.stuffToTake.view.TestView
+import com.stuffToTake.view.TestView1
+import com.stuffToTake.view.TestView2
 import tornadofx.Controller
 import tornadofx.UIComponent
 import tornadofx.uiComponent
@@ -25,8 +26,12 @@ class MenuController : Controller() {
         println("Not yet implemented")
     }
 
-    fun toTestView() {  // TODO delete
-        find(MenuView::class).replaceWith(TestView::class, sizeToScene = true, centerOnScreen = true)
+    fun toTestView1() {  // TODO delete
+        find(MenuView::class).replaceWith(TestView1::class, sizeToScene = true, centerOnScreen = true)
+    }
+
+    fun toTestView2() {  // TODO delete
+        find(MenuView::class).replaceWith(TestView2::class, sizeToScene = true, centerOnScreen = true)
     }
 
 
