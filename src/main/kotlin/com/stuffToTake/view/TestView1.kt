@@ -30,7 +30,17 @@ class TestView1 : View("My View") {  // TODO delete
             label("ItemName: ")
             label { bind(testController.testItem.itemName) }
         }
+        hbox {
+            label("Category: ")
+            label(testController.testItem.category.value.toString()) {
+                testController.testItem.category.addListener { _, _, newValue ->
+                    text = newValue.toString()
+                }
+            }
+        }
+
         button("Change Name") { action { testController.itemNameChange() } }
+        button("Change Category") { action { testController.categoryChange() } }
 
         button("Back to Menu") { action { menuController.backToMenuView() } }
 
