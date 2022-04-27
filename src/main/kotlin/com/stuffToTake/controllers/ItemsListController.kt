@@ -3,9 +3,7 @@ package com.stuffToTake.controllers
 import com.stuffToTake.models.*
 import tornadofx.Controller
 
-class AddItemController : Controller() {
-
-    val items : ItemsListModel by inject()  // TODO is this correct?
+class ItemsListController : Controller() {
 
     fun addItem(name: String, amount: String, type: String, categories: List<Category>, toTake: Boolean) {
 
@@ -24,9 +22,13 @@ class AddItemController : Controller() {
         println(item)  // TODO delete
 
         // TODO Add somewhere, but where ?!? Is this correct???
-        items.item = ItemsList(mutableListOf(), mutableListOf(), mutableListOf())
-        items.item.addArbitraryItem(item)
+        // addItemController.itemsListModel.item = ItemsList()
+        // addItemController.itemsListModel.item.addArbitraryItem(item)
 
+    }
+
+    fun testAdd() {  // TODO delete
+        // addItemController.itemsList.addEssentialItem(EssentialItem("Something", "nothing", false))
     }
 
 }

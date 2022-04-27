@@ -1,6 +1,6 @@
 package com.stuffToTake.view
 
-import com.stuffToTake.controllers.AddItemController
+import com.stuffToTake.controllers.ItemsListController
 import com.stuffToTake.controllers.MenuController
 import com.stuffToTake.models.Category
 import javafx.beans.property.SimpleBooleanProperty
@@ -19,7 +19,7 @@ class AddItemView : View("Add Item") {
     private val categoriesListView = ListView(Category.values().toList().toObservable())
 
     private val menuController: MenuController by inject()
-    private val addItemController: AddItemController by inject()
+    private val itemsListController: ItemsListController by inject()
 
     override val root = vbox {
         fieldset("Name") {
@@ -43,7 +43,7 @@ class AddItemView : View("Add Item") {
             enableWhen(model.valid)
             isDefaultButton = true
             action {
-                addItemController.addItem(
+                itemsListController.addItem(
                     itemName.value, itemAmount.value, itemType.value,
                     categoriesListView.selectionModel.selectedItems, itemToTake.value
                 )
