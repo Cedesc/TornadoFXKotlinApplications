@@ -2,11 +2,9 @@ package com.stuffToTake.models
 
 import tornadofx.ItemViewModel
 
-class ItemsList(val essentialItems: MutableList<EssentialItem>,
-                val optionalItems: MutableList<OptionalItem>,
-                val oneTimeItems: MutableList<OneTimeItem>) {
-
-    constructor() : this(mutableListOf(), mutableListOf(), mutableListOf())
+class ItemsList(val essentialItems: MutableList<EssentialItem> = mutableListOf(),
+                val optionalItems: MutableList<OptionalItem> = mutableListOf(),
+                val oneTimeItems: MutableList<OneTimeItem> = mutableListOf()) {
 
     // TODO add function that fill the lists with the txt file
 
