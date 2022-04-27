@@ -16,6 +16,11 @@ class TestView2 : View("My View") {  // TODO delete
             label { bind(testController.testCounter) }
         }
 
+        hbox {
+            label("Item Test: ")
+            label { bind(testController.testItem.itemName) }
+        }
+
         button("Back to Menu") { action { menuController.backToMenuView() } }
     }
 }

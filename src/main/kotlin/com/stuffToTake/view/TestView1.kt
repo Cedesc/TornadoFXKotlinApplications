@@ -26,6 +26,12 @@ class TestView1 : View("My View") {  // TODO delete
         }
         button("Plus One") { action { testController.incrementCounter() } }
 
+        hbox {
+            label("ItemName: ")
+            label { bind(testController.testItem.itemName) }
+        }
+        button("Change Name") { action { testController.itemNameChange() } }
+
         button("Back to Menu") { action { menuController.backToMenuView() } }
 
     }
