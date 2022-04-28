@@ -3,17 +3,12 @@ package com.stuffToTake.models
 class OneTimeItem(itemName: String,
                   itemAmount: String,
                   itemToTake: Boolean,
-                  itemCategories: Set<Category>)
+                  itemCategories: Set<Category> = emptySet())
     : AbstractItem(itemName, itemAmount, itemToTake, itemCategories) {
 
-    // the categories don't have to be given
-    constructor(name: String, amount: String, toTake: Boolean)
-            : this(name, amount, toTake, emptySet())
     // the amount can be given as an Integer instead of a String
-    constructor(name: String, amount: Int, toTake: Boolean, categories: Set<Category>)
-            : this(name, amount.toString(), toTake, categories)
-    constructor(name: String, amount: Int, toTake: Boolean)
-            : this(name, amount.toString(), toTake, emptySet())
+    constructor(itemName: String, itemAmount: Int, itemToTake: Boolean, itemCategories: Set<Category> = emptySet())
+            : this(itemName, itemAmount.toString(), itemToTake, itemCategories)
 
 
     override fun markAsToTake() {
