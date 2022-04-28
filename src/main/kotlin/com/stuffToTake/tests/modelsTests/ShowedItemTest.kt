@@ -47,9 +47,9 @@ class ShowedItemTest {
     fun markAsToTake() {
 
         // check if the initial states are correct
-        assertEquals(true, essentialShowItem.to_take)
-        assertEquals(false, optionalShowItem.to_take)
-        assertEquals(true, oneTimeShowItem.to_take)
+        assertEquals(true, essentialShowItem.toTake)
+        assertEquals(false, optionalShowItem.toTake)
+        assertEquals(true, oneTimeShowItem.toTake)
 
         // use markAsToTake
         essentialShowItem.markAsToTake()
@@ -57,9 +57,9 @@ class ShowedItemTest {
         oneTimeShowItem.markAsToTake()
 
         // check if all states are true
-        assertEquals(true, essentialShowItem.to_take)
-        assertEquals(true, optionalShowItem.to_take)
-        assertEquals(true, oneTimeShowItem.to_take)
+        assertEquals(true, essentialShowItem.toTake)
+        assertEquals(true, optionalShowItem.toTake)
+        assertEquals(true, oneTimeShowItem.toTake)
 
     }
 
@@ -67,9 +67,9 @@ class ShowedItemTest {
     fun unmarkAsToTake() {
 
         // check if the initial states are correct
-        assertEquals(true, essentialShowItem.to_take)
-        assertEquals(false, optionalShowItem.to_take)
-        assertEquals(true, oneTimeShowItem.to_take)
+        assertEquals(true, essentialShowItem.toTake)
+        assertEquals(false, optionalShowItem.toTake)
+        assertEquals(true, oneTimeShowItem.toTake)
 
         // use markAsToTake
         essentialShowItem.unmarkAsToTake()
@@ -77,9 +77,9 @@ class ShowedItemTest {
         oneTimeShowItem.unmarkAsToTake()
 
         // check if all states are true
-        assertEquals(false, essentialShowItem.to_take)
-        assertEquals(false, optionalShowItem.to_take)
-        assertEquals(false, oneTimeShowItem.to_take)
+        assertEquals(false, essentialShowItem.toTake)
+        assertEquals(false, optionalShowItem.toTake)
+        assertEquals(false, oneTimeShowItem.toTake)
 
     }
 

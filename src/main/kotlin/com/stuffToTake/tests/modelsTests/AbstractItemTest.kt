@@ -1,9 +1,6 @@
 package com.stuffToTake.tests.modelsTests
 
-import com.stuffToTake.models.Category
-import com.stuffToTake.models.EssentialItem
-import com.stuffToTake.models.OneTimeItem
-import com.stuffToTake.models.OptionalItem
+import com.stuffToTake.models.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -25,6 +22,37 @@ class AbstractItemTest {
 
     @After
     fun tearDown() {
+    }
+
+    @Test
+    fun constructors() {
+        val item1 = EssentialItem("Item 1", 55, false)
+        val item2 = OptionalItem("Item 2", 2, true, setOf(Category.ON_PC, Category.CLOTHING))
+        val item3 = OneTimeItem("Item 3", "two", false,
+            setOf(Category.CLOTHING, Category.CLOTHING))
+        val item4 = ShowedItem(item2)
+
+        assertEquals("Essential Item: Item 1\n" +
+                "    Amount: 55\n" +
+                "    Categories: []\n" +
+                "    To Take: false",
+            item1.toString())
+        assertEquals("Optional Item: Item 2\n" +
+                "    Amount: 2\n" +
+                "    Categories: [Am PC hochladen, Kleidung]\n" +
+                "    To Take: true",
+            item2.toString())
+        assertEquals("One Time Item: Item 3\n" +
+                "    Amount: two\n" +
+                "    Categories: [Kleidung]\n" +
+                "    To Take: false",
+            item3.toString())
+        assertEquals("Showed Optional Item: Item 2\n" +
+                "    Amount: 2\n" +
+                "    Categories: [Am PC hochladen, Kleidung]\n" +
+                "    To Take: true",
+            item4.toString())
+
     }
 
     @Test
@@ -125,22 +153,22 @@ class AbstractItemTest {
     }
 
     @Test
-    fun getTo_take() {
-        assertEquals(true, essentialItem.to_take)
-        assertEquals(false, optionalItem.to_take)
-        assertEquals(true, oneTimeItem.to_take)
+    fun getToTake() {
+        assertEquals(true, essentialItem.toTake)
+        assertEquals(false, optionalItem.toTake)
+        assertEquals(true, oneTimeItem.toTake)
     }
 
     @Test
-    fun setTo_take() {
-        essentialItem.to_take = false
-        assertEquals(false, essentialItem.to_take)
+    fun setToTake() {
+        essentialItem.toTake = false
+        assertEquals(false, essentialItem.toTake)
 
-        optionalItem.to_take = true
-        assertEquals(true, optionalItem.to_take)
+        optionalItem.toTake = true
+        assertEquals(true, optionalItem.toTake)
 
-        oneTimeItem.to_take = true
-        assertEquals(true, oneTimeItem.to_take)
+        oneTimeItem.toTake = true
+        assertEquals(true, oneTimeItem.toTake)
     }
 
     @Test

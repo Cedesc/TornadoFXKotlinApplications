@@ -28,12 +28,15 @@ class TestView1 : View("My View") {  // TODO delete
 
         hbox {
             label("ItemName: ")
-            label { bind(testController.testItem.itemName) }
+            label { bind(testController.testItem.nameProperty) }
         }
         hbox {
             label("Category: ")
-            label(testController.testItem.category.value.toString()) {
-                testController.testItem.category.addListener { _, _, newValue ->
+        }
+        hbox {
+            label("Categories: ")
+            label(testController.testItem.categories.toString()) {
+                testController.testItem.categoriesProperty.addListener { _, _, newValue ->
                     text = newValue.toString()
                 }
             }
@@ -41,6 +44,7 @@ class TestView1 : View("My View") {  // TODO delete
 
         button("Change Name") { action { testController.itemNameChange() } }
         button("Change Category") { action { testController.categoryChange() } }
+        button("Change Categories") { action { testController.categoriesChange() } }
 
         button("Back to Menu") { action { menuController.backToMenuView() } }
 

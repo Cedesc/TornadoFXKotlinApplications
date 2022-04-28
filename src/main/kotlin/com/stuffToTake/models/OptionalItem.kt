@@ -1,10 +1,20 @@
 package com.stuffToTake.models
 
-class OptionalItem(name: String, amount: String, to_take: Boolean)
-    : AbstractItem(name, amount, to_take) {
+class OptionalItem(itemName: String,
+                   itemAmount: String,
+                   itemToTake: Boolean,
+                   itemCategories: Set<Category>)
+    : AbstractItem(itemName, itemAmount, itemToTake, itemCategories) {
 
-    // optionally the amount can be given as an Integer instead of a String
-    constructor(name: String, amount: Int, to_take: Boolean) : this(name, amount.toString(), to_take)
+    // the categories don't have to be given
+    constructor(name: String, amount: String, toTake: Boolean)
+            : this(name, amount, toTake, emptySet())
+    // the amount can be given as an Integer instead of a String
+    constructor(name: String, amount: Int, toTake: Boolean, categories: Set<Category>)
+            : this(name, amount.toString(), toTake, categories)
+    constructor(name: String, amount: Int, toTake: Boolean)
+            : this(name, amount.toString(), toTake, emptySet())
+
 
     override fun markAsToTake() {
         super.markAsToTake()

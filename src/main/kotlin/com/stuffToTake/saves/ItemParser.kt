@@ -210,7 +210,7 @@ fun  convertItemsToString(items: List<AbstractItem>): String {
                     "    NAME: ${item.name}\n" +
                     "    AMOUNT: ${item.amount}\n" +
                     "    CATEGORIES: ${categoriesEnumToString(item.categories)}\n" +
-                    "    TAKE: ${if(item.to_take) "O" else "X"}\n"
+                    "    TAKE: ${if(item.toTake) "O" else "X"}\n"
     }
 
     return result
