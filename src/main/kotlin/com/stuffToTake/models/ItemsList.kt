@@ -21,20 +21,30 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
     val oneTimeItems: ObservableList<OneTimeItem> by oneTimeItemsProperty
 
 
-    // TODO add function that fill the lists with the txt file
-
+    /**
+     * Returns always true because "add" returns true too.
+     */
     fun addEssentialItem(item: EssentialItem): Boolean {
         return essentialItems.add(item)
     }
 
+    /**
+     * Returns always true because "add" returns true too.
+     */
     fun addOptionalItem(item: OptionalItem): Boolean {
         return optionalItems.add(item)
     }
 
+    /**
+     * Returns always true because "add" returns true too.
+     */
     fun addOneTimeItem(item: OneTimeItem): Boolean {
         return oneTimeItems.add(item)
     }
 
+    /**
+     * Checks which item type is given and call the respective function.
+     */
     fun addArbitraryItem(item: AbstractItem): Boolean {
         return when (item) {
             is EssentialItem -> addEssentialItem(item)
@@ -48,10 +58,20 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
         }
     }
 
+    /**
+     * Returns one list containing all items.
+     */
     fun getListOfAllItems(): MutableList<AbstractItem> {
         val result: MutableList<AbstractItem> = mutableListOf()
         result += essentialItems + optionalItems + oneTimeItems
         return result
+    }
+
+    /**
+     * Fills the instance with the items saved in the txt file.
+     */
+    fun loadSavedItems() {
+        TODO("Not yet implemented")
     }
 
 }
