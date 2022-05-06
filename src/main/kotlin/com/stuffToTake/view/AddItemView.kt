@@ -47,8 +47,10 @@ class AddItemView : View("Add Item") {
                     itemName.value, itemAmount.value, itemType.value,
                     categoriesListView.selectionModel.selectedItems, itemToTake.value
                 )
+
+                // clear fields and disable button = reset view
+                menuController.refresh()
             }
-            // TODO clear fields = reset view (onDock or changing the values doesn't work, I think because of the scope)
         }
 
         button("Back to Menu") {

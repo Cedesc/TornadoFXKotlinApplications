@@ -39,4 +39,8 @@ class MenuController : Controller() {
         primaryStage.uiComponent<UIComponent>()?.replaceWith(MenuView::class, sizeToScene = true, centerOnScreen = true)
     }
 
+    fun refresh() {  // is this really a refresh?
+        primaryStage.uiComponent<UIComponent>()?.onDock()
+    }
+
 }
