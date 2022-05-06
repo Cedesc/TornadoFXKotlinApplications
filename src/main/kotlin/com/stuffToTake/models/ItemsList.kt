@@ -8,6 +8,8 @@ class ItemsList(val essentialItems: MutableList<EssentialItem> = mutableListOf()
 
     // TODO add function that fill the lists with the txt file
 
+    // TODO change the attributes to properties
+
     fun addEssentialItem(item: EssentialItem): Boolean {
         return essentialItems.add(item)
     }
