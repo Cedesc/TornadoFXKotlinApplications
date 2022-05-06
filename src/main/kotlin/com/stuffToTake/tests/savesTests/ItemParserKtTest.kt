@@ -12,8 +12,19 @@ import java.io.File
 
 class ItemParserKtTest {
 
+    private lateinit var itemParserEmpty: ItemParser
+    private lateinit var itemParserWrite: ItemParser
+    private lateinit var itemParserRead: ItemParser
+    private lateinit var itemParserError: ItemParser
+    private lateinit var itemParserCreate: ItemParser
+
     @Before
     fun setUp() {
+        itemParserEmpty = ItemParser("")
+        itemParserWrite = ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsWriteTest.txt")
+        itemParserRead = ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsReadTest.txt")
+        itemParserError = ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsErrorTest.txt")
+        itemParserCreate = ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsCreateTest.txt")
     }
 
     @After
@@ -23,12 +34,11 @@ class ItemParserKtTest {
     @Test
     fun mainTestTxtToCodeAndCodeToText() {
 
-        val path = "src/main/kotlin/com/stuffToTake/tests/savesTests/itemsWriteTest.txt"
         val items: Triple<MutableList<EssentialItem>, MutableList<OptionalItem>, MutableList<OneTimeItem>> =
             generateItems()
 
-        codeToTxt(items.first, items.second, items.third, path)
-        val actual: MutableList<AbstractItem> = txtToCode(path)
+        itemParserWrite.codeToTxt(items.first, items.second, items.third)
+        val actual: MutableList<AbstractItem> = itemParserWrite.txtToCode()
 
         val itemsInOneList: List<AbstractItem> = items.first + items.second + items.third
 
@@ -41,7 +51,6 @@ class ItemParserKtTest {
 
     @Test
     fun txtToCode() {
-        val filepath = "src/main/kotlin/com/stuffToTake/tests/savesTests/itemsReadTest.txt"
         val expected: MutableList<String> = mutableListOf("Essential Item: EssItem1\n" +
                 "    Amount: -\n" +
                 "    Categories: [Am PC hochladen, Sachen für Nintendo Switch]\n" +
@@ -66,7 +75,7 @@ class ItemParserKtTest {
                 "    Amount: -\n" +
                 "    Categories: [Am PC hochladen]\n" +
                 "    To Take: true")
-        val actual: MutableList<AbstractItem> = txtToCode(filepath)
+        val actual: MutableList<AbstractItem> = itemParserRead.txtToCode()
         assertEquals(expected.toString(), actual.toString())
     }
 
@@ -76,7 +85,7 @@ class ItemParserKtTest {
             ItemAttributes("EssItem1", "",
                            mutableListOf(Category.ON_PC, Category.NINTENDO_SWITCH), true)
         var actual: ItemAttributes =
-            extractAttributesFromString(
+            itemParserEmpty.extractAttributesFromString(
                 "    NAME: EssItem1",
                 "    AMOUNT:",
                 "    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch",
@@ -87,7 +96,7 @@ class ItemParserKtTest {
             ItemAttributes("OneItem1", "2 dutzend",
                            mutableListOf(Category.NINTENDO_SWITCH, Category.ON_PC), false)
         actual =
-            extractAttributesFromString(
+            itemParserEmpty.extractAttributesFromString(
                 "    NAME: OneItem1",
                 "    AMOUNT: 2 dutzend",
                 "    CATEGORIES: Sachen für Nintendo Switch ; Am PC hochladen",
@@ -97,33 +106,33 @@ class ItemParserKtTest {
 
     @Test
     fun startsWithAndBeginAfterThat() {
-        assertEquals("World", startsWithAndBeginAfterThat("HelloWorld", "Hello"))
-        assertEquals("yHey", startsWithAndBeginAfterThat("HeyHeyHey", "HeyHe"))
+        assertEquals("World", itemParserEmpty.startsWithAndBeginAfterThat("HelloWorld", "Hello"))
+        assertEquals("yHey", itemParserEmpty.startsWithAndBeginAfterThat("HeyHeyHey", "HeyHe"))
         assertThrows(Exception::class.java) {
-            startsWithAndBeginAfterThat("not a", "substring")
+            itemParserEmpty.startsWithAndBeginAfterThat("not a", "substring")
         }
     }
 
     @Test
     fun categoriesStringToEnum() {
-        assertEquals(mutableListOf<Category>(), categoriesStringToEnum(""))
+        assertEquals(mutableListOf<Category>(), itemParserEmpty.categoriesStringToEnum(""))
         assertEquals(mutableListOf(Category.ON_PC),
-            categoriesStringToEnum("Am PC hochladen"))
+            itemParserEmpty.categoriesStringToEnum("Am PC hochladen"))
         assertEquals(mutableListOf(Category.ON_PC, Category.NINTENDO_SWITCH),
-            categoriesStringToEnum("Am PC hochladen ; Sachen für Nintendo Switch"))
+            itemParserEmpty.categoriesStringToEnum("Am PC hochladen ; Sachen für Nintendo Switch"))
         assertEquals(mutableListOf<Category>(),
-            categoriesStringToEnum("something ; that fits in ; no category"))
+            itemParserEmpty.categoriesStringToEnum("something ; that fits in ; no category"))
     }
 
     @Test
     fun removeBlanks() {
-        assertEquals("test", removeBlanks("test"))
-        assertEquals("test", removeBlanks("test "))
-        assertEquals("test", removeBlanks(" test"))
-        assertEquals("test", removeBlanks(" test "))
-        assertEquals("test", removeBlanks("   test   "))
-        assertEquals("Hello   World", removeBlanks(" Hello   World    "))
-        assertEquals("", removeBlanks("     "))
+        assertEquals("test", itemParserEmpty.removeBlanks("test"))
+        assertEquals("test", itemParserEmpty.removeBlanks("test "))
+        assertEquals("test", itemParserEmpty.removeBlanks(" test"))
+        assertEquals("test", itemParserEmpty.removeBlanks(" test "))
+        assertEquals("test", itemParserEmpty.removeBlanks("   test   "))
+        assertEquals("Hello   World", itemParserEmpty.removeBlanks(" Hello   World    "))
+        assertEquals("", itemParserEmpty.removeBlanks("     "))
     }
 
     @Test
@@ -131,8 +140,7 @@ class ItemParserKtTest {
 
         assertThrows(Exception::class.java) {
             // check if it throws an error if the file doesn't exist
-            codeToTxt(mutableListOf(), mutableListOf(), mutableListOf(),
-                "src/main/kotlin/com/stuffToTake/tests/savesTests/itemsErrorTest.txt")
+            itemParserError.codeToTxt(mutableListOf(), mutableListOf(), mutableListOf())
         }
 
 
@@ -178,11 +186,10 @@ class ItemParserKtTest {
             "    CATEGORIES: Am PC hochladen\n" +
             "    TAKE: O\n"
 
-        val path = "src/main/kotlin/com/stuffToTake/tests/savesTests/itemsWriteTest.txt"
         val items: Triple<MutableList<EssentialItem>, MutableList<OptionalItem>, MutableList<OneTimeItem>> =
             generateItems()
-        codeToTxt(items.first, items.second, items.third, path)
-        val actual = File(path).readText()
+        itemParserWrite.codeToTxt(items.first, items.second, items.third)
+        val actual = File(itemParserWrite.filepath).readText()
 
         assertEquals(expected, actual)
 
@@ -191,13 +198,13 @@ class ItemParserKtTest {
     @Test
     fun categoriesEnumToString() {
         assertEquals("Am PC hochladen ; Sachen für Nintendo Switch",
-            categoriesEnumToString(mutableSetOf(Category.ON_PC, Category.NINTENDO_SWITCH)))
+            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.ON_PC, Category.NINTENDO_SWITCH)))
         assertEquals("Sachen für Nintendo Switch ; Am PC hochladen",
-            categoriesEnumToString(mutableSetOf(Category.NINTENDO_SWITCH, Category.ON_PC)))
+            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.NINTENDO_SWITCH, Category.ON_PC)))
         assertEquals("Am PC hochladen",
-            categoriesEnumToString(mutableSetOf(Category.ON_PC)))
+            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.ON_PC)))
         assertEquals("Sachen für Nintendo Switch",
-            categoriesEnumToString(mutableSetOf(Category.NINTENDO_SWITCH)))
+            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.NINTENDO_SWITCH)))
     }
 
     @Test
@@ -208,7 +215,7 @@ class ItemParserKtTest {
 
 
         var expected = ""
-        var actual: String = convertItemsToString(listOf())
+        var actual: String = itemParserEmpty.convertItemsToString(listOf())
 
         assertEquals(expected, actual)
 
@@ -230,7 +237,7 @@ class ItemParserKtTest {
             "    CATEGORIES: Am PC hochladen\n" +
             "    TAKE: O\n"
         actual =
-            convertItemsToString(items.first)
+            itemParserEmpty.convertItemsToString(items.first)
 
         assertEquals(expected, actual)
 
@@ -241,7 +248,7 @@ class ItemParserKtTest {
                 "    CATEGORIES: \n" +
                 "    TAKE: X\n"
         actual =
-            convertItemsToString(items.second)
+            itemParserEmpty.convertItemsToString(items.second)
 
         assertEquals(expected, actual)
 
@@ -258,7 +265,7 @@ class ItemParserKtTest {
             "    CATEGORIES: Am PC hochladen\n" +
             "    TAKE: O\n"
         actual =
-            convertItemsToString(items.third)
+            itemParserEmpty.convertItemsToString(items.third)
 
         assertEquals(expected, actual)
     }
@@ -267,19 +274,17 @@ class ItemParserKtTest {
     fun fileOperations() {
         // tests createFile(), deleteFile() and checkFileExists()
 
-        val path = "src/main/kotlin/com/stuffToTake/tests/savesTests/itemsCreateTest.txt"
-
         assertEquals(false,
-            checkFileExists(path))
+            itemParserCreate.checkFileExists())
 
         assertEquals(true,
-            createFile(path))
+            itemParserCreate.createFile())
 
         assertEquals(true,
-            checkFileExists(path))
+            itemParserCreate.checkFileExists())
 
         assertEquals(true,
-            deleteFile(path))
+            itemParserCreate.deleteFile())
     }
 
 
