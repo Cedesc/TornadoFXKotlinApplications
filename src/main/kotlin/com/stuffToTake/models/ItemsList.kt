@@ -1,14 +1,27 @@
 package com.stuffToTake.models
 
-import tornadofx.ItemViewModel
+import javafx.beans.property.SimpleListProperty
+import javafx.collections.ObservableList
+import tornadofx.*
 
-class ItemsList(val essentialItems: MutableList<EssentialItem> = mutableListOf(),
-                val optionalItems: MutableList<OptionalItem> = mutableListOf(),
-                val oneTimeItems: MutableList<OneTimeItem> = mutableListOf()) {
+class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
+                optionalItems: MutableList<OptionalItem> = mutableListOf(),
+                oneTimeItems: MutableList<OneTimeItem> = mutableListOf()) {
+
+    val essentialItemsProperty: SimpleListProperty<EssentialItem> =
+        SimpleListProperty(essentialItems.toObservable())
+    val essentialItems: ObservableList<EssentialItem> by essentialItemsProperty
+
+    val optionalItemsProperty: SimpleListProperty<OptionalItem> =
+        SimpleListProperty(optionalItems.toObservable())
+    val optionalItems: ObservableList<OptionalItem> by optionalItemsProperty
+
+    val oneTimeItemsProperty: SimpleListProperty<OneTimeItem> =
+        SimpleListProperty(oneTimeItems.toObservable())
+    val oneTimeItems: ObservableList<OneTimeItem> by oneTimeItemsProperty
+
 
     // TODO add function that fill the lists with the txt file
-
-    // TODO change the attributes to properties
 
     fun addEssentialItem(item: EssentialItem): Boolean {
         return essentialItems.add(item)
@@ -42,5 +55,3 @@ class ItemsList(val essentialItems: MutableList<EssentialItem> = mutableListOf()
     }
 
 }
-
-class ItemsListModel : ItemViewModel<ItemsList>()  // TODO is this necessary???

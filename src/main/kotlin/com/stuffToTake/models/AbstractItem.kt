@@ -27,8 +27,7 @@ abstract class AbstractItem(itemName: String,
 
     val categoriesProperty: SimpleSetProperty<Category> =
         SimpleSetProperty(mutableSetOf<Category>().toObservable())
-    var categories: ObservableSet<Category> by categoriesProperty
-        protected set
+    val categories: ObservableSet<Category> by categoriesProperty
 
     init {
         itemCategories.forEach { category ->
