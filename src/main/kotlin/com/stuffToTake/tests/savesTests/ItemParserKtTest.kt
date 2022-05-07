@@ -8,9 +8,12 @@ import org.junit.Test
 import org.junit.Assert.*
 
 import com.stuffToTake.saves.*
+import com.stuffToTake.tests.TestUtilities
 import java.io.File
 
 class ItemParserKtTest {
+
+    private val testUtils = TestUtilities()
 
     private lateinit var itemParserEmpty: ItemParser
     private lateinit var itemParserWrite: ItemParser
@@ -35,7 +38,7 @@ class ItemParserKtTest {
     fun mainTestTxtToCodeAndCodeToText() {
 
         val items: Triple<MutableList<EssentialItem>, MutableList<OptionalItem>, MutableList<OneTimeItem>> =
-            generateItems()
+            testUtils.generateItems()
 
         itemParserWrite.codeToTxt(items.first, items.second, items.third)
         val actual: MutableList<AbstractItem> = itemParserWrite.txtToCode()
@@ -187,7 +190,7 @@ class ItemParserKtTest {
             "    TAKE: O\n"
 
         val items: Triple<MutableList<EssentialItem>, MutableList<OptionalItem>, MutableList<OneTimeItem>> =
-            generateItems()
+            testUtils.generateItems()
         itemParserWrite.codeToTxt(items.first, items.second, items.third)
         val actual = File(itemParserWrite.filepath).readText()
 
@@ -211,7 +214,7 @@ class ItemParserKtTest {
     fun convertItemsToString() {
 
         val items: Triple<MutableList<EssentialItem>, MutableList<OptionalItem>, MutableList<OneTimeItem>> =
-            generateItems()
+            testUtils.generateItems()
 
 
         var expected = ""
@@ -287,28 +290,4 @@ class ItemParserKtTest {
             itemParserCreate.deleteFile())
     }
 
-
-    private fun generateItems(): Triple<MutableList<EssentialItem>, MutableList<OptionalItem>, MutableList<OneTimeItem>> {
-
-        val essItem1 = EssentialItem("EssItem1", "", true)
-        essItem1.addCategory(Category.ON_PC)
-        essItem1.addCategory(Category.NINTENDO_SWITCH)
-        val essItem2 = EssentialItem("EssItem2", 3, false)
-        val essItem3 = EssentialItem("EssItem3", "ne Menge", true)
-        essItem3.addCategory(Category.ON_PC)
-
-        val optItem1 = OptionalItem("OptItem1", "", false)
-
-        val oneItem1 = OneTimeItem("OneItem1", "2 dutzend", false)
-        oneItem1.addCategory(Category.NINTENDO_SWITCH)
-        oneItem1.addCategory(Category.ON_PC)
-        val oneItem2 = OneTimeItem("OneItem2", "", true)
-        oneItem2.addCategory(Category.ON_PC)
-
-        return Triple(
-            mutableListOf(essItem1, essItem2, essItem3),
-            mutableListOf(optItem1),
-            mutableListOf(oneItem1, oneItem2)
-        )
-    }
 }
