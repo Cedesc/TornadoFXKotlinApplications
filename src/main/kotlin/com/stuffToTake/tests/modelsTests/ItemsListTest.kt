@@ -1,9 +1,8 @@
 package com.stuffToTake.tests.modelsTests
 
-import com.stuffToTake.models.EssentialItem
-import com.stuffToTake.models.ItemsList
-import com.stuffToTake.models.OneTimeItem
-import com.stuffToTake.models.OptionalItem
+import com.stuffToTake.models.*
+import com.stuffToTake.saves.ItemParser
+import com.stuffToTake.tests.TestUtilities
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -12,13 +11,15 @@ import org.junit.Assert.*
 
 class ItemsListTest {
 
-    lateinit var essentialItem1: EssentialItem
-    lateinit var essentialItem2: EssentialItem
-    lateinit var optionalItem1: OptionalItem
-    lateinit var optionalItem2: OptionalItem
-    lateinit var oneTimeItem1: OneTimeItem
-    lateinit var oneTimeItem2: OneTimeItem
-    lateinit var itemsList: ItemsList
+    private val testUtils = TestUtilities()
+
+    private lateinit var essentialItem1: EssentialItem
+    private lateinit var essentialItem2: EssentialItem
+    private lateinit var optionalItem1: OptionalItem
+    private lateinit var optionalItem2: OptionalItem
+    private lateinit var oneTimeItem1: OneTimeItem
+    private lateinit var oneTimeItem2: OneTimeItem
+    private lateinit var itemsList: ItemsList
 
     @Before
     fun setUp() {
@@ -178,4 +179,45 @@ class ItemsListTest {
         itemsList.addArbitraryItem(optionalItem2)
         assertEquals(expected.toString(), itemsList.oneTimeItems.toString())
     }
+
+    @Test
+    fun loadSavedItems() {
+
+        // Create Parser.
+        itemsList.itemParser =
+            ItemParser("src/main/kotlin/com/stuffToTake/tests/modelsTests/loadSavedItemsTest.txt")
+
+        // Create File.
+        assertEquals(false,
+            itemsList.itemParser.checkFileExists())
+        assertEquals(true,
+            itemsList.itemParser.createFile())
+        assertEquals(true,
+            itemsList.itemParser.checkFileExists())
+
+
+        // Generate items.
+        val items = testUtils.generateItems()
+        val essItems = items.first
+        val optItems = items.second
+        val oneItems = items.third
+
+        // Convert to txt file.
+        itemsList.itemParser.codeToTxt(essItems, optItems, oneItems)
+
+        // Convert back to code in the itemsList.
+        assertEquals(true,
+            itemsList.loadSavedItems())
+
+        // Check if the re-converted items are the same as the items before the conversion
+        assertEquals(essItems.toString(), itemsList.essentialItems.toString())
+        assertEquals(optItems.toString(), itemsList.optionalItems.toString())
+        assertEquals(oneItems.toString(), itemsList.oneTimeItems.toString())
+
+
+        // Delete created file.
+        assertEquals(true,
+            itemsList.itemParser.deleteFile())
+    }
+
 }

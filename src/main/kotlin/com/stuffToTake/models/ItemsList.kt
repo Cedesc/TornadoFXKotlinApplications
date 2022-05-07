@@ -1,12 +1,14 @@
 package com.stuffToTake.models
 
+import com.stuffToTake.saves.ItemParser
 import javafx.beans.property.SimpleListProperty
 import javafx.collections.ObservableList
 import tornadofx.*
 
 class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
                 optionalItems: MutableList<OptionalItem> = mutableListOf(),
-                oneTimeItems: MutableList<OneTimeItem> = mutableListOf()) {
+                oneTimeItems: MutableList<OneTimeItem> = mutableListOf(),
+                var itemParser: ItemParser = ItemParser("")) {
 
     val essentialItemsProperty: SimpleListProperty<EssentialItem> =
         SimpleListProperty(essentialItems.toObservable())
@@ -24,23 +26,17 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
     /**
      * Returns always true because "add" returns true too.
      */
-    fun addEssentialItem(item: EssentialItem): Boolean {
-        return essentialItems.add(item)
-    }
+    fun addEssentialItem(item: EssentialItem): Boolean = essentialItems.add(item)
 
     /**
      * Returns always true because "add" returns true too.
      */
-    fun addOptionalItem(item: OptionalItem): Boolean {
-        return optionalItems.add(item)
-    }
+    fun addOptionalItem(item: OptionalItem): Boolean = optionalItems.add(item)
 
     /**
      * Returns always true because "add" returns true too.
      */
-    fun addOneTimeItem(item: OneTimeItem): Boolean {
-        return oneTimeItems.add(item)
-    }
+    fun addOneTimeItem(item: OneTimeItem): Boolean = oneTimeItems.add(item)
 
     /**
      * Checks which item type is given and call the respective function.
@@ -70,8 +66,18 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
     /**
      * Fills the instance with the items saved in the txt file.
      */
-    fun loadSavedItems() {
-        TODO("Not yet implemented")
+    fun loadSavedItems(): Boolean {
+
+        // Return false if the ItemList isn't empty.
+        if (! (essentialItems.isEmpty() && optionalItems.isEmpty() && oneTimeItems.isEmpty()))
+            return false
+        // Return false if the item parser has an empty filepath.
+        if (itemParser.filepath == "")
+            return false
+
+        for (item in itemParser.txtToCode())
+            addArbitraryItem(item)
+        return true
     }
 
 }
