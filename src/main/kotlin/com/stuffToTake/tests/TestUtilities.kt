@@ -31,4 +31,47 @@ class TestUtilities {
         )
     }
 
+    fun getStringOfGeneratedItems(): String {
+        return "ESSENTIAL ITEMS\n" +
+                "\n" +
+                "ITEM\n" +
+                "    NAME: EssItem1\n" +
+                "    AMOUNT: \n" +
+                "    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch\n" +
+                "    TAKE: O\n" +
+                "ITEM\n" +
+                "    NAME: EssItem2\n" +
+                "    AMOUNT: 3\n" +
+                "    CATEGORIES: \n" +
+                "    TAKE: X\n" +
+                "ITEM\n" +
+                "    NAME: EssItem3\n" +
+                "    AMOUNT: ne Menge\n" +
+                "    CATEGORIES: Am PC hochladen\n" +
+                "    TAKE: O\n" +
+                "\n" +
+                "\n" +
+                "OPTIONAL ITEMS\n" +
+                "\n" +
+                "ITEM\n" +
+                "    NAME: OptItem1\n" +
+                "    AMOUNT: \n" +
+                "    CATEGORIES: \n" +
+                "    TAKE: X\n" +
+                "\n" +
+                "\n" +
+                "ONE TIME ITEMS\n" +
+                "\n" +
+                "ITEM\n" +
+                "    NAME: OneItem1\n" +
+                "    AMOUNT: 2 dutzend\n" +
+                "    CATEGORIES: Sachen für Nintendo Switch ; Am PC hochladen\n" +
+                "    TAKE: X\n" +
+                "ITEM\n" +
+                "    NAME: OneItem2\n" +
+                "    AMOUNT: \n" +
+                "    CATEGORIES: Am PC hochladen\n" +
+                "    TAKE: O\n"
+    }
+
 }

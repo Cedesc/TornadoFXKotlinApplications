@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.io.File
 
 class ItemsListTest {
 
@@ -183,17 +184,12 @@ class ItemsListTest {
     @Test
     fun loadSavedItems() {
 
-        // Create Parser
+        // Create parser
         itemsList.itemParser =
             ItemParser("src/main/kotlin/com/stuffToTake/tests/modelsTests/loadSavedItemsTest.txt")
 
-        // Create File
-        assertEquals(false,
-            itemsList.itemParser.checkFileExists())
-        assertEquals(true,
-            itemsList.itemParser.createFile())
-        assertEquals(true,
-            itemsList.itemParser.checkFileExists())
+        // Create file
+        saveCreateFile(itemsList.itemParser)
 
 
         // Generate items
@@ -238,4 +234,58 @@ class ItemsListTest {
             itemsList.loadSavedItems())
     }
 
+    @Test
+    fun saveItems() {
+
+        // Test with empty filepath in parser
+        itemsList.itemParser =
+                ItemParser("")
+        assertEquals(false,
+            itemsList.saveItems())
+
+
+        // Create parser
+        itemsList.itemParser =
+            ItemParser("src/main/kotlin/com/stuffToTake/tests/modelsTests/saveItemsTest.txt")
+
+        // Create file
+        saveCreateFile(itemsList.itemParser)
+
+
+        // Generate items
+        val items = testUtils.generateItems()
+        val essItems = items.first
+        val optItems = items.second
+        val oneItems = items.third
+
+        // Add to itemsList
+        for (item in essItems)
+            itemsList.addArbitraryItem(item)
+        for (item in optItems)
+            itemsList.addArbitraryItem(item)
+        for (item in oneItems)
+            itemsList.addArbitraryItem(item)
+
+        // Save items in a txt file
+        assertEquals(true,
+            itemsList.saveItems())
+
+        val expected: String = testUtils.getStringOfGeneratedItems()
+        val actual = File(itemsList.itemParser.filepath).readText()
+        assertEquals(expected, actual)
+
+
+        // Delete created file.
+        assertEquals(true,
+            itemsList.itemParser.deleteFile())
+    }
+
+    private fun saveCreateFile(parser: ItemParser) {
+        assertEquals(false,
+            parser.checkFileExists())
+        assertEquals(true,
+            parser.createFile())
+        assertEquals(true,
+            parser.checkFileExists())
+    }
 }

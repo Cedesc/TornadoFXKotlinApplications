@@ -72,7 +72,7 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
         if (! (essentialItems.isEmpty() && optionalItems.isEmpty() && oneTimeItems.isEmpty()))
             return false
         // Return false if the item parser has an empty filepath.
-        if (itemParser.filepath == "")
+        if (itemParser.filepath.isEmpty())
             return false
 
         for (item in itemParser.txtToCode())
@@ -83,10 +83,10 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
     /**
      * Saves the items in this instance in the txt file.
      */
-    fun saveItems(): Boolean {  // TODO create tests
+    fun saveItems(): Boolean {
 
         // Return false if the item parser has an empty filepath.
-        if (itemParser.filepath == "")
+        if (itemParser.filepath.isEmpty())
             return false
 
         itemParser.codeToTxt(essentialItems, optionalItems, oneTimeItems)
