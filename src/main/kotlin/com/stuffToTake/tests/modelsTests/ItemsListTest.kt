@@ -183,11 +183,11 @@ class ItemsListTest {
     @Test
     fun loadSavedItems() {
 
-        // Create Parser.
+        // Create Parser
         itemsList.itemParser =
             ItemParser("src/main/kotlin/com/stuffToTake/tests/modelsTests/loadSavedItemsTest.txt")
 
-        // Create File.
+        // Create File
         assertEquals(false,
             itemsList.itemParser.checkFileExists())
         assertEquals(true,
@@ -196,16 +196,16 @@ class ItemsListTest {
             itemsList.itemParser.checkFileExists())
 
 
-        // Generate items.
+        // Generate items
         val items = testUtils.generateItems()
         val essItems = items.first
         val optItems = items.second
         val oneItems = items.third
 
-        // Convert to txt file.
+        // Convert to txt file
         itemsList.itemParser.codeToTxt(essItems, optItems, oneItems)
 
-        // Convert back to code in the itemsList.
+        // Convert back to code in the itemsList
         assertEquals(true,
             itemsList.loadSavedItems())
 
@@ -218,6 +218,24 @@ class ItemsListTest {
         // Delete created file.
         assertEquals(true,
             itemsList.itemParser.deleteFile())
+    }
+
+    @Test
+    fun loadSavedItemsFail() {
+        // Method returns false because the filepath is empty.
+        assertEquals(false,
+            itemsList.loadSavedItems())
+
+        // Method returns false because the item lists aren't empty.
+        itemsList.itemParser = ItemParser("fail test")
+        itemsList.addArbitraryItem(EssentialItem("thing", "", false))
+        assertEquals(false,
+            itemsList.loadSavedItems())
+
+        // Method returns false because the filepath is empty and the item lists aren't empty.
+        itemsList.itemParser = ItemParser("")
+        assertEquals(false,
+            itemsList.loadSavedItems())
     }
 
 }
