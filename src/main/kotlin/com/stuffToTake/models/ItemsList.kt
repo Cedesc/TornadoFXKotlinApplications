@@ -80,4 +80,17 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
         return true
     }
 
+    /**
+     * Saves the items in this instance in the txt file.
+     */
+    fun saveItems(): Boolean {  // TODO create tests
+
+        // Return false if the item parser has an empty filepath.
+        if (itemParser.filepath == "")
+            return false
+
+        itemParser.codeToTxt(essentialItems, optionalItems, oneTimeItems)
+        return true
+    }
+
 }

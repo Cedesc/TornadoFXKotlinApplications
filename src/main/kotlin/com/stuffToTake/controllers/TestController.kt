@@ -7,7 +7,7 @@ import tornadofx.Controller
 
 class TestController : Controller() {  // TODO delete
 
-    val testCounter = SimpleIntegerProperty(0)// TODO use this to finish the addItem function
+    val testCounter = SimpleIntegerProperty(0)
 
     var testItem = EssentialItem("name", "one", false)
 

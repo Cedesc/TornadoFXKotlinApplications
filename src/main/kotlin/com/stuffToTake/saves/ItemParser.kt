@@ -257,4 +257,11 @@ class ItemParser(val filepath: String = "src/main/kotlin/com/stuffToTake/saves/i
         }
     }
 
+    /**
+     * Creates a backup of the txt file with a similar name.
+     */
+    fun createBackup(): Boolean {  // TODO create tests
+        TODO("Not yet implemented.")
+    }
+
 }

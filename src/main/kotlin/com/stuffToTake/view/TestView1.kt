@@ -1,5 +1,6 @@
 package com.stuffToTake.view
 
+import com.stuffToTake.controllers.ItemsListController
 import com.stuffToTake.controllers.MenuController
 import com.stuffToTake.controllers.TestController
 import javafx.beans.property.SimpleIntegerProperty
@@ -11,8 +12,18 @@ class TestView1 : View("My View") {  // TODO delete
 
     private val menuController: MenuController by inject()
     private val testController: TestController by inject()
+    private val itemsController: ItemsListController by inject()
 
     override val root = vbox {
+
+        hbox {
+            label("Items List Essential Items: ")
+            label(itemsController.itemsList.essentialItems.toString()) {
+                itemsController.itemsList.essentialItemsProperty.addListener { _, _, newValue ->
+                    text = newValue.toString()
+                }
+            }
+        }
 
         hbox {
             label("Local Counter: ")
