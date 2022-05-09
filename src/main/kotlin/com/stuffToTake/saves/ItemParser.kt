@@ -260,8 +260,20 @@ class ItemParser(val filepath: String = "src/main/kotlin/com/stuffToTake/saves/i
     /**
      * Creates a backup of the txt file with a similar name.
      */
-    fun createBackup(): Boolean {  // TODO create tests
-        TODO("Not yet implemented.")
+    fun createBackup(): Boolean {
+        if (filepath.endsWith(".txt")) {
+            try {
+                val file = File(filepath)
+                // Remove the ".txt" part and add "_Backup.txt"
+                val newFilePath: String = filepath.dropLast(4) + "_Backup.txt"
+                // Overwrite possibly already existing file.
+                file.copyTo(File(newFilePath), overwrite = true)
+                return true
+            } catch (e: IOException) {
+                throw Exception("An error occurred while copying the txt file.")
+            }
+        }
+        return false
     }
 
 }

@@ -20,6 +20,7 @@ class ItemParserKtTest {
     private lateinit var itemParserRead: ItemParser
     private lateinit var itemParserError: ItemParser
     private lateinit var itemParserCreate: ItemParser
+    private lateinit var itemParserBackup: ItemParser
 
     @Before
     fun setUp() {
@@ -28,6 +29,7 @@ class ItemParserKtTest {
         itemParserRead = ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsReadTest.txt")
         itemParserError = ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsErrorTest.txt")
         itemParserCreate = ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsCreateTest.txt")
+        itemParserBackup = ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsBackupTest.txt")
     }
 
     @After
@@ -288,6 +290,46 @@ class ItemParserKtTest {
 
         assertEquals(true,
             itemParserCreate.deleteFile())
+    }
+
+    @Test
+    fun createBackup() {
+        assertEquals(false,
+            itemParserBackup.checkFileExists())
+        assertEquals(true,
+            itemParserBackup.createFile())
+
+        val items = testUtils.generateItems()
+        itemParserBackup.codeToTxt(items.first, items.second, items.third)
+
+        assertEquals(true,
+            itemParserBackup.createBackup())
+
+        // Check if the Backup is complete.
+        val backupParser =
+            ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsBackupTest_Backup.txt")
+        assertEquals(itemParserBackup.txtToCode().toString(),
+            backupParser.txtToCode().toString())
+
+        // Check if createBackup overwrites the file.
+        val someOptionalItem = OptionalItem("thing", 2, false)
+        itemParserBackup.codeToTxt(
+            mutableListOf(),
+            mutableListOf(someOptionalItem),
+            mutableListOf())
+        assertEquals(true,
+            itemParserBackup.createBackup())
+        assertEquals(mutableListOf(someOptionalItem).toString(),
+            backupParser.txtToCode().toString())
+
+        assertEquals(true,
+            itemParserBackup.deleteFile())
+        assertEquals(true,
+            backupParser.deleteFile())
+        assertEquals(false,
+            itemParserBackup.checkFileExists())
+        assertEquals(false,
+            backupParser.checkFileExists())
     }
 
 }
