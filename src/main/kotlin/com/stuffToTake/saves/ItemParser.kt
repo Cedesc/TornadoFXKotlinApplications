@@ -4,6 +4,8 @@ import com.stuffToTake.models.*
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class ItemParser(val filepath: String = "src/main/kotlin/com/stuffToTake/saves/items.txt") {
 
@@ -260,14 +262,18 @@ class ItemParser(val filepath: String = "src/main/kotlin/com/stuffToTake/saves/i
     /**
      * Creates a backup of the txt file with a similar name.
      */
-    fun createBackup(): Boolean {
+    fun createBackup(inSingleFile: Boolean = false): Boolean {
         if (filepath.endsWith(".txt")) {
             try {
+                val currentDate: String = SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(Date())
                 val file = File(filepath)
-                // Remove the ".txt" part and add "_Backup.txt"
-                val newFilePath: String = filepath.dropLast(4) + "_Backup.txt"
+                // Remove the ".txt" part and add "_Backup.txt" or "Backups/-DateAndTime-.txt"
+                val newFilePath: String = when {
+                    inSingleFile -> filepath.dropLast(4) + "_Backup.txt"
+                    else -> filepath.dropLast(4) + "Backups/" + currentDate + ".txt"
+                }
                 // Overwrite possibly already existing file.
-                file.copyTo(File(newFilePath), overwrite = true)
+                file.copyTo(File(newFilePath), overwrite = false)
                 return true
             } catch (e: IOException) {
                 throw Exception("An error occurred while copying the txt file.")

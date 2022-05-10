@@ -263,7 +263,7 @@ class ItemParserKtTest {
         itemParserBackup.codeToTxt(items.first, items.second, items.third)
 
         assertEquals(true,
-            itemParserBackup.createBackup())
+            itemParserBackup.createBackup(inSingleFile = true))
 
         // Check if the Backup is complete.
         val backupParser =
@@ -271,16 +271,15 @@ class ItemParserKtTest {
         assertEquals(itemParserBackup.txtToCode().toString(),
             backupParser.txtToCode().toString())
 
-        // Check if createBackup overwrites the file.
+        // Check if createBackup throws an error on trying to overwrite the file.
         val someOptionalItem = OptionalItem("thing", 2, false)
         itemParserBackup.codeToTxt(
             mutableListOf(),
             mutableListOf(someOptionalItem),
             mutableListOf())
-        assertEquals(true,
-            itemParserBackup.createBackup())
-        assertEquals(mutableListOf(someOptionalItem).toString(),
-            backupParser.txtToCode().toString())
+        assertThrows(Exception::class.java) {
+            itemParserBackup.createBackup(inSingleFile = true)
+        }
 
         assertEquals(true,
             itemParserBackup.deleteFile())
