@@ -81,7 +81,7 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
     }
 
     /**
-     * Saves the items in this instance in the txt file.
+     * Saves the items in this instance in the txt file. Additionally, it creates a backup.
      */
     fun saveItems(): Boolean {
 
@@ -90,6 +90,7 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
             return false
 
         itemParser.codeToTxt(essentialItems, optionalItems, oneTimeItems)
+        itemParser.createBackup(inSingleFile = false)
         return true
     }
 
