@@ -18,8 +18,8 @@ class TestView1 : View("My View") {  // TODO delete
 
         hbox {
             label("Items List Essential Items: ")
-            label(itemsController.itemsList.essentialItems.toString()) {
-                itemsController.itemsList.essentialItemsProperty.addListener { _, _, newValue ->
+            label(itemsController.itemsListToMainz.essentialItems.toString()) {
+                itemsController.itemsListToMainz.essentialItemsProperty.addListener { _, _, newValue ->
                     text = newValue.toString()
                 }
             }

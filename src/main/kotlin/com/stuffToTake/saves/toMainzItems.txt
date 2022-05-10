@@ -1,0 +1,25 @@
+ESSENTIAL ITEMS
+
+ITEM
+    NAME: Mainz
+    AMOUNT: 3
+    CATEGORIES: Sachen für Nintendo Switch
+    TAKE: O
+
+
+OPTIONAL ITEMS
+
+
+
+ONE TIME ITEMS
+
+ITEM
+    NAME: Both
+    AMOUNT: 
+    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch
+    TAKE: X
+ITEM
+    NAME: newBoth
+    AMOUNT: 2
+    CATEGORIES: Sachen für Nintendo Switch
+    TAKE: O

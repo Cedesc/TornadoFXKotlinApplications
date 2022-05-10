@@ -16,6 +16,8 @@ class AddItemView : View("Add Item") {
     private val itemAmount = model.bind { SimpleStringProperty() }
     private val itemType = model.bind { SimpleStringProperty() }
     private val itemToTake = model.bind { SimpleBooleanProperty() }
+    private val toMainz = model.bind { SimpleBooleanProperty() }
+    private val toWW = model.bind { SimpleBooleanProperty() }
     private val categoriesListView = ListView(Category.values().toList().toObservable())
 
     private val menuController: MenuController by inject()
@@ -36,7 +38,11 @@ class AddItemView : View("Add Item") {
             add(categoriesListView)
         }
         fieldset {
-            checkbox("To Take", itemToTake)
+            hbox {
+                checkbox("To Take", itemToTake)
+                checkbox("To Mainz", toMainz)
+                checkbox("To WW", toWW)
+            }
         }
 
         button("Create Item") {
@@ -45,7 +51,8 @@ class AddItemView : View("Add Item") {
             action {
                 itemsListController.addItem(
                     itemName.value, itemAmount.value, itemType.value,
-                    categoriesListView.selectionModel.selectedItems, itemToTake.value
+                    categoriesListView.selectionModel.selectedItems,
+                    itemToTake.value, toMainz.value, toWW.value
                 )
 
                 // clear fields and disable button = reset view
@@ -66,6 +73,8 @@ class AddItemView : View("Add Item") {
         itemType.value = null
         categoriesListView.selectionModel.clearSelection()
         itemToTake.value = true
+        toMainz.value = true
+        toWW.value = true
         model.clearDecorators()
     }
 
