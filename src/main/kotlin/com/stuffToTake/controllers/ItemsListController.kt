@@ -29,17 +29,13 @@ class ItemsListController : Controller() {
         }
 
         println(item)  // TODO delete
-
-        // TODO Add somewhere, but where ?!? Is this correct???
-        // addItemController.itemsListModel.item = ItemsList()
-        // addItemController.itemsListModel.item.addArbitraryItem(item)
-
+        
         itemsList.addArbitraryItem(item)
 
     }
 
-    fun testAdd() {  // TODO delete
-        // addItemController.itemsList.addEssentialItem(EssentialItem("Something", "nothing", false))
+    fun saveItems() {
+        itemsList.saveItems()
     }
 
 }
