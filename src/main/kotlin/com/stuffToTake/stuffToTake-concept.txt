@@ -1,0 +1,65 @@
+Should have:
+    1. everything that the notes-app has
+        - create items
+        - check items with a click
+        - one list for WW to Mainz and one list for Mainz to WW
+        - a view to see all items
+    2. different kinds of items
+        - every time fix (like iPad)
+        - every time optional (like ps4 games)
+        - only once (like B12)
+    3. note the items, that are checked, automatically for the return list (in own category?)
+    4. groups of items / categories
+    5. history
+    6. list of clothes that are in Mainz
+
+
+Plan:
+    1. UML Diagram
+    ...
+
+
+To Do List:
+    -3- create the first beta views (just functional, not pretty)
+            https://edvin.gitbooks.io/tornadofx-guide/content/part1/4_Basic_Controls.html
+            https://edvin.gitbooks.io/tornadofx-guide/content/part1/5_Data_Controls.html
+            https://youtu.be/-y0F-wkrryo?t=2320 bind label (and more)
+            https://github.com/edvin/tornadofx-samples/blob/master/itemviewmodel/withFXproperties/src/main/kotlin/no/tornadofx/fxsamples/withfxproperties/views/PersonList.kt tableview
+        - main view
+        - add item view
+            - change the class of itemType to a better than just a string ?
+            - radio buttons instead of a view list for categories
+        - full list of items view
+        - edit item view
+        - item list for choosing
+        - to take view
+    -3- check out what to implement in controllers
+    -3- make better views
+    -2- add a method to AbstractItem to add multiple categories at once?
+    -2- add a method to drop a category
+    -2- add a constructor to AbstractItem to add categories at the beginning?
+    -2- add a method to convert a item type to another
+    -2- fill Category.kt
+    -1- fill items.txt with ItemParser.kt
+    -1- add history
+    -1- add history view
+
+
+Classes:
+    AbstractItem
+        EssentialItem - item which is (nearly) every time taken
+        OptionalItem - item which is often taken
+        OneTimeItem - item which is (nearly) only one time taken
+    ShowedItem
+    Category
+
+
+Views:
+    View 0 - Main Menu
+    View 1 - Create New Item
+    View 2 - See the full list of items (in a table to sort by categories, names, etc?)
+    View 3 - See the full list of items, that I will take
+
+
+Further:
+    - lorem ipsum

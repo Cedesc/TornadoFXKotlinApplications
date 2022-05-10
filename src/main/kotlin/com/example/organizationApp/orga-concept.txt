@@ -1,0 +1,27 @@
+Should have:
+    1. Weekly To-Do-List (weekly tasks listed, checked or unchecked)
+    2. Daily To-Do-List (today)
+    3. Daily To-Do-List (tomorrow)
+    4. Weekly To-Do-List (per day tasks that have to be unchecked)
+    (5. Schedule)
+    6. click to mark task as finished
+
+
+Plan:
+    1.
+    2.
+    3.
+
+
+Classes:
+    AbstractTask - abstract class to a concrete task what to do
+        Lecture - when, where, prof
+        Tutorial - when, where, TA
+        Assignment - submission date
+        Work with other students - when
+    DailyToDoList - contains an array of tasks
+    WeeklyToDoList - contains one array of tasks per day of the week
+
+
+Further:
+    - on start, check the day to show automatically correct tasks
