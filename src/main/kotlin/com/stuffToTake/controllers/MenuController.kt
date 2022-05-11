@@ -1,9 +1,6 @@
 package com.stuffToTake.controllers
 
-import com.stuffToTake.view.AddItemView
-import com.stuffToTake.view.MenuView
-import com.stuffToTake.view.TestView1
-import com.stuffToTake.view.TestView2
+import com.stuffToTake.view.*
 import tornadofx.Controller
 import tornadofx.UIComponent
 import tornadofx.uiComponent
@@ -15,7 +12,7 @@ class MenuController : Controller() {
     }
 
     fun toFullListOfItemsView() {
-        println("Not yet implemented")
+        find(MenuView::class).replaceWith(FullListOfItemsView::class, sizeToScene = true, centerOnScreen = true)
     }
 
     fun toChooseItemsView() {
