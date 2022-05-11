@@ -20,7 +20,7 @@ Plan:
 
 
 To Do List:
-    -4- inform how I can show a interactive list with tornadofx
+    -4- inform how I can show an interactive list with tornadofx
     -4- create the first beta views (just functional, not pretty)
             https://edvin.gitbooks.io/tornadofx-guide/content/part1/4_Basic_Controls.html
             https://edvin.gitbooks.io/tornadofx-guide/content/part1/5_Data_Controls.html
@@ -36,6 +36,7 @@ To Do List:
         -3- to take view
     -CHECK- check out what to implement in controllers
     -3- make better views
+    -2.5- create GUI tests (oh pls no...)
     -2- add a method to AbstractItem to add multiple categories at once?
     -2- add a method to drop a category
     -CHECK- add a constructor to AbstractItem to add categories at the beginning?
