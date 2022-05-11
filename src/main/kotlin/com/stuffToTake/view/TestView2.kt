@@ -18,7 +18,6 @@ class TestView2 : View("My View") {  // TODO delete
 
         hbox {
             label("Item Test: ")
-//            label { bind(testController.testItem.itemName) }
             label { bind(testController.testItem.nameProperty) }
         }
 
