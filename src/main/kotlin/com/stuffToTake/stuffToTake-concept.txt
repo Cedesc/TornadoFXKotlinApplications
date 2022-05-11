@@ -32,6 +32,7 @@ To Do List:
             -1- radio buttons instead of a view list for categories
         -4- full list of items view
         -4- edit item view
+            -3- possible to delete items
         -3- item list for choosing
         -3- to take view
     -CHECK- check out what to implement in controllers
