@@ -22,7 +22,7 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
         SimpleListProperty(oneTimeItems.toObservable())
     val oneTimeItems: ObservableList<OneTimeItem> by oneTimeItemsProperty
 
-    val observableShowItems: ObservableList<ShowedItem> = listOf<ShowedItem>().toObservable()
+    val observableShowItems: ObservableList<ShowItem> = listOf<ShowItem>().toObservable()
 
     init {
         refreshShowItems()
@@ -64,7 +64,7 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
             is EssentialItem -> addEssentialItem(item)
             is OptionalItem -> addOptionalItem(item)
             is OneTimeItem -> addOneTimeItem(item)
-            is ShowedItem -> {
+            is ShowItem -> {
                 println("Warning! Tried to add a ShowedItem to the item list.")
                 false
             }
@@ -118,7 +118,7 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
     fun refreshShowItems() {  // TODO create tests
         observableShowItems.setAll(
             getListOfAllItems().map { item ->
-                ShowedItem(item)
+                ShowItem(item)
             }.toObservable()
         )
     }

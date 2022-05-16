@@ -2,7 +2,7 @@ package com.stuffToTake.view
 
 import com.stuffToTake.controllers.ItemsListController
 import com.stuffToTake.controllers.MenuController
-import com.stuffToTake.models.ShowedItem
+import com.stuffToTake.models.ShowItem
 import javafx.scene.control.SelectionMode
 import javafx.scene.paint.Color
 import tornadofx.*
@@ -20,9 +20,9 @@ class FullListOfItemsView : View("Full List of Items to Mainz") {
     override val root = vbox {
         tableview(itemsListController.itemsListToMainz.observableShowItems) {
             id = "itemsList"
-            column("Name", ShowedItem::nameProperty)
-            column("Amount", ShowedItem::amountProperty)
-            column("ToTake", ShowedItem::toTakeProperty).cellFormat {
+            column("Name", ShowItem::nameProperty)
+            column("Amount", ShowItem::amountProperty)
+            column("ToTake", ShowItem::toTakeProperty).cellFormat {
                 text = "■"
                 style {
                     textFill = if (it)
@@ -31,7 +31,7 @@ class FullListOfItemsView : View("Full List of Items to Mainz") {
                         Color.RED
                 }
             }
-            column("Categories", ShowedItem::categoriesProperty).cellFormat {
+            column("Categories", ShowItem::categoriesProperty).cellFormat {
                 text = ""
                 it.forEach { category ->
                     text += "${category}\n"

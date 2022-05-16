@@ -30,7 +30,7 @@ class AbstractItemTest {
         val item2 = OptionalItem("Item 2", 2, true, setOf(Category.ON_PC, Category.CLOTHING))
         val item3 = OneTimeItem("Item 3", "two", false,
             setOf(Category.CLOTHING, Category.CLOTHING))
-        val item4 = ShowedItem(item2)
+        val item4 = ShowItem(item2)
 
         assertEquals("Essential Item: Item 1\n" +
                 "    Amount: 55\n" +

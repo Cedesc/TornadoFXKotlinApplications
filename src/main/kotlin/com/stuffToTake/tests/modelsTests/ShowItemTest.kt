@@ -3,22 +3,22 @@ package com.stuffToTake.tests.modelsTests
 import com.stuffToTake.models.EssentialItem
 import com.stuffToTake.models.OneTimeItem
 import com.stuffToTake.models.OptionalItem
-import com.stuffToTake.models.ShowedItem
+import com.stuffToTake.models.ShowItem
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
 import org.junit.Assert.*
 
-class ShowedItemTest {
+class ShowItemTest {
 
     lateinit var essentialItem: EssentialItem
     lateinit var optionalItem: OptionalItem
     lateinit var oneTimeItem: OneTimeItem
 
-    lateinit var essentialShowItem: ShowedItem
-    lateinit var optionalShowItem: ShowedItem
-    lateinit var oneTimeShowItem: ShowedItem
+    lateinit var essentialShowItem: ShowItem
+    lateinit var optionalShowItem: ShowItem
+    lateinit var oneTimeShowItem: ShowItem
 
     @Before
     fun setUp() {
@@ -26,9 +26,9 @@ class ShowedItemTest {
         optionalItem = OptionalItem("sunglasses", "", false)
         oneTimeItem = OneTimeItem("B12", "two packs", true)
 
-        essentialShowItem = ShowedItem(essentialItem)
-        optionalShowItem = ShowedItem(optionalItem)
-        oneTimeShowItem = ShowedItem(oneTimeItem)
+        essentialShowItem = ShowItem(essentialItem)
+        optionalShowItem = ShowItem(optionalItem)
+        oneTimeShowItem = ShowItem(oneTimeItem)
     }
 
     @After
@@ -39,7 +39,7 @@ class ShowedItemTest {
     fun init() {
         // an Exception should be thrown if a ShowedItem of a ShowedItem should be build
         assertThrows(Exception::class.java) {
-            ShowedItem(essentialShowItem)
+            ShowItem(essentialShowItem)
         }
     }
 
@@ -87,17 +87,17 @@ class ShowedItemTest {
     fun getOriginalItem() {
 
         assertEquals(essentialItem, essentialShowItem.originalItem)
-        val secondEssentialItem = ShowedItem(essentialItem)
+        val secondEssentialItem = ShowItem(essentialItem)
         assertNotEquals(essentialShowItem, secondEssentialItem)
         assertEquals(essentialShowItem.originalItem, secondEssentialItem.originalItem)
 
         assertEquals(optionalItem, optionalShowItem.originalItem)
-        val secondOptionalShowItem = ShowedItem(optionalItem)
+        val secondOptionalShowItem = ShowItem(optionalItem)
         assertNotEquals(optionalShowItem, secondOptionalShowItem)
         assertEquals(optionalShowItem.originalItem, secondOptionalShowItem.originalItem)
 
         assertEquals(oneTimeItem, oneTimeShowItem.originalItem)
-        val secondOneTimeShowItem = ShowedItem(oneTimeItem)
+        val secondOneTimeShowItem = ShowItem(oneTimeItem)
         assertNotEquals(oneTimeShowItem, secondOneTimeShowItem)
         assertEquals(oneTimeShowItem.originalItem, secondOneTimeShowItem.originalItem)
 
