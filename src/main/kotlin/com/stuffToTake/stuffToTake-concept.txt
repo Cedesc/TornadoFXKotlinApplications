@@ -27,6 +27,7 @@ To Do List:
             https://youtu.be/-y0F-wkrryo?t=2320 bind label (and more)
             https://github.com/edvin/tornadofx-samples/blob/master/itemviewmodel/withFXproperties/src/main/kotlin/no/tornadofx/fxsamples/withfxproperties/views/PersonList.kt tableview
             https://docs.tornadofx.io/0_subsection/5_data_controls#tableview
+            https://github.com/edvin/tornadofx/wiki/Documentation to JSON???
         -CHECK- main view
         -CHECK- add item view
             -1- change the class of itemType to a better than just a string ?
@@ -38,6 +39,7 @@ To Do List:
         -3- to take view
     -CHECK- check out what to implement in controllers
     -3- make better views
+        -1- Font in the middle (per example in the tableview)
     -2.5- create GUI tests (oh pls no...)
     -2- add a method to AbstractItem to add multiple categories at once?
     -2- add a method to drop a category
@@ -47,6 +49,7 @@ To Do List:
     -OBSOLETE- fill items.txt with ItemParser.kt
     -1- add history
     -1- add history view
+    -1- when an item is added to ItemsList it generates the whole observableShowItems list -> performance problems?
 
 
 Classes:

@@ -18,7 +18,7 @@ class FullListOfItemsView : View("Full List of Items to Mainz") {
 
 
     override val root = vbox {
-        tableview(itemsListController.showItemsToMainz) {
+        tableview(itemsListController.itemsListToMainz.observableShowItems) {
             id = "itemsList"
             column("Name", ShowedItem::nameProperty)
             column("Amount", ShowedItem::amountProperty)

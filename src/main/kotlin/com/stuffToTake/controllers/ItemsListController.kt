@@ -2,9 +2,7 @@ package com.stuffToTake.controllers
 
 import com.stuffToTake.models.*
 import com.stuffToTake.saves.ItemParser
-import javafx.collections.ObservableList
 import tornadofx.Controller
-import tornadofx.toObservable
 
 class ItemsListController : Controller() {
 
@@ -14,9 +12,6 @@ class ItemsListController : Controller() {
     val itemsListToWW =
         ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toWWItems.txt"))
 
-    var showItemsToMainz: ObservableList<ShowedItem>
-    var showItemsToWW: ObservableList<ShowedItem>
-
 
     init {
         // Fill the items list with the saved items.
@@ -24,14 +19,8 @@ class ItemsListController : Controller() {
             throw Exception("The item list isn't empty or the filepath of the item parser is empty.")
         if (! itemsListToWW.loadSavedItems())
             throw Exception("The item list isn't empty or the filepath of the item parser is empty.")
-
-        showItemsToMainz = itemsListToMainz.getListOfAllItems().map { item ->
-            ShowedItem(item)
-        }.toObservable()
-        showItemsToWW = itemsListToWW.getListOfAllItems().map { item ->
-            ShowedItem(item)
-        }.toObservable()
     }
+
 
     fun addItem(name: String, amount: String, type: String, categories: List<Category>,
                 toTake: Boolean, toMainz: Boolean, toWW: Boolean) {
@@ -54,9 +43,6 @@ class ItemsListController : Controller() {
             itemsListToMainz.addArbitraryItem(item)
         if (toWW)
             itemsListToWW.addArbitraryItem(item)
-
-        showItemsToMainz.add(ShowedItem(item))  // TODO make this prettier
-                                                // 1. automatically add to showItemsToMainz (with add function here?)
 
     }
 
