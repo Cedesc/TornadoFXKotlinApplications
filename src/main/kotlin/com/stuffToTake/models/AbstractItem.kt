@@ -29,8 +29,6 @@ abstract class AbstractItem(itemName: String,
         SimpleSetProperty(mutableSetOf<Category>().toObservable())
     val categories: ObservableSet<Category> by categoriesProperty
 
-    var categoriesString: String = ""  // TODO delete
-        get() = categories.toString()
 
     init {
         itemCategories.forEach { category ->

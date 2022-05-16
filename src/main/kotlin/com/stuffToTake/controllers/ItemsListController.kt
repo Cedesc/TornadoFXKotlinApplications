@@ -15,7 +15,7 @@ class ItemsListController : Controller() {
         ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toWWItems.txt"))
 
     var showItemsToMainz: ObservableList<ShowedItem>
-    // TODO create showItemsToWW
+    var showItemsToWW: ObservableList<ShowedItem>
 
 
     init {
@@ -25,7 +25,10 @@ class ItemsListController : Controller() {
         if (! itemsListToWW.loadSavedItems())
             throw Exception("The item list isn't empty or the filepath of the item parser is empty.")
 
-        showItemsToMainz = itemsListToMainz.getListOfAllItems().map { item ->  // TODO uncomment it
+        showItemsToMainz = itemsListToMainz.getListOfAllItems().map { item ->
+            ShowedItem(item)
+        }.toObservable()
+        showItemsToWW = itemsListToWW.getListOfAllItems().map { item ->
             ShowedItem(item)
         }.toObservable()
     }
@@ -54,7 +57,6 @@ class ItemsListController : Controller() {
 
         showItemsToMainz.add(ShowedItem(item))  // TODO make this prettier
                                                 // 1. automatically add to showItemsToMainz (with add function here?)
-                                                // 2. make
 
     }
 
