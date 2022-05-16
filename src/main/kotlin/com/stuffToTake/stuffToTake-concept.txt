@@ -26,6 +26,7 @@ To Do List:
             https://edvin.gitbooks.io/tornadofx-guide/content/part1/5_Data_Controls.html
             https://youtu.be/-y0F-wkrryo?t=2320 bind label (and more)
             https://github.com/edvin/tornadofx-samples/blob/master/itemviewmodel/withFXproperties/src/main/kotlin/no/tornadofx/fxsamples/withfxproperties/views/PersonList.kt tableview
+            https://docs.tornadofx.io/0_subsection/5_data_controls#tableview
         -CHECK- main view
         -CHECK- add item view
             -1- change the class of itemType to a better than just a string ?

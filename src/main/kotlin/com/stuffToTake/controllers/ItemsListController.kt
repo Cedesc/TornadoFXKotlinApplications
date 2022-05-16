@@ -4,7 +4,6 @@ import com.stuffToTake.models.*
 import com.stuffToTake.saves.ItemParser
 import javafx.collections.ObservableList
 import tornadofx.Controller
-import tornadofx.asObservable
 import tornadofx.toObservable
 
 class ItemsListController : Controller() {
@@ -16,10 +15,8 @@ class ItemsListController : Controller() {
         ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toWWItems.txt"))
 
     var showItemsToMainz: ObservableList<ShowedItem>
-            // = listOf<ShowedItem>().toObservable()  TODO delete
+    // TODO create showItemsToWW
 
-
-//    val selectedItem = ShowedItemModel()
 
     init {
         // Fill the items list with the saved items.
@@ -55,12 +52,10 @@ class ItemsListController : Controller() {
         if (toWW)
             itemsListToWW.addArbitraryItem(item)
 
-        showItemsToMainz.add(ShowedItem(item))
+        showItemsToMainz.add(ShowedItem(item))  // TODO make this prettier
+                                                // 1. automatically add to showItemsToMainz (with add function here?)
+                                                // 2. make
 
-    }
-
-    fun addIt() {  // TODO delete
-        showItemsToMainz.add(ShowedItem(OneTimeItem("name", 5, false)))
     }
 
     fun saveItems() {
