@@ -2,14 +2,24 @@ package com.stuffToTake.controllers
 
 import com.stuffToTake.models.*
 import com.stuffToTake.saves.ItemParser
+import javafx.collections.ObservableList
 import tornadofx.Controller
+import tornadofx.asObservable
+import tornadofx.toObservable
 
 class ItemsListController : Controller() {
 
     val itemsListToMainz =
         ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toMainzItems.txt"))
+
     val itemsListToWW =
         ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toWWItems.txt"))
+
+    var showItemsToMainz: ObservableList<ShowedItem>
+            // = listOf<ShowedItem>().toObservable()  TODO delete
+
+
+//    val selectedItem = ShowedItemModel()
 
     init {
         // Fill the items list with the saved items.
@@ -17,6 +27,10 @@ class ItemsListController : Controller() {
             throw Exception("The item list isn't empty or the filepath of the item parser is empty.")
         if (! itemsListToWW.loadSavedItems())
             throw Exception("The item list isn't empty or the filepath of the item parser is empty.")
+
+        showItemsToMainz = itemsListToMainz.getListOfAllItems().map { item ->  // TODO uncomment it
+            ShowedItem(item)
+        }.toObservable()
     }
 
     fun addItem(name: String, amount: String, type: String, categories: List<Category>,
@@ -41,6 +55,12 @@ class ItemsListController : Controller() {
         if (toWW)
             itemsListToWW.addArbitraryItem(item)
 
+        showItemsToMainz.add(ShowedItem(item))
+
+    }
+
+    fun addIt() {  // TODO delete
+        showItemsToMainz.add(ShowedItem(OneTimeItem("name", 5, false)))
     }
 
     fun saveItems() {

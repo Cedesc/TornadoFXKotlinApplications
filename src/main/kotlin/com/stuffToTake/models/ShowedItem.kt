@@ -1,5 +1,7 @@
 package com.stuffToTake.models
 
+import tornadofx.ItemViewModel
+
 class ShowedItem(val originalItem: AbstractItem)
     : AbstractItem(originalItem.name, originalItem.amount, originalItem.toTake, originalItem.categories) {
 
@@ -21,3 +23,11 @@ class ShowedItem(val originalItem: AbstractItem)
     }
 
 }
+
+//class ShowedItemModel : ItemViewModel<AbstractItem>() {
+//    val name = bind(AbstractItem::nameProperty)
+//    val amount = bind(AbstractItem::amountProperty)
+//    val toTake = bind(AbstractItem::toTakeProperty)
+//    val categories = bind(AbstractItem::categoriesProperty)
+//}
+
