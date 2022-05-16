@@ -49,12 +49,11 @@ class AddItemView : View("Add Item") {
             enableWhen(model.valid)
             isDefaultButton = true
             action {
-                itemsListController.addItem(  // TODO uncomment it
+                itemsListController.addItem(
                     itemName.value, itemAmount.value, itemType.value,
                     categoriesListView.selectionModel.selectedItems,
                     itemToTake.value, toMainz.value, toWW.value
                 )
-//                itemsListController.addIt()  // TODO delete
 
                 // clear fields and disable button = reset view
                 menuController.refresh()
