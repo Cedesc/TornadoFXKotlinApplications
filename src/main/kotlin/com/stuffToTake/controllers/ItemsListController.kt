@@ -2,7 +2,9 @@ package com.stuffToTake.controllers
 
 import com.stuffToTake.models.*
 import com.stuffToTake.saves.ItemParser
+import javafx.collections.ObservableList
 import tornadofx.Controller
+import tornadofx.observableListOf
 
 class ItemsListController : Controller() {
 
@@ -20,6 +22,8 @@ class ItemsListController : Controller() {
         if (! itemsListToWW.loadSavedItems())
             throw Exception("The item list isn't empty or the filepath of the item parser is empty.")
     }
+
+    val selectedItemList: ObservableList<ShowItem> = observableListOf()
 
 
     fun addItem(name: String, amount: String, type: String, categories: List<Category>,
@@ -49,6 +53,14 @@ class ItemsListController : Controller() {
     fun saveItems() {
         itemsListToMainz.saveItems()
         itemsListToWW.saveItems()
+    }
+
+    fun changeSelectedListToMainz() {
+        selectedItemList.setAll(itemsListToMainz.observableShowItems)
+    }
+
+    fun changeSelectedListToWW() {
+        selectedItemList.setAll(itemsListToWW.observableShowItems)
     }
 
 }
