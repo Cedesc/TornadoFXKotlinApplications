@@ -46,7 +46,10 @@ class AddItemView : View("Add Item") {
         }
 
         button("Create Item") {
-            enableWhen(model.valid)
+            // Only enabled if the model is valid (means that all .required() fields are filled)
+            // and toMainz or toWW is checked.
+            enableWhen(model.valid.and(toMainz.or(toWW)))
+
             isDefaultButton = true
             action {
                 itemsListController.addItem(
