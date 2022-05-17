@@ -41,8 +41,8 @@ class ListOfItemsView : View("List of Items") {
             selectionModel.selectionMode = SelectionMode.SINGLE
 
 
-            onUserSelect(clickCount = 2) { item ->  // TODO use this or delete this
-                println("$item\n")
+            onUserSelect(clickCount = 2) { item ->
+                itemsListController.toEditItemView(item)
             }
 
             smartResize()

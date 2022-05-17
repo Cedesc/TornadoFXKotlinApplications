@@ -2,6 +2,7 @@ package com.stuffToTake.controllers
 
 import com.stuffToTake.models.*
 import com.stuffToTake.saves.ItemParser
+import com.stuffToTake.view.EditItemView
 import javafx.collections.ObservableList
 import tornadofx.Controller
 import tornadofx.observableListOf
@@ -55,12 +56,13 @@ class ItemsListController : Controller() {
         itemsListToWW.saveItems()
     }
 
-    fun changeSelectedListToMainz() {
-        selectedItemList.setAll(itemsListToMainz.observableShowItems)
-    }
+    fun changeSelectedListToMainz() = selectedItemList.setAll(itemsListToMainz.observableShowItems)
 
-    fun changeSelectedListToWW() {
-        selectedItemList.setAll(itemsListToWW.observableShowItems)
+    fun changeSelectedListToWW() = selectedItemList.setAll(itemsListToWW.observableShowItems)
+
+    fun toEditItemView(showItem: ShowItem) {
+        find<EditItemView>(mapOf(EditItemView::item to showItem.originalItem)).openWindow()
+        // TODO deactivate current window ?
     }
 
 }
