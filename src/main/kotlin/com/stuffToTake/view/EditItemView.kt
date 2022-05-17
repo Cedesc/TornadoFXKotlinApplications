@@ -1,5 +1,6 @@
 package com.stuffToTake.view
 
+import com.stuffToTake.controllers.ItemsListController
 import com.stuffToTake.models.*
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.beans.property.SimpleStringProperty
@@ -7,7 +8,9 @@ import javafx.scene.control.ListView
 import javafx.scene.control.SelectionMode
 import tornadofx.*
 
-class EditItemView : View("My View") {
+class EditItemView : View("PLACEHOLDER") {
+
+    val itemsListController: ItemsListController by inject()
 
     val item: AbstractItem by param()
 
@@ -16,13 +19,8 @@ class EditItemView : View("My View") {
     private val itemAmount = model.bind { SimpleStringProperty() }
     private val itemType = model.bind { SimpleStringProperty() }
     private val itemToTake = model.bind { SimpleBooleanProperty() }
-    private val toMainz = model.bind { SimpleBooleanProperty() }  // TODO add equal to AbstractItem and check if this item is in there?
-    private val toWW = model.bind { SimpleBooleanProperty() }  // TODO add equal to AbstractItem and check if this item is in there?
     private val categoriesListView = ListView(Category.values().toList().toObservable())
 
-//    init {
-//        refresh()
-//    }
 
     override val root = vbox {
         fieldset("Name") {
@@ -40,8 +38,6 @@ class EditItemView : View("My View") {
         fieldset {
             hbox {
                 checkbox("To Take", itemToTake)
-                checkbox("To Mainz", toMainz)
-                checkbox("To WW", toWW)
             }
         }
 
@@ -51,9 +47,15 @@ class EditItemView : View("My View") {
             }
         }
 
-        button("Save") {
+        button("Save Changes") {
             action {
                 TODO("Not yet implemented")  // TODO delete old and add new?
+            }
+        }
+
+        button("Delete") {
+            action {
+                TODO("Not yet implemented")  // TODO additional window to check if user is sure
             }
         }
 
@@ -65,7 +67,7 @@ class EditItemView : View("My View") {
         itemAmount.value = item.amount
         itemToTake.value = item.toTake
 
-        // Select the given item type
+        // Select the given item type.
         itemType.value = when(item) {
             is EssentialItem -> "Essential Item"
             is OptionalItem -> "Optional Item"
@@ -73,11 +75,13 @@ class EditItemView : View("My View") {
             else -> throw Exception("No valid type.")
         }
 
-        // Select categories which the item has already
+        // Select categories which the item has already.
         categoriesListView.selectionModel.selectionMode = SelectionMode.MULTIPLE
         item.categories.forEach { category ->
             categoriesListView.selectionModel.select(category)
         }
+
+        title = "Edit \"${item.name}\""
     }
 
 }

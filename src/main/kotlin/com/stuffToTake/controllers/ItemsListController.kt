@@ -10,10 +10,12 @@ import tornadofx.observableListOf
 class ItemsListController : Controller() {
 
     val itemsListToMainz =
-        ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toMainzItems.txt"))
+        ItemsList("To Mainz",
+            itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toMainzItems.txt"))
 
     val itemsListToWW =
-        ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toWWItems.txt"))
+        ItemsList("To WW",
+            itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toWWItems.txt"))
 
 
     init {

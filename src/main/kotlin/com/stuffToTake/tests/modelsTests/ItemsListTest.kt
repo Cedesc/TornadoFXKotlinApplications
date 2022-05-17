@@ -30,7 +30,7 @@ class ItemsListTest {
         optionalItem2 = OptionalItem("tea can", "one", true)
         oneTimeItem1 = OneTimeItem("B12", "two packs", true)
         oneTimeItem2 = OneTimeItem("Iron", "2", true)
-        itemsList = ItemsList()
+        itemsList = ItemsList("Item List")
     }
 
     @After
