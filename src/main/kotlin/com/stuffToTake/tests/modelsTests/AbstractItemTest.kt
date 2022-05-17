@@ -178,4 +178,52 @@ class AbstractItemTest {
         assert(oneTimeItem.categories.isEmpty())
     }
 
+    @Test
+    fun testEquals() {
+        // Compare same items.
+        assertEquals(essentialItem, essentialItem)
+        assertEquals(optionalItem, optionalItem)
+        assertEquals(oneTimeItem, oneTimeItem)
+
+        // Generates new identical items.
+        val essentialItem2 = EssentialItem("suitcase", 1, true)
+        val optionalItem2 = OptionalItem("sunglasses", "", false)
+        val onetimeItem2 = OneTimeItem("B12", "two packs", true)
+
+        // Compare identical items.
+        assertEquals(essentialItem, essentialItem2)
+        assertEquals(optionalItem, optionalItem2)
+        assertEquals(oneTimeItem, onetimeItem2)
+
+        // Compare Show Item to his original item.
+        assertNotEquals(essentialItem, ShowItem(essentialItem))
+        assertNotEquals(optionalItem, ShowItem(optionalItem))
+        assertNotEquals(oneTimeItem, ShowItem(oneTimeItem))
+
+        // Original Item of a Show Item.
+        assertEquals(essentialItem, ShowItem(essentialItem).originalItem)
+        assertEquals(optionalItem, ShowItem(optionalItem).originalItem)
+        assertEquals(oneTimeItem, ShowItem(oneTimeItem).originalItem)
+
+        // Should return false if the other one is not an item (but compared to String version, it should be true).
+        val essItemExpected = "Essential Item: suitcase\n" +
+                "    Amount: 1\n" +
+                "    Categories: []\n" +
+                "    To Take: true"
+        val optItemExpected = "Optional Item: sunglasses\n" +
+                "    Amount: -\n" +
+                "    Categories: []\n" +
+                "    To Take: false"
+        val oneItemExpected = "One Time Item: B12\n" +
+                "    Amount: two packs\n" +
+                "    Categories: []\n" +
+                "    To Take: true"
+        assertNotEquals(essItemExpected, essentialItem)
+        assertNotEquals(optItemExpected, optionalItem)
+        assertNotEquals(oneItemExpected, oneTimeItem)
+        assertEquals(essItemExpected, essentialItem.toString())
+        assertEquals(optItemExpected, optionalItem.toString())
+        assertEquals(oneItemExpected, oneTimeItem.toString())
+    }
+
 }
