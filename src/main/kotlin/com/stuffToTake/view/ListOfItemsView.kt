@@ -18,7 +18,7 @@ class ListOfItemsView : View("List of Items") {
 
 
     override val root = vbox {
-        tableview(itemsListController.selectedItemList) {
+        tableview(itemsListController.selectedObservableList) {
             id = "itemsList"
             column("Name", ShowItem::nameProperty)
             column("Amount", ShowItem::amountProperty)
@@ -54,5 +54,9 @@ class ListOfItemsView : View("List of Items") {
             }
         }
 
+    }
+
+    override fun onDock() {
+        title = "All Items of the \"${itemsListController.selectedItemList.name}\"-List"
     }
 }

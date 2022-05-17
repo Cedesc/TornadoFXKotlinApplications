@@ -26,7 +26,8 @@ class ItemsListController : Controller() {
             throw Exception("The item list isn't empty or the filepath of the item parser is empty.")
     }
 
-    val selectedItemList: ObservableList<ShowItem> = observableListOf()
+    var selectedItemList: ItemsList = ItemsList("PLACEHOLDER")
+    val selectedObservableList: ObservableList<ShowItem> = observableListOf()
 
 
     fun addItem(name: String, amount: String, type: String, categories: List<Category>,
@@ -58,9 +59,15 @@ class ItemsListController : Controller() {
         itemsListToWW.saveItems()
     }
 
-    fun changeSelectedListToMainz() = selectedItemList.setAll(itemsListToMainz.observableShowItems)
+    fun changeSelectedListToMainz() {
+        selectedItemList = itemsListToMainz
+        selectedObservableList.setAll(selectedItemList.observableShowItems)
+    }
 
-    fun changeSelectedListToWW() = selectedItemList.setAll(itemsListToWW.observableShowItems)
+    fun changeSelectedListToWW() {
+        selectedItemList = itemsListToWW
+        selectedObservableList.setAll(selectedItemList.observableShowItems)
+    }
 
     fun toEditItemView(showItem: ShowItem) {
         find<EditItemView>(mapOf(EditItemView::item to showItem.originalItem)).openWindow()

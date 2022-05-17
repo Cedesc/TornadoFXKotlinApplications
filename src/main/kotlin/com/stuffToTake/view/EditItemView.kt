@@ -81,7 +81,7 @@ class EditItemView : View("PLACEHOLDER") {
             categoriesListView.selectionModel.select(category)
         }
 
-        title = "Edit \"${item.name}\""
+        title = "Edit \"${item.name}\" of the \"${itemsListController.selectedItemList.name}\"-List"
     }
 
 }
