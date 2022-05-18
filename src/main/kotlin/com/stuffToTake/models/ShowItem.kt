@@ -1,10 +1,10 @@
 package com.stuffToTake.models
 
-class ShowedItem(val originalItem: AbstractItem)
+class ShowItem(val originalItem: AbstractItem)
     : AbstractItem(originalItem.name, originalItem.amount, originalItem.toTake, originalItem.categories) {
 
     init {
-        if (originalItem is ShowedItem)
+        if (originalItem is ShowItem)
             throw Exception("Cannot build a ShowedItem of a ShowedItem")
     }
 

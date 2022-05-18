@@ -22,21 +22,39 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
         SimpleListProperty(oneTimeItems.toObservable())
     val oneTimeItems: ObservableList<OneTimeItem> by oneTimeItemsProperty
 
+    val observableShowItems: ObservableList<ShowItem> = listOf<ShowItem>().toObservable()
+
+    init {
+        refreshShowItems()
+    }
+
 
     /**
-     * Returns always true because "add" returns true too.
+     * Returns always true (like the "add"-function).
      */
-    fun addEssentialItem(item: EssentialItem): Boolean = essentialItems.add(item)
+    fun addEssentialItem(item: EssentialItem): Boolean {
+        essentialItems.add(item)
+        refreshShowItems()
+        return true
+    }
 
     /**
-     * Returns always true because "add" returns true too.
+     * Returns always true (like the "add"-function).
      */
-    fun addOptionalItem(item: OptionalItem): Boolean = optionalItems.add(item)
+    fun addOptionalItem(item: OptionalItem): Boolean {
+        optionalItems.add(item)
+        refreshShowItems()
+        return true
+    }
 
     /**
-     * Returns always true because "add" returns true too.
+     * Returns always true (like the "add"-function).
      */
-    fun addOneTimeItem(item: OneTimeItem): Boolean = oneTimeItems.add(item)
+    fun addOneTimeItem(item: OneTimeItem): Boolean {
+        oneTimeItems.add(item)
+        refreshShowItems()
+        return true
+    }
 
     /**
      * Checks which item type is given and call the respective function.
@@ -46,7 +64,7 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
             is EssentialItem -> addEssentialItem(item)
             is OptionalItem -> addOptionalItem(item)
             is OneTimeItem -> addOneTimeItem(item)
-            is ShowedItem -> {
+            is ShowItem -> {
                 println("Warning! Tried to add a ShowedItem to the item list.")
                 false
             }
@@ -92,6 +110,17 @@ class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
         itemParser.codeToTxt(essentialItems, optionalItems, oneTimeItems)
         itemParser.createBackup(inSingleFile = false)
         return true
+    }
+
+    /**
+     * Updates complete list of the ShowItems.
+     */
+    fun refreshShowItems() {  // TODO create tests
+        observableShowItems.setAll(
+            getListOfAllItems().map { item ->
+                ShowItem(item)
+            }.toObservable()
+        )
     }
 
 }

@@ -1,11 +1,13 @@
 package com.stuffToTake.view
 
+import com.stuffToTake.controllers.ItemsListController
 import com.stuffToTake.controllers.MenuController
 import tornadofx.*
 
 class MenuView : View("Menu") {
 
     private val menuController: MenuController by inject()
+    private val itemsController: ItemsListController by inject()
 
     override val root = vbox {
         button("Add Item") {
@@ -13,9 +15,16 @@ class MenuView : View("Menu") {
                 menuController.toAddItemView()
             }
         }
-        button("Full List of Items") {
+        button("Full List of \"To Mainz\"-Items") {
             action {
-                menuController.toFullListOfItemsView()
+                itemsController.changeSelectedListToMainz()
+                menuController.toListOfItemsView()
+            }
+        }
+        button("Full List of \"To WW\"-Items") {
+            action {
+                itemsController.changeSelectedListToWW()
+                menuController.toListOfItemsView()
             }
         }
         button("Choose Items") {

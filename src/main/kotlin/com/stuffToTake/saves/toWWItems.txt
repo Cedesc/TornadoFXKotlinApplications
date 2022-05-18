@@ -1,0 +1,20 @@
+ESSENTIAL ITEMS
+
+ITEM
+    NAME: newWesterwald
+    AMOUNT: 
+    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch ; Kleidung
+    TAKE: O
+
+
+OPTIONAL ITEMS
+
+
+
+ONE TIME ITEMS
+
+ITEM
+    NAME: newBoth
+    AMOUNT: 2
+    CATEGORIES: Sachen für Nintendo Switch
+    TAKE: O

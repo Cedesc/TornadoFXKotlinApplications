@@ -29,6 +29,7 @@ abstract class AbstractItem(itemName: String,
         SimpleSetProperty(mutableSetOf<Category>().toObservable())
     val categories: ObservableSet<Category> by categoriesProperty
 
+
     init {
         itemCategories.forEach { category ->
             if (! this.addCategory(category))
