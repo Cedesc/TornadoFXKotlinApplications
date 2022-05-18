@@ -87,4 +87,22 @@ abstract class AbstractItem(itemName: String,
             "    To Take: $toTake"
     }
 
+    /**
+     * Overrides the equals method and checks if the toStrings of both are equal.
+     */
+    override fun equals(other: Any?): Boolean {
+        if (other is AbstractItem) {
+            return toString() == other.toString()
+        }
+        return super.equals(other)
+    }
+
+    override fun hashCode(): Int {
+        var result = nameProperty.hashCode()
+        result = 31 * result + amountProperty.hashCode()
+        result = 31 * result + toTakeProperty.hashCode()
+        result = 31 * result + categoriesProperty.hashCode()
+        return result
+    }
+
 }

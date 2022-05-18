@@ -2,6 +2,7 @@ package com.stuffToTake.controllers
 
 import com.stuffToTake.models.*
 import com.stuffToTake.saves.ItemParser
+import com.stuffToTake.view.EditItemView
 import javafx.collections.ObservableList
 import tornadofx.Controller
 import tornadofx.observableListOf
@@ -9,10 +10,12 @@ import tornadofx.observableListOf
 class ItemsListController : Controller() {
 
     val itemsListToMainz =
-        ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toMainzItems.txt"))
+        ItemsList("To Mainz",
+            itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toMainzItems.txt"))
 
     val itemsListToWW =
-        ItemsList(itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toWWItems.txt"))
+        ItemsList("To WW",
+            itemParser = ItemParser("src/main/kotlin/com/stuffToTake/saves/toWWItems.txt"))
 
 
     init {
@@ -23,7 +26,8 @@ class ItemsListController : Controller() {
             throw Exception("The item list isn't empty or the filepath of the item parser is empty.")
     }
 
-    val selectedItemList: ObservableList<ShowItem> = observableListOf()
+    var selectedItemList: ItemsList = ItemsList("PLACEHOLDER")
+    val selectedObservableList: ObservableList<ShowItem> = observableListOf()
 
 
     fun addItem(name: String, amount: String, type: String, categories: List<Category>,
@@ -56,11 +60,18 @@ class ItemsListController : Controller() {
     }
 
     fun changeSelectedListToMainz() {
-        selectedItemList.setAll(itemsListToMainz.observableShowItems)
+        selectedItemList = itemsListToMainz
+        selectedObservableList.setAll(selectedItemList.observableShowItems)
     }
 
     fun changeSelectedListToWW() {
-        selectedItemList.setAll(itemsListToWW.observableShowItems)
+        selectedItemList = itemsListToWW
+        selectedObservableList.setAll(selectedItemList.observableShowItems)
+    }
+
+    fun toEditItemView(showItem: ShowItem) {
+        find<EditItemView>(mapOf(EditItemView::item to showItem.originalItem)).openWindow()
+        // TODO deactivate current window ?
     }
 
 }

@@ -88,17 +88,17 @@ class ShowItemTest {
 
         assertEquals(essentialItem, essentialShowItem.originalItem)
         val secondEssentialItem = ShowItem(essentialItem)
-        assertNotEquals(essentialShowItem, secondEssentialItem)
+        assertNotEquals(essentialItem, secondEssentialItem)
         assertEquals(essentialShowItem.originalItem, secondEssentialItem.originalItem)
 
         assertEquals(optionalItem, optionalShowItem.originalItem)
         val secondOptionalShowItem = ShowItem(optionalItem)
-        assertNotEquals(optionalShowItem, secondOptionalShowItem)
+        assertNotEquals(optionalItem, secondOptionalShowItem)
         assertEquals(optionalShowItem.originalItem, secondOptionalShowItem.originalItem)
 
         assertEquals(oneTimeItem, oneTimeShowItem.originalItem)
         val secondOneTimeShowItem = ShowItem(oneTimeItem)
-        assertNotEquals(oneTimeShowItem, secondOneTimeShowItem)
+        assertNotEquals(oneTimeItem, secondOneTimeShowItem)
         assertEquals(oneTimeShowItem.originalItem, secondOneTimeShowItem.originalItem)
 
     }

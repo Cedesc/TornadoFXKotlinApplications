@@ -5,7 +5,8 @@ import javafx.beans.property.SimpleListProperty
 import javafx.collections.ObservableList
 import tornadofx.*
 
-class ItemsList(essentialItems: MutableList<EssentialItem> = mutableListOf(),
+class ItemsList(val name: String,
+                essentialItems: MutableList<EssentialItem> = mutableListOf(),
                 optionalItems: MutableList<OptionalItem> = mutableListOf(),
                 oneTimeItems: MutableList<OneTimeItem> = mutableListOf(),
                 var itemParser: ItemParser = ItemParser("")) {
