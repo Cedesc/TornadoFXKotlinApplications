@@ -74,4 +74,32 @@ class ItemsListController : Controller() {
         // TODO deactivate current window ?
     }
 
+    fun deleteItem() {
+        TODO("Not yet implemented")
+
+        // Find item in the respective list
+
+        // Throw Exception if two identical items are found or no item was found
+
+        // Delete item
+
+        // Refresh the lists of show items
+
+    }
+
+    fun saveItemChanges() {
+        TODO("Not yet implemented")
+
+        // Create new item of the given parameters
+
+        // Check if created item and old item are same, if so give a warning
+
+        // Delete old item
+
+        // Add new item
+
+        // Refresh the list of show items
+
+    }
+
 }

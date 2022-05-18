@@ -49,12 +49,18 @@ class EditItemView : View("PLACEHOLDER") {
 
         button("Save Changes") {
             action {
+
+                // Show window to check if user is sure
+
                 TODO("Not yet implemented")  // TODO delete old and add new?
             }
         }
 
         button("Delete") {
             action {
+
+                // Show window to check if user is sure
+
                 TODO("Not yet implemented")  // TODO additional window to check if user is sure
             }
         }
