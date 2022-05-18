@@ -8,7 +8,7 @@ import tornadofx.*
 
 class TestView1 : View("My View") {  // TODO delete
 
-    var localCounter = SimpleIntegerProperty(0)
+    private var localCounter = SimpleIntegerProperty(0)
 
     private val menuController: MenuController by inject()
     private val testController: TestController by inject()

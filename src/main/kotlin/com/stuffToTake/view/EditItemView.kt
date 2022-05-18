@@ -10,7 +10,7 @@ import tornadofx.*
 
 class EditItemView : View("PLACEHOLDER") {
 
-    val itemsListController: ItemsListController by inject()
+    private val itemsListController: ItemsListController by inject()
 
     val item: AbstractItem by param()
 

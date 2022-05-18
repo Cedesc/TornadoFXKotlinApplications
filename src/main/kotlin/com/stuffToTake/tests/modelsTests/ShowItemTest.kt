@@ -12,13 +12,13 @@ import org.junit.Assert.*
 
 class ShowItemTest {
 
-    lateinit var essentialItem: EssentialItem
-    lateinit var optionalItem: OptionalItem
-    lateinit var oneTimeItem: OneTimeItem
+    private lateinit var essentialItem: EssentialItem
+    private lateinit var optionalItem: OptionalItem
+    private lateinit var oneTimeItem: OneTimeItem
 
-    lateinit var essentialShowItem: ShowItem
-    lateinit var optionalShowItem: ShowItem
-    lateinit var oneTimeShowItem: ShowItem
+    private lateinit var essentialShowItem: ShowItem
+    private lateinit var optionalShowItem: ShowItem
+    private lateinit var oneTimeShowItem: ShowItem
 
     @Before
     fun setUp() {
