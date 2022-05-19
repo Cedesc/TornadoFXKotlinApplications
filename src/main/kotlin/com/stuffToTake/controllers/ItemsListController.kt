@@ -33,19 +33,7 @@ class ItemsListController : Controller() {
     fun addItem(name: String, amount: String, type: String, categories: List<Category>,
                 toTake: Boolean, toMainz: Boolean, toWW: Boolean) {
 
-        val item: AbstractItem = when(type) {
-            "Essential Item" -> EssentialItem(name, amount, toTake)
-            "Optional Item" -> OptionalItem(name, amount, toTake)
-            "One Time Item" -> OneTimeItem(name, amount, toTake)
-            else -> throw Exception("Given type is not valid")
-        }
-
-        categories.forEach { category ->
-            if (! item.addCategory(category))
-                println("Warning! Tried to add a category twice to an item.")
-        }
-
-        // println(item)  // TODO delete
+        val item: AbstractItem = createItem(name, amount, type, categories, toTake)
 
         if (toMainz)
             itemsListToMainz.addArbitraryItem(item)
@@ -70,36 +58,48 @@ class ItemsListController : Controller() {
     }
 
     fun toEditItemView(showItem: ShowItem) {
-        find<EditItemView>(mapOf(EditItemView::item to showItem.originalItem)).openWindow()
-        // TODO deactivate current window ?
+        find<EditItemView>(mapOf(EditItemView::item to showItem.originalItem)).openModal()
     }
 
-    fun deleteItem() {
-        TODO("Not yet implemented")
+    fun deleteItem(item: AbstractItem) {  // TODO test this function
 
-        // Find item in the respective list
-
-        // Throw Exception if two identical items are found or no item was found
-
-        // Delete item
-
-        // Refresh the lists of show items
+        // Throw Exception if two identical items are found or no item was found.
+        if (! selectedItemList.deleteArbitraryItem(item))
+            throw Exception("No or multiple identical items are found. Exactly one match must exist.")
 
     }
 
-    fun saveItemChanges() {
-        TODO("Not yet implemented")
+    fun saveItemChanges(originalItem: AbstractItem, name: String, amount: String, type: String, categories: List<Category>,
+                        toTake: Boolean) {  // TODO test this function
 
-        // Create new item of the given parameters
+        // Create new item of the given parameters.
+        val editedItem: AbstractItem = createItem(name, amount, type, categories, toTake)
 
-        // Check if created item and old item are same, if so give a warning
+        // Check if created item and old item are same, if so give a warning.
+        if (editedItem == originalItem)
+            println("Warning! No changes were made")
 
-        // Delete old item
+        // Save item changes
+        if (! selectedItemList.editArbitraryItem(originalItem, editedItem))
+            throw Exception("Something went wrong while saving the changes of the edited item.")
 
-        // Add new item
+    }
 
-        // Refresh the list of show items
+    private fun createItem(name: String, amount: String, type: String, categories: List<Category>,
+                           toTake: Boolean): AbstractItem {
+        val item: AbstractItem = when(type) {
+            "Essential Item" -> EssentialItem(name, amount, toTake)
+            "Optional Item" -> OptionalItem(name, amount, toTake)
+            "One Time Item" -> OneTimeItem(name, amount, toTake)
+            else -> throw Exception("Given type is not valid")
+        }
 
+        categories.forEach { category ->
+            if (! item.addCategory(category))
+                println("Warning! Tried to add a category twice to an item.")
+        }
+
+        return item
     }
 
 }

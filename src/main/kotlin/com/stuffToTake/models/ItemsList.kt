@@ -35,7 +35,6 @@ class ItemsList(val name: String,
      */
     fun addEssentialItem(item: EssentialItem): Boolean {
         essentialItems.add(item)
-        refreshShowItems()
         return true
     }
 
@@ -44,7 +43,6 @@ class ItemsList(val name: String,
      */
     fun addOptionalItem(item: OptionalItem): Boolean {
         optionalItems.add(item)
-        refreshShowItems()
         return true
     }
 
@@ -53,7 +51,6 @@ class ItemsList(val name: String,
      */
     fun addOneTimeItem(item: OneTimeItem): Boolean {
         oneTimeItems.add(item)
-        refreshShowItems()
         return true
     }
 
@@ -61,7 +58,7 @@ class ItemsList(val name: String,
      * Checks which item type is given and call the respective function.
      */
     fun addArbitraryItem(item: AbstractItem): Boolean {
-        return when (item) {
+        val result: Boolean = when (item) {
             is EssentialItem -> addEssentialItem(item)
             is OptionalItem -> addOptionalItem(item)
             is OneTimeItem -> addOneTimeItem(item)
@@ -71,6 +68,12 @@ class ItemsList(val name: String,
             }
             else -> throw Exception("Given item is not valid")
         }
+
+        // Refresh list of show items
+        refreshShowItems()
+
+        return result
+
     }
 
     /**
@@ -116,12 +119,90 @@ class ItemsList(val name: String,
     /**
      * Updates complete list of the ShowItems.
      */
-    fun refreshShowItems() {  // TODO create tests
+    private fun refreshShowItems() {  // TODO create tests (and make function public)
         observableShowItems.setAll(
             getListOfAllItems().map { item ->
                 ShowItem(item)
             }.toObservable()
         )
+    }
+
+    /**
+     * Deletes an item in essentialItems. Returns false if multiple or no matches were found.
+     */
+    private fun deleteEssentialItem(item: EssentialItem): Boolean {  // TODO create tests (and make function public)
+        // Return false if two identical items are found or no item was found
+        if (essentialItems.count { it == item } != 1)
+            return false
+
+        // Delete item
+        essentialItems.remove(item)
+        return true
+    }
+
+    /**
+     * Deletes an item in optionalItems. Returns false if multiple or no matches were found.
+     */
+    private fun deleteOptionalItem(item: OptionalItem): Boolean {  // TODO create tests (and make function public)
+        // Return false if two identical items are found or no item was found
+        if (optionalItems.count { it == item } != 1)
+            return false
+
+        // Delete item
+        optionalItems.remove(item)
+        return true
+    }
+
+    /**
+     * Deletes an item in oneTimeItems. Returns false if multiple or no matches were found.
+     */
+    private fun deleteOneTimeItem(item: OneTimeItem): Boolean {  // TODO create tests (and make function public)
+        // Return false if no or multiple identical items are found.
+        if (oneTimeItems.count { it == item } != 1)
+            return false
+
+        // Delete item
+        oneTimeItems.remove(item)
+        return true
+    }
+
+    /**
+     * Checks which item type is given and call the respective function.
+     */
+    fun deleteArbitraryItem(item: AbstractItem): Boolean {  // TODO create tests
+        val result: Boolean = when (item) {
+            is EssentialItem -> deleteEssentialItem(item)
+            is OptionalItem -> deleteOptionalItem(item)
+            is OneTimeItem -> deleteOneTimeItem(item)
+            is ShowItem -> {
+                println("Warning! Tried to delete a ShowedItem of the item list.")
+                false
+            }
+            else -> throw Exception("Given item is not valid")
+        }
+
+        // Refresh list of show items
+        refreshShowItems()
+
+        return result
+    }
+
+    /**
+     * Edits (delete and add) an item.
+     * Returns false if the "delete"- or the "add"- function returns false.
+     */
+    fun editArbitraryItem(originalItem: AbstractItem, editedItem: AbstractItem): Boolean { // TODO create tests
+
+        if (! deleteArbitraryItem(originalItem))
+            return false
+
+        if (! addArbitraryItem(editedItem))
+            return false
+
+        // Refresh list of show items
+        refreshShowItems()
+
+        return true
     }
 
 }
