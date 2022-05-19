@@ -1,5 +1,6 @@
 package com.stuffToTake.view
 
+import com.stuffToTake.controllers.ConfirmController
 import com.stuffToTake.controllers.ItemsListController
 import com.stuffToTake.models.*
 import javafx.beans.property.SimpleBooleanProperty
@@ -11,6 +12,7 @@ import tornadofx.*
 class EditItemView : View("PLACEHOLDER") {
 
     private val itemsListController: ItemsListController by inject()
+    private val confirmController: ConfirmController by inject()
 
     val item: AbstractItem by param()
 
@@ -47,21 +49,26 @@ class EditItemView : View("PLACEHOLDER") {
             }
         }
 
-        button("Save Changes") {
+        button("Save Changes") {  // TODO test
             action {
-
                 // Show window to check if user is sure
+                confirmController.confirmChanges(item)
 
-                TODO("Not yet implemented")  // TODO delete old and add new?
+                if (confirmController.result == true)
+                    itemsListController.saveItemChanges(
+                        item,
+                        itemName.value, itemAmount.value, itemType.value,
+                        categoriesListView.selectionModel.selectedItems, itemToTake.value)
             }
         }
 
-        button("Delete") {
+        button("Delete") {  // TODO test
             action {
-
                 // Show window to check if user is sure
+                confirmController.confirmDeletion(item)
 
-                TODO("Not yet implemented")  // TODO additional window to check if user is sure
+                if (confirmController.result == true)
+                    itemsListController.deleteItem(item)
             }
         }
 
