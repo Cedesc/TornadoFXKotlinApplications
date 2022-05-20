@@ -57,7 +57,7 @@ class EditItemView : View("PLACEHOLDER") {
                 // wait until the pop-up window is closed
                 currentStage?.focusedProperty()?.onChangeOnce {
                     // if the confirmation is given, apply the changes
-                    if (confirmController.result == true)
+                    if (confirmController.confirmed)
                         itemsListController.saveItemChanges(
                             item,
                             itemName.value, itemAmount.value, itemType.value,
@@ -74,7 +74,7 @@ class EditItemView : View("PLACEHOLDER") {
                 // wait until the pop-up window is closed
                 currentStage?.focusedProperty()?.onChangeOnce {
                     // if the confirmation is given, apply the changes
-                    if (confirmController.result == true)
+                    if (confirmController.confirmed)
                         itemsListController.deleteItem(item)
                 }
             }

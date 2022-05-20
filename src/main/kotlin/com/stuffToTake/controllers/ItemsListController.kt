@@ -3,9 +3,7 @@ package com.stuffToTake.controllers
 import com.stuffToTake.models.*
 import com.stuffToTake.saves.ItemParser
 import com.stuffToTake.view.EditItemView
-import javafx.collections.ObservableList
 import tornadofx.Controller
-import tornadofx.observableListOf
 
 class ItemsListController : Controller() {
 
@@ -67,7 +65,7 @@ class ItemsListController : Controller() {
         // Close the "Edit Item"-View
         find(EditItemView::class).close()
 
-        println("Deleted \n$item\n\n")  // TODO delete
+        println("Deleted \n$item\n")  // TODO delete
 
     }
 
@@ -90,7 +88,7 @@ class ItemsListController : Controller() {
         // Close the "Edit Item"-View
         find(EditItemView::class).close()
 
-        println("Changed from \n$originalItem\nto \n$editedItem\n\n")  // TODO delete
+        println("Changed from \n$originalItem\nto \n$editedItem\n")  // TODO delete
 
     }
 

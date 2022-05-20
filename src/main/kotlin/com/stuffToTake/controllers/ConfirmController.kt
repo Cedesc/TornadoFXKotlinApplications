@@ -10,14 +10,12 @@ class ConfirmController : Controller() {
     val title = SimpleStringProperty("")
     val text = SimpleStringProperty("")
 
-    var result: Boolean? = null
+    var confirmed: Boolean = false
     get() {
-        // Result can only get once per function call (with confirmDeletion or confirmChanges)
-        if (field == null)
-            throw Exception("No confirmation asked, so no result is present.")
-        val current = field
-        result = null
-        return current
+        // A positive "confirmed" can only get once per function call (with confirmDeletion or confirmChanges)
+        return field.also {
+            confirmed = false
+        }
     }
 
 
@@ -43,7 +41,7 @@ class ConfirmController : Controller() {
      * Sets result to true and closed window. Function that should be called when user clicked "Yes".
      */
     fun setToYes() {
-        result = true
+        confirmed = true
         runLater { find(ConfirmView::class).close() }
     }
 
@@ -51,7 +49,7 @@ class ConfirmController : Controller() {
      * Sets result to false and closed window. Function that should be called when user clicked "No".
      */
     fun setToNo() {
-        result = false
+        confirmed = false
         runLater { find(ConfirmView::class).close() }
     }
 
