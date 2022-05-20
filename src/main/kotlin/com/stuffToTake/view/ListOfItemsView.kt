@@ -3,6 +3,8 @@ package com.stuffToTake.view
 import com.stuffToTake.controllers.ItemsListController
 import com.stuffToTake.controllers.MenuController
 import com.stuffToTake.models.ShowItem
+import javafx.beans.property.SimpleObjectProperty
+import javafx.collections.ObservableList
 import javafx.scene.control.SelectionMode
 import javafx.scene.paint.Color
 import tornadofx.*
@@ -16,9 +18,12 @@ class ListOfItemsView : View("List of Items") {
     private val menuController: MenuController by inject()
     private val itemsListController: ItemsListController by inject()
 
+    private val selectedObservableItemsList: SimpleObjectProperty<ObservableList<ShowItem>> =
+        SimpleObjectProperty(itemsListController.selectedItemList.observableShowItems)
+
 
     override val root = vbox {
-        tableview(itemsListController.selectedObservableList) {
+        tableview(selectedObservableItemsList) {
             id = "itemsList"
             column("Name", ShowItem::nameProperty)
             column("Amount", ShowItem::amountProperty)
@@ -58,5 +63,7 @@ class ListOfItemsView : View("List of Items") {
 
     override fun onDock() {
         title = "All Items of the \"${itemsListController.selectedItemList.name}\"-List"
+        selectedObservableItemsList.set(itemsListController.selectedItemList.observableShowItems)
+        super.onDock()
     }
 }

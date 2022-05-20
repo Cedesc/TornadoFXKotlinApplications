@@ -194,11 +194,18 @@ class ItemsList(val name: String,
      */
     fun editArbitraryItem(originalItem: AbstractItem, editedItem: AbstractItem): Boolean {
 
+        // Check if created item and old item are the same, if so return false.
+        // Mandatory because otherwise the delete function won't work.
+        if (originalItem == editedItem)
+            return false
+
         // First the add-function because if it cannot be added, the old element won't be deleted.
         if (! addArbitraryItem(editedItem))
             return false
-        if (! deleteArbitraryItem(originalItem))
+        if (! deleteArbitraryItem(originalItem)) {
+            println("Warning! New item has been added but old item wasn't removed!")
             return false
+        }
 
         // Refresh list of show items
         refreshShowItems()

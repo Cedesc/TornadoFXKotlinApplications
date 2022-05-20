@@ -27,7 +27,6 @@ class ItemsListController : Controller() {
     }
 
     var selectedItemList: ItemsList = ItemsList("PLACEHOLDER")
-    val selectedObservableList: ObservableList<ShowItem> = observableListOf()
 
 
     fun addItem(name: String, amount: String, type: String, categories: List<Category>,
@@ -49,12 +48,10 @@ class ItemsListController : Controller() {
 
     fun changeSelectedListToMainz() {
         selectedItemList = itemsListToMainz
-        selectedObservableList.setAll(selectedItemList.observableShowItems)
     }
 
     fun changeSelectedListToWW() {
         selectedItemList = itemsListToWW
-        selectedObservableList.setAll(selectedItemList.observableShowItems)
     }
 
     fun toEditItemView(showItem: ShowItem) {
@@ -67,29 +64,31 @@ class ItemsListController : Controller() {
         if (! selectedItemList.deleteArbitraryItem(item))
             throw Exception("No or multiple identical items are found. Exactly one match must exist.")
 
-        // TODO list should update here
-        // TODO edit item window should be closed here
+        // Close the "Edit Item"-View
+        find(EditItemView::class).close()
 
         println("Deleted \n$item\n\n")  // TODO delete
 
     }
 
-    fun saveItemChanges(originalItem: AbstractItem, name: String, amount: String, type: String, categories: List<Category>,
-                        toTake: Boolean) {  // TODO test this function
+    fun saveItemChanges(originalItem: AbstractItem, name: String, amount: String, type: String,
+                        categories: List<Category>, toTake: Boolean) {  // TODO test this function
 
         // Create new item of the given parameters.
         val editedItem: AbstractItem = createItem(name, amount, type, categories, toTake)
 
-        // Check if created item and old item are same, if so give a warning.
-        if (editedItem == originalItem)
+        // Check if created item and old item are same, if so give a warning and return.
+        if (editedItem == originalItem) {
             println("Warning! No changes were made")
+            return
+        }
 
         // Save item changes
         if (! selectedItemList.editArbitraryItem(originalItem, editedItem))
             throw Exception("Something went wrong while saving the changes of the edited item.")
 
-        // TODO list should update here
-        // TODO edit item window should be closed here
+        // Close the "Edit Item"-View
+        find(EditItemView::class).close()
 
         println("Changed from \n$originalItem\nto \n$editedItem\n\n")  // TODO delete
 
