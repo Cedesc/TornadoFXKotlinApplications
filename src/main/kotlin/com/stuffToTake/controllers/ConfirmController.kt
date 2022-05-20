@@ -14,7 +14,7 @@ class ConfirmController : Controller() {
     get() {
         // Result can only get once per function call (with confirmDeletion or confirmChanges)
         if (field == null)
-            throw Exception("No confirmation asked, so no result present")
+            throw Exception("No confirmation asked, so no result is present.")
         val current = field
         result = null
         return current
@@ -40,17 +40,19 @@ class ConfirmController : Controller() {
     }
 
     /**
-     * Sets result to true. Function that should be called when user clicked "Yes".
+     * Sets result to true and closed window. Function that should be called when user clicked "Yes".
      */
     fun setToYes() {
         result = true
+        runLater { find(ConfirmView::class).close() }
     }
 
     /**
-     * Sets result to false. Function that should be called when user clicked "No".
+     * Sets result to false and closed window. Function that should be called when user clicked "No".
      */
     fun setToNo() {
         result = false
+        runLater { find(ConfirmView::class).close() }
     }
 
 }

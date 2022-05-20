@@ -54,11 +54,15 @@ class EditItemView : View("PLACEHOLDER") {
                 // Show window to check if user is sure
                 confirmController.confirmChanges(item)
 
-                if (confirmController.result == true)
-                    itemsListController.saveItemChanges(
-                        item,
-                        itemName.value, itemAmount.value, itemType.value,
-                        categoriesListView.selectionModel.selectedItems, itemToTake.value)
+                // wait until the pop-up window is closed
+                currentStage?.focusedProperty()?.onChangeOnce {
+                    // if the confirmation is given, apply the changes
+                    if (confirmController.result == true)
+                        itemsListController.saveItemChanges(
+                            item,
+                            itemName.value, itemAmount.value, itemType.value,
+                            categoriesListView.selectionModel.selectedItems, itemToTake.value)
+                }
             }
         }
 
@@ -67,8 +71,12 @@ class EditItemView : View("PLACEHOLDER") {
                 // Show window to check if user is sure
                 confirmController.confirmDeletion(item)
 
-                if (confirmController.result == true)
-                    itemsListController.deleteItem(item)
+                // wait until the pop-up window is closed
+                currentStage?.focusedProperty()?.onChangeOnce {
+                    // if the confirmation is given, apply the changes
+                    if (confirmController.result == true)
+                        itemsListController.deleteItem(item)
+                }
             }
         }
 

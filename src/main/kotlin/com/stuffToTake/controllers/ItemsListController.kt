@@ -67,6 +67,11 @@ class ItemsListController : Controller() {
         if (! selectedItemList.deleteArbitraryItem(item))
             throw Exception("No or multiple identical items are found. Exactly one match must exist.")
 
+        // TODO list should update here
+        // TODO edit item window should be closed here
+
+        println("Deleted \n$item\n\n")  // TODO delete
+
     }
 
     fun saveItemChanges(originalItem: AbstractItem, name: String, amount: String, type: String, categories: List<Category>,
@@ -82,6 +87,11 @@ class ItemsListController : Controller() {
         // Save item changes
         if (! selectedItemList.editArbitraryItem(originalItem, editedItem))
             throw Exception("Something went wrong while saving the changes of the edited item.")
+
+        // TODO list should update here
+        // TODO edit item window should be closed here
+
+        println("Changed from \n$originalItem\nto \n$editedItem\n\n")  // TODO delete
 
     }
 
