@@ -32,9 +32,10 @@ To Do List:
         -CHECK- add item view
             -1- change the class of itemType to a better than just a string ?
             -1- radio buttons instead of a view list for categories
-        -4- full list of items view
-        -4- edit item view
-            -3- possible to delete items
+        -CHECK- full list of toMainz items view
+        -CHECK- full list of toWW items view
+        -CHECK- edit item view
+            -CHECK- possible to delete items
         -3- item list for choosing
         -3- to take view
     -CHECK- check out what to implement in controllers
@@ -47,6 +48,7 @@ To Do List:
     -2- add a method to convert an item type to another
     -2- fill Category.kt
     -OBSOLETE- fill items.txt with ItemParser.kt
+    -2- make it impossible to add two identical items to itemsList
     -1- add history
     -1- add history view
     -1- when an item is added to ItemsList it generates the whole observableShowItems list -> performance problems?

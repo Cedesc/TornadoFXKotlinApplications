@@ -57,13 +57,14 @@ class ItemsList(val name: String,
     /**
      * Checks which item type is given and call the respective function.
      */
-    fun addArbitraryItem(item: AbstractItem): Boolean {
+    fun addArbitraryItem(item: AbstractItem, giveWarning: Boolean = true): Boolean {
         val result: Boolean = when (item) {
             is EssentialItem -> addEssentialItem(item)
             is OptionalItem -> addOptionalItem(item)
             is OneTimeItem -> addOneTimeItem(item)
             is ShowItem -> {
-                println("Warning! Tried to add a ShowedItem to the item list.")
+                if (! giveWarning)
+                    println("Warning! Tried to add a ShowedItem to the item list.")
                 false
             }
             else -> throw Exception("Given item is not valid")
@@ -130,8 +131,8 @@ class ItemsList(val name: String,
     /**
      * Deletes an item in essentialItems. Returns false if multiple or no matches were found.
      */
-    private fun deleteEssentialItem(item: EssentialItem): Boolean {  // TODO create tests (and make function public)
-        // Return false if two identical items are found or no item was found
+    private fun deleteEssentialItem(item: EssentialItem): Boolean {
+        // Return false if no or multiple identical items were found.
         if (essentialItems.count { it == item } != 1)
             return false
 
@@ -143,8 +144,8 @@ class ItemsList(val name: String,
     /**
      * Deletes an item in optionalItems. Returns false if multiple or no matches were found.
      */
-    private fun deleteOptionalItem(item: OptionalItem): Boolean {  // TODO create tests (and make function public)
-        // Return false if two identical items are found or no item was found
+    private fun deleteOptionalItem(item: OptionalItem): Boolean {
+        // Return false if no or multiple identical items were found.
         if (optionalItems.count { it == item } != 1)
             return false
 
@@ -156,8 +157,8 @@ class ItemsList(val name: String,
     /**
      * Deletes an item in oneTimeItems. Returns false if multiple or no matches were found.
      */
-    private fun deleteOneTimeItem(item: OneTimeItem): Boolean {  // TODO create tests (and make function public)
-        // Return false if no or multiple identical items are found.
+    private fun deleteOneTimeItem(item: OneTimeItem): Boolean {
+        // Return false if no or multiple identical items were found.
         if (oneTimeItems.count { it == item } != 1)
             return false
 
@@ -169,7 +170,7 @@ class ItemsList(val name: String,
     /**
      * Checks which item type is given and call the respective function.
      */
-    fun deleteArbitraryItem(item: AbstractItem): Boolean {  // TODO create tests
+    fun deleteArbitraryItem(item: AbstractItem): Boolean {
         val result: Boolean = when (item) {
             is EssentialItem -> deleteEssentialItem(item)
             is OptionalItem -> deleteOptionalItem(item)
@@ -191,12 +192,12 @@ class ItemsList(val name: String,
      * Edits (delete and add) an item.
      * Returns false if the "delete"- or the "add"- function returns false.
      */
-    fun editArbitraryItem(originalItem: AbstractItem, editedItem: AbstractItem): Boolean { // TODO create tests
+    fun editArbitraryItem(originalItem: AbstractItem, editedItem: AbstractItem): Boolean {
 
-        if (! deleteArbitraryItem(originalItem))
-            return false
-
+        // First the add-function because if it cannot be added, the old element won't be deleted.
         if (! addArbitraryItem(editedItem))
+            return false
+        if (! deleteArbitraryItem(originalItem))
             return false
 
         // Refresh list of show items

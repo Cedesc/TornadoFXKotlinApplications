@@ -116,12 +116,7 @@ class ItemsListTest {
                     "    Categories: []\n" +
                     "    To Take: true"
         )
-        itemsList.addArbitraryItem(essentialItem1)
-        itemsList.addArbitraryItem(optionalItem2)
-        itemsList.addArbitraryItem(oneTimeItem1)
-        itemsList.addArbitraryItem(oneTimeItem2)
-        itemsList.addArbitraryItem(optionalItem1)
-        itemsList.addArbitraryItem(essentialItem2)
+        fillItemList()
         assertEquals(expected.toString(), itemsList.getListOfAllItems().toString())
     }
 
@@ -189,7 +184,7 @@ class ItemsListTest {
             ItemParser("src/main/kotlin/com/stuffToTake/tests/modelsTests/loadSavedItemsTest.txt")
 
         // Create file
-        saveCreateFile(itemsList.itemParser)
+        createFileSafely(itemsList.itemParser)
 
 
         // Generate items
@@ -249,7 +244,7 @@ class ItemsListTest {
             ItemParser("src/main/kotlin/com/stuffToTake/tests/modelsTests/saveItemsTest.txt")
 
         // Create file
-        saveCreateFile(itemsList.itemParser)
+        createFileSafely(itemsList.itemParser)
 
 
         // Generate items
@@ -280,12 +275,117 @@ class ItemsListTest {
             itemsList.itemParser.deleteFile())
     }
 
-    private fun saveCreateFile(parser: ItemParser) {
+    @Test
+    fun deleteArbitraryItem() {
+        val expected: MutableList<String> = mutableListOf(
+            "Essential Item: suitcase\n" +
+                    "    Amount: 1\n" +
+                    "    Categories: []\n" +
+                    "    To Take: true",
+            "Optional Item: tea can\n" +
+                    "    Amount: one\n" +
+                    "    Categories: []\n" +
+                    "    To Take: true",
+            "One Time Item: B12\n" +
+                    "    Amount: two packs\n" +
+                    "    Categories: []\n" +
+                    "    To Take: true",
+            "One Time Item: Iron\n" +
+                    "    Amount: 2\n" +
+                    "    Categories: []\n" +
+                    "    To Take: true"
+        )
+        fillItemList()
+
+        // delete essentialItem2
+        assertEquals(true, itemsList.deleteArbitraryItem(essentialItem2))
+        // delete optionalItem1
+        assertEquals(true,
+            itemsList.deleteArbitraryItem(OptionalItem("sunglasses", "", false)))
+        assertEquals(expected.toString(), itemsList.getListOfAllItems().toString())
+
+        // try to delete items that are not in the list
+        assertEquals(false, itemsList.deleteArbitraryItem(optionalItem1))
+        assertEquals(false,
+            itemsList.deleteArbitraryItem(EssentialItem("not existing", "", false)))
+
+        // delete rest
+        assertEquals(true, itemsList.deleteArbitraryItem(essentialItem1))
+        assertEquals(true, itemsList.deleteArbitraryItem(optionalItem2))
+        assertEquals(true, itemsList.deleteArbitraryItem(oneTimeItem1))
+        assertEquals(true, itemsList.deleteArbitraryItem(oneTimeItem2))
+        assertEquals("[]", itemsList.getListOfAllItems().toString())
+    }
+
+    @Test
+    fun editArbitraryItem() {
+        val expected: MutableList<String> = mutableListOf(
+            "Essential Item: suitcase\n" +
+                    "    Amount: 1\n" +
+                    "    Categories: []\n" +
+                    "    To Take: true",
+            "Essential Item: bigger bag\n" +
+                    "    Amount: 2\n" +
+                    "    Categories: [Kleidung]\n" +
+                    "    To Take: true",
+            "Optional Item: sunglasses\n" +
+                    "    Amount: -\n" +
+                    "    Categories: []\n" +
+                    "    To Take: false",
+            "One Time Item: B12\n" +
+                    "    Amount: two packs\n" +
+                    "    Categories: []\n" +
+                    "    To Take: true",
+            "One Time Item: Iron\n" +
+                    "    Amount: 2\n" +
+                    "    Categories: []\n" +
+                    "    To Take: true",
+            "One Time Item: smaller tea can\n" +
+                    "    Amount: -\n" +
+                    "    Categories: []\n" +
+                    "    To Take: false"
+        )
+        fillItemList()
+
+        // create new item
+        var newItem: AbstractItem = EssentialItem("bigger bag", "2", true)
+        newItem.addCategory(Category.CLOTHING)
+        // replace essentialItem2 with the new item
+        assertEquals(true, itemsList.editArbitraryItem(essentialItem2, newItem))
+
+        // create new item
+        newItem = OneTimeItem("smaller tea can", "", false)
+        // replace optionalItem2 with the new item
+        assertEquals(true, itemsList.editArbitraryItem(optionalItem2, newItem))
+        assertEquals(expected.toString(), itemsList.getListOfAllItems().toString())
+
+        // try to add a show item
+        assertEquals(false, itemsList.editArbitraryItem(essentialItem1, ShowItem(newItem)))
+        // the old item (essentialItem1) shouldn't be deleted
+        assertEquals(expected.toString(), itemsList.getListOfAllItems().toString())
+    }
+
+    /**
+     * Creates a file safely (checks if the file existed before and after creation).
+     */
+    private fun createFileSafely(parser: ItemParser) {
         assertEquals(false,
             parser.checkFileExists())
         assertEquals(true,
             parser.createFile())
         assertEquals(true,
             parser.checkFileExists())
+    }
+
+    /**
+     * Fills the item list with elements.
+     */
+    private fun fillItemList() {
+        itemsList.addArbitraryItem(essentialItem1)
+        itemsList.addArbitraryItem(optionalItem2)
+        itemsList.addArbitraryItem(oneTimeItem1)
+        itemsList.addArbitraryItem(oneTimeItem2)
+        itemsList.addArbitraryItem(optionalItem1)
+        itemsList.addArbitraryItem(essentialItem2)
     }
 }
