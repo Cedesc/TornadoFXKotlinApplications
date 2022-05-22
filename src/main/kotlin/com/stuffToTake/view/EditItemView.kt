@@ -54,14 +54,17 @@ class EditItemView : View("PLACEHOLDER") {
                 // Show window to check if user is sure
                 confirmController.confirmChanges(item)
 
-                // wait until the pop-up window is closed
-                currentStage?.focusedProperty()?.onChangeOnce {
-                    // if the confirmation is given, apply the changes
-                    if (confirmController.confirmed)
-                        itemsListController.saveItemChanges(
-                            item,
-                            itemName.value, itemAmount.value, itemType.value,
-                            categoriesListView.selectionModel.selectedItems, itemToTake.value)
+                runLater {
+                    // wait until the pop-up window is closed
+                    find(ConfirmView::class).whenUndockedOnce {
+                        // if the confirmation is given, apply the changes
+                        if (confirmController.confirmed)
+                            itemsListController.saveItemChanges(
+                                item,
+                                itemName.value, itemAmount.value, itemType.value,
+                                categoriesListView.selectionModel.selectedItems, itemToTake.value
+                            )
+                    }
                 }
             }
         }
@@ -71,11 +74,13 @@ class EditItemView : View("PLACEHOLDER") {
                 // Show window to check if user is sure
                 confirmController.confirmDeletion(item)
 
-                // wait until the pop-up window is closed
-                currentStage?.focusedProperty()?.onChangeOnce {
-                    // if the confirmation is given, apply the changes
-                    if (confirmController.confirmed)
-                        itemsListController.deleteItem(item)
+                runLater {
+                    // wait until the pop-up window is closed
+                    find(ConfirmView::class).whenUndockedOnce {
+                        // if the confirmation is given, apply the changes
+                        if (confirmController.confirmed)
+                            itemsListController.deleteItem(item)
+                    }
                 }
             }
         }
