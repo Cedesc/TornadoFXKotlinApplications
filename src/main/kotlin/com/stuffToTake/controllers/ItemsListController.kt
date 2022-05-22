@@ -56,7 +56,7 @@ class ItemsListController : Controller() {
         find<EditItemView>(mapOf(EditItemView::item to showItem.originalItem)).openModal()
     }
 
-    fun deleteItem(item: AbstractItem) {  // TODO test this function
+    fun deleteItem(item: AbstractItem) {
 
         // Throw Exception if two identical items are found or no item was found.
         if (! selectedItemList.deleteArbitraryItem(item))
@@ -65,12 +65,12 @@ class ItemsListController : Controller() {
         // Close the "Edit Item"-View
         find(EditItemView::class).close()
 
-        println("Deleted \n$item\n")  // TODO delete
+        println("Deleted \n$item\n")  // TODO (afterwards) delete
 
     }
 
     fun saveItemChanges(originalItem: AbstractItem, name: String, amount: String, type: String,
-                        categories: List<Category>, toTake: Boolean) {  // TODO test this function
+                        categories: List<Category>, toTake: Boolean) {
 
         // Create new item of the given parameters.
         val editedItem: AbstractItem = createItem(name, amount, type, categories, toTake)
@@ -88,7 +88,7 @@ class ItemsListController : Controller() {
         // Close the "Edit Item"-View
         find(EditItemView::class).close()
 
-        println("Changed from \n$originalItem\nto \n$editedItem\n")  // TODO delete
+        println("Changed from \n$originalItem\nto \n$editedItem\n")  // TODO (afterwards) delete
 
     }
 

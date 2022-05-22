@@ -5,7 +5,7 @@ import com.stuffToTake.models.EssentialItem
 import javafx.beans.property.SimpleIntegerProperty
 import tornadofx.Controller
 
-class TestController : Controller() {  // TODO delete
+class TestController : Controller() {  // TODO (afterwards) delete
 
     val testCounter = SimpleIntegerProperty(0)
 

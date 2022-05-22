@@ -38,13 +38,13 @@ class MenuView : View("Menu") {
             }
         }
 
-        button("Test View 1") {  // TODO delete
+        button("Test View 1") {  // TODO (afterwards) delete
             action {
                 menuController.toTestView1()
             }
         }
 
-        button("Test View 2") {  // TODO delete
+        button("Test View 2") {  // TODO (afterwards) delete
             action {
                 menuController.toTestView2()
             }

@@ -6,7 +6,7 @@ import com.stuffToTake.controllers.TestController
 import javafx.beans.property.SimpleIntegerProperty
 import tornadofx.*
 
-class TestView1 : View("My View") {  // TODO delete
+class TestView1 : View("My View") {  // TODO (afterwards) delete
 
     private var localCounter = SimpleIntegerProperty(0)
 

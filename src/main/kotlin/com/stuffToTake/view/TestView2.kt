@@ -4,7 +4,7 @@ import com.stuffToTake.controllers.MenuController
 import com.stuffToTake.controllers.TestController
 import tornadofx.*
 
-class TestView2 : View("My View") {  // TODO delete
+class TestView2 : View("My View") {  // TODO (afterwards) delete
 
     private val menuController: MenuController by inject()
     private val testController: TestController by inject()
