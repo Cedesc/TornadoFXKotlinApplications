@@ -32,8 +32,11 @@ To Do List:
         -CHECK- add item view
             -1- change the class of itemType to a better than just a string ?
             -1- radio buttons instead of a view list for categories
-        -CHECK- full list of toMainz items view
-        -CHECK- full list of toWW items view
+        -CHECK- list of items view
+            -CHECK- full list of toMainz items view
+            -CHECK- full list of toWW items view
+            -CHECK- edit item per double click
+            -2- deactivate sort by category or make it meaningful
         -CHECK- edit item view
             -CHECK- possible to delete items
         -3- item list for choosing
