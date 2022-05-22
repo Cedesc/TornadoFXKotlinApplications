@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Test
 
 import org.junit.Assert.*
+import tornadofx.toObservable
 import java.io.File
 
 class ItemsListTest {
@@ -363,6 +364,53 @@ class ItemsListTest {
         assertEquals(false, itemsList.editArbitraryItem(essentialItem1, ShowItem(newItem)))
         // the old item (essentialItem1) shouldn't be deleted
         assertEquals(expected.toString(), itemsList.getListOfAllItems().toString())
+    }
+
+    @Test
+    fun refreshShowItems() {
+        assertEquals(listOf<ShowItem>().toObservable(), itemsList.observableShowItems)
+        fillItemList()
+        // automatically refreshes the list with every addArbitraryItem-method call
+        var expected = "[Showed Essential Item: suitcase\n" +
+                "    Amount: 1\n" +
+                "    Categories: []\n" +
+                "    To Take: true, Showed Essential Item: bag\n" +
+                "    Amount: -\n" +
+                "    Categories: []\n" +
+                "    To Take: false, Showed Optional Item: tea can\n" +
+                "    Amount: one\n" +
+                "    Categories: []\n" +
+                "    To Take: true, Showed Optional Item: sunglasses\n" +
+                "    Amount: -\n" +
+                "    Categories: []\n" +
+                "    To Take: false, Showed One Time Item: B12\n" +
+                "    Amount: two packs\n" +
+                "    Categories: []\n" +
+                "    To Take: true, Showed One Time Item: Iron\n" +
+                "    Amount: 2\n" +
+                "    Categories: []\n" +
+                "    To Take: true]"
+        assertEquals(expected, itemsList.observableShowItems.toString())
+
+        itemsList.optionalItems.clear()
+        // the items weren't changed with the intern add or delete method so the observableList hasn't been updated
+        assertEquals(expected, itemsList.observableShowItems.toString())
+        expected = "[Showed Essential Item: suitcase\n" +
+                "    Amount: 1\n" +
+                "    Categories: []\n" +
+                "    To Take: true, Showed Essential Item: bag\n" +
+                "    Amount: -\n" +
+                "    Categories: []\n" +
+                "    To Take: false, Showed One Time Item: B12\n" +
+                "    Amount: two packs\n" +
+                "    Categories: []\n" +
+                "    To Take: true, Showed One Time Item: Iron\n" +
+                "    Amount: 2\n" +
+                "    Categories: []\n" +
+                "    To Take: true]"
+        // after refreshing the optional items shouldn't be in the observableList
+        itemsList.refreshShowItems()
+        assertEquals(expected, itemsList.observableShowItems.toString())
     }
 
     /**

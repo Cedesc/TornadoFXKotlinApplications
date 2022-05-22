@@ -120,7 +120,7 @@ class ItemsList(val name: String,
     /**
      * Updates complete list of the ShowItems.
      */
-    private fun refreshShowItems() {  // TODO create tests (and make function public)
+    fun refreshShowItems() {
         observableShowItems.setAll(
             getListOfAllItems().map { item ->
                 ShowItem(item)
