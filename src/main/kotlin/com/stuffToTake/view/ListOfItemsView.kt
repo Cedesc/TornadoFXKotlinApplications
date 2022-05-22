@@ -12,9 +12,6 @@ import tornadofx.*
 
 class ListOfItemsView : View("List of Items") {
 
-    // TODO make sort by category working in a good way or deactivate it
-    // TODO button at every item to edit this item (or per doubly click OR both)
-
     private val menuController: MenuController by inject()
     private val itemsListController: ItemsListController by inject()
 
