@@ -22,7 +22,7 @@ class ConfirmController : Controller() {
     /**
      * Opens new window which asks if the selected item should be deleted or not.
      */
-    fun confirmDeletion(item: AbstractItem) {  // TODO test
+    fun confirmDeletion(item: AbstractItem) {
         title.value = "Confirm Deletion"
         text.value = "Are you sure you want to delete \"${item.name}\"?"
         find(ConfirmView::class).openModal()
@@ -31,7 +31,7 @@ class ConfirmController : Controller() {
     /**
      * Opens new window which asks if the made changes should be saved or not.
      */
-    fun confirmChanges(item: AbstractItem) {  // TODO test
+    fun confirmChanges(item: AbstractItem) {
         title.value = "Confirm Changes"
         text.value = "Are you sure you want to apply the changes to \"${item.name}\"?"
         find(ConfirmView::class).openModal()

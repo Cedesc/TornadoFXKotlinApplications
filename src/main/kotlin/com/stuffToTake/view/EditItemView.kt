@@ -43,13 +43,7 @@ class EditItemView : View("PLACEHOLDER") {
             }
         }
 
-        button("print") {  // TODO delete
-            action {
-                println("$item\n")
-            }
-        }
-
-        button("Save Changes") {  // TODO test
+        button("Save Changes") {
             action {
                 // Show window to check if user is sure
                 confirmController.confirmChanges(item)
@@ -69,7 +63,7 @@ class EditItemView : View("PLACEHOLDER") {
             }
         }
 
-        button("Delete") {  // TODO test
+        button("Delete") {
             action {
                 // Show window to check if user is sure
                 confirmController.confirmDeletion(item)
