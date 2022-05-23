@@ -40,22 +40,24 @@ To Do List:
             -2- add search bar for searching by name or by category
         -CHECK- edit item view
             -CHECK- possible to delete items
-        -3- item list for choosing
+        -CHECK- item list for choosing
             -1- disable the blue bar on selection
-        -3- to take view
+        -CHECK- to take view
+            -2- items disappear or pushed to the end when they're clicked
+        -3- history view
+    -4- fill with meaningful item
     -CHECK- check out what to implement in controllers
     -3- make better views
         -1- Font in the middle (per example in the tableview)
     -2.5- create GUI tests (oh pls no...)
     -CHECK- add a method to AbstractItem to add multiple categories at once
     -CHECK- add a constructor to AbstractItem to add categories at the beginning?
-    -2- add a method to convert an item type to another (isn't necessary instead delete the old one and add the new one)
     -CHECK- fill Category.kt
     -OBSOLETE- fill items.txt with ItemParser.kt
     -2- make it impossible to add two identical items to itemsList
-    -1- add history
-    -1- add history view
+    -1- simpler method to change the amount of clothing stuff
     -1- when an item is added to ItemsList it generates the whole observableShowItems list -> performance problems?
+    -1- add a method to convert an item type to another (isn't necessary instead delete the old one and add the new one)
 
 
 Classes:
