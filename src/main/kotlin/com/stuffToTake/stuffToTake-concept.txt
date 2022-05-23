@@ -20,7 +20,7 @@ Plan:
 
 
 To Do List:
-    -4- inform how I can show an interactive list with tornadofx
+    -CHECK- inform how I can show an interactive list with tornadofx
     -4- create the first beta views (just functional, not pretty)
             https://edvin.gitbooks.io/tornadofx-guide/content/part1/4_Basic_Controls.html
             https://edvin.gitbooks.io/tornadofx-guide/content/part1/5_Data_Controls.html
@@ -30,13 +30,14 @@ To Do List:
             https://github.com/edvin/tornadofx/wiki/Documentation to JSON???
         -CHECK- main view
         -CHECK- add item view
-            -1- change the class of itemType to a better than just a string ?
+            -1- change the class of itemType to a better than just a string ? (It works fine as it is)
             -1- radio buttons instead of a view list for categories
         -CHECK- list of items view
             -CHECK- full list of toMainz items view
             -CHECK- full list of toWW items view
             -CHECK- edit item per double click
             -2- deactivate sort by category or make it meaningful
+            -2- add search bar for searching by name or by category
         -CHECK- edit item view
             -CHECK- possible to delete items
         -3- item list for choosing
@@ -45,11 +46,10 @@ To Do List:
     -3- make better views
         -1- Font in the middle (per example in the tableview)
     -2.5- create GUI tests (oh pls no...)
-    -2- add a method to AbstractItem to add multiple categories at once?
-    -2- add a method to drop a category
+    -CHECK- add a method to AbstractItem to add multiple categories at once
     -CHECK- add a constructor to AbstractItem to add categories at the beginning?
-    -2- add a method to convert an item type to another
-    -2- fill Category.kt
+    -2- add a method to convert an item type to another (isn't necessary instead delete the old one and add the new one)
+    -CHECK- fill Category.kt
     -OBSOLETE- fill items.txt with ItemParser.kt
     -2- make it impossible to add two identical items to itemsList
     -1- add history
