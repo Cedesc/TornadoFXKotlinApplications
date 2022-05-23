@@ -41,6 +41,7 @@ To Do List:
         -CHECK- edit item view
             -CHECK- possible to delete items
         -3- item list for choosing
+            -1- disable the blue bar on selection
         -3- to take view
     -CHECK- check out what to implement in controllers
     -3- make better views

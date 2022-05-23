@@ -20,4 +20,8 @@ class ShowItem(val originalItem: AbstractItem)
         return "Showed $originalItem"
     }
 
+    fun changeToTake() {
+        toTake = toTake.not()
+    }
+
 }
