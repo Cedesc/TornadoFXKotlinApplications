@@ -36,13 +36,13 @@ class ToTakeView : View("To Take View") {
 
         button("Finished") {
             action {
-                TODO("Not yet implemented")
+                toTakeController.finish()
             }
         }
 
         button("Back") {
             action {
-                TODO("Not yet implemented")
+                toTakeController.closeToTakeView()
             }
         }
     }

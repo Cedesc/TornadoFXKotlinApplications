@@ -10,7 +10,7 @@ class ToTakeController: Controller() {
     var itemsListToTake: ObservableList<ShowItem> = observableListOf()
 
     fun toToTakeView(showItemsList: ObservableList<ShowItem>) {
-        itemsListToTake = showItemsList
+        itemsListToTake.setAll(showItemsList)
         find(ToTakeView::class).openModal()
     }
 
@@ -25,6 +25,20 @@ class ToTakeController: Controller() {
             copiedList.add(it.copy())
         }
         return copiedList
+    }
+
+    /**
+     * Closes the modal and saves the items in the history.
+     */
+    fun finish() {
+        TODO("Not yet implemented")
+    }
+
+    /**
+     * Closes the modal without saving the items in the history.
+     */
+    fun closeToTakeView() {
+        find(ToTakeView::class).close()
     }
 
 }
