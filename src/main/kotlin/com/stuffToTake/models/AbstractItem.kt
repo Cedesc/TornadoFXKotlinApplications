@@ -31,11 +31,7 @@ abstract class AbstractItem(itemName: String,
 
 
     init {
-        itemCategories.forEach { category ->
-            if (! this.addCategory(category))
-                throw Exception("Duplicated Category? " +
-                        "This shouldn't be possible, because it is a set what is given, not a list")
-        }
+        addMultipleCategories(itemCategories)
     }
 
     /**
@@ -106,5 +102,16 @@ abstract class AbstractItem(itemName: String,
     }
 
     abstract fun copy(): AbstractItem
+
+    /**
+     * Adds multiple categories.
+     */
+    protected fun addMultipleCategories(inputCategories: Set<Category>) {
+        inputCategories.forEach { category ->
+            if (! this.addCategory(category))
+                throw Exception("Duplicated Category? " +
+                        "This shouldn't be possible, because it is a set what is given, not a list")
+        }
+    }
 
 }

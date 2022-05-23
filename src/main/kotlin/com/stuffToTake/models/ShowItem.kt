@@ -25,7 +25,15 @@ class ShowItem(val originalItem: AbstractItem)
     }
 
     override fun copy(): ShowItem {  // TODO create tests
-        return ShowItem(originalItem.copy())
+        val copiedItem = ShowItem(originalItem.copy())
+        // It isn't enough to copy the original item,
+        // since the Show Item attributes may differ from the original item attributes.
+        copiedItem.name = this.name
+        copiedItem.amount = this.amount
+        copiedItem.toTake = this.toTake
+        copiedItem.categories.clear()
+        copiedItem.addMultipleCategories(this.categories)
+        return copiedItem
     }
 
 }
