@@ -3,7 +3,7 @@ ESSENTIAL ITEMS
 ITEM
     NAME: newWesterwald
     AMOUNT: 
-    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch ; Kleidung
+    CATEGORIES: Upload on PC ; Nintendo Switch Stuff ; Clothing
     TAKE: O
 
 
@@ -16,5 +16,5 @@ ONE TIME ITEMS
 ITEM
     NAME: newBoth
     AMOUNT: 2
-    CATEGORIES: Sachen für Nintendo Switch
+    CATEGORIES: Nintendo Switch Stuff
     TAKE: O

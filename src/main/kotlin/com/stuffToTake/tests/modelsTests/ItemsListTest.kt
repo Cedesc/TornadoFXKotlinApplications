@@ -327,7 +327,7 @@ class ItemsListTest {
                     "    To Take: true",
             "Essential Item: bigger bag\n" +
                     "    Amount: 2\n" +
-                    "    Categories: [Kleidung]\n" +
+                    "    Categories: [Clothing]\n" +
                     "    To Take: true",
             "Optional Item: sunglasses\n" +
                     "    Amount: -\n" +

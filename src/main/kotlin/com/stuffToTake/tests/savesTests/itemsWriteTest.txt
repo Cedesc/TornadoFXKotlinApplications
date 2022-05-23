@@ -3,7 +3,7 @@ ESSENTIAL ITEMS
 ITEM
     NAME: EssItem1
     AMOUNT: 
-    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch
+    CATEGORIES: Upload on PC ; Nintendo Switch Stuff
     TAKE: O
 ITEM
     NAME: EssItem2
@@ -13,7 +13,7 @@ ITEM
 ITEM
     NAME: EssItem3
     AMOUNT: ne Menge
-    CATEGORIES: Am PC hochladen
+    CATEGORIES: Upload on PC
     TAKE: O
 
 
@@ -31,10 +31,10 @@ ONE TIME ITEMS
 ITEM
     NAME: OneItem1
     AMOUNT: 2 dutzend
-    CATEGORIES: Sachen für Nintendo Switch ; Am PC hochladen
+    CATEGORIES: Nintendo Switch Stuff ; Upload on PC
     TAKE: X
 ITEM
     NAME: OneItem2
     AMOUNT: 
-    CATEGORIES: Am PC hochladen
+    CATEGORIES: Upload on PC
     TAKE: O

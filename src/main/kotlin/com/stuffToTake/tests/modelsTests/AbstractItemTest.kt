@@ -39,17 +39,17 @@ class AbstractItemTest {
             item1.toString())
         assertEquals("Optional Item: Item 2\n" +
                 "    Amount: 2\n" +
-                "    Categories: [Am PC hochladen, Kleidung]\n" +
+                "    Categories: [Upload on PC, Clothing]\n" +
                 "    To Take: true",
             item2.toString())
         assertEquals("One Time Item: Item 3\n" +
                 "    Amount: two\n" +
-                "    Categories: [Kleidung]\n" +
+                "    Categories: [Clothing]\n" +
                 "    To Take: false",
             item3.toString())
         assertEquals("Showed Optional Item: Item 2\n" +
                 "    Amount: 2\n" +
-                "    Categories: [Am PC hochladen, Kleidung]\n" +
+                "    Categories: [Upload on PC, Clothing]\n" +
                 "    To Take: true",
             item4.toString())
 

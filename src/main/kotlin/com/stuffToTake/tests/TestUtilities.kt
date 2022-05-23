@@ -37,7 +37,7 @@ class TestUtilities {
                 "ITEM\n" +
                 "    NAME: EssItem1\n" +
                 "    AMOUNT: \n" +
-                "    CATEGORIES: Am PC hochladen ; Sachen für Nintendo Switch\n" +
+                "    CATEGORIES: Upload on PC ; Nintendo Switch Stuff\n" +
                 "    TAKE: O\n" +
                 "ITEM\n" +
                 "    NAME: EssItem2\n" +
@@ -47,7 +47,7 @@ class TestUtilities {
                 "ITEM\n" +
                 "    NAME: EssItem3\n" +
                 "    AMOUNT: ne Menge\n" +
-                "    CATEGORIES: Am PC hochladen\n" +
+                "    CATEGORIES: Upload on PC\n" +
                 "    TAKE: O\n" +
                 "\n" +
                 "\n" +
@@ -65,12 +65,12 @@ class TestUtilities {
                 "ITEM\n" +
                 "    NAME: OneItem1\n" +
                 "    AMOUNT: 2 dutzend\n" +
-                "    CATEGORIES: Sachen für Nintendo Switch ; Am PC hochladen\n" +
+                "    CATEGORIES: Nintendo Switch Stuff ; Upload on PC\n" +
                 "    TAKE: X\n" +
                 "ITEM\n" +
                 "    NAME: OneItem2\n" +
                 "    AMOUNT: \n" +
-                "    CATEGORIES: Am PC hochladen\n" +
+                "    CATEGORIES: Upload on PC\n" +
                 "    TAKE: O\n"
     }
 
