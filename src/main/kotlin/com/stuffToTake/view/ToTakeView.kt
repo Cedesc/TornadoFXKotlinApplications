@@ -18,8 +18,8 @@ class ToTakeView : View("To Take View") {
 
     override val root = vbox {
         tableview(items) {
-            id = "itemsList"
-            column("new to take", ShowItem::toTakeProperty).useCheckbox()
+            id = "toTakeList"
+            column("To Take", ShowItem::toTakeProperty).useCheckbox()
             column("Name", ShowItem::nameProperty)
             column("Amount", ShowItem::amountProperty)
 

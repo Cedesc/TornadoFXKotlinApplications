@@ -21,8 +21,8 @@ class ChooseItemsView : View("Choose Items View") {
 
     override val root = vbox {
         tableview(selectedObservableItemsList) {
-            id = "itemsList"
-            column("new to take", ShowItem::toTakeProperty).useCheckbox()
+            id = "chooseList"
+            column("To Take", ShowItem::toTakeProperty).useCheckbox()
             column("Name", ShowItem::nameProperty)
             column("Amount", ShowItem::amountProperty)
             column("Categories", ShowItem::categoriesProperty).cellFormat {
@@ -51,7 +51,6 @@ class ChooseItemsView : View("Choose Items View") {
         //  so the Essential Items will stay as "toTake", oneTime will be false in toTake and so on
 
 
-        // TODO put this in the controller (a new controller??)
         button("Print all selected") {  // TODO (afterwards) delete
             action {
                 selectedObservableItemsList.value.forEach { item ->
