@@ -11,7 +11,7 @@ class TestUtilities {
 
         val essItem1 = EssentialItem("EssItem1", "", true)
         essItem1.addCategory(Category.ON_PC)
-        essItem1.addCategory(Category.NINTENDO_SWITCH)
+        essItem1.addCategory(Category.GAME_CONSOLES_STUFF)
         val essItem2 = EssentialItem("EssItem2", 3, false)
         val essItem3 = EssentialItem("EssItem3", "ne Menge", true)
         essItem3.addCategory(Category.ON_PC)
@@ -19,7 +19,7 @@ class TestUtilities {
         val optItem1 = OptionalItem("OptItem1", "", false)
 
         val oneItem1 = OneTimeItem("OneItem1", "2 dutzend", false)
-        oneItem1.addCategory(Category.NINTENDO_SWITCH)
+        oneItem1.addCategory(Category.GAME_CONSOLES_STUFF)
         oneItem1.addCategory(Category.ON_PC)
         val oneItem2 = OneTimeItem("OneItem2", "", true)
         oneItem2.addCategory(Category.ON_PC)
@@ -37,7 +37,7 @@ class TestUtilities {
                 "ITEM\n" +
                 "    NAME: EssItem1\n" +
                 "    AMOUNT: \n" +
-                "    CATEGORIES: Upload on PC ; Nintendo Switch Stuff\n" +
+                "    CATEGORIES: Upload on PC ; Game Consoles Stuff\n" +
                 "    TAKE: O\n" +
                 "ITEM\n" +
                 "    NAME: EssItem2\n" +
@@ -65,7 +65,7 @@ class TestUtilities {
                 "ITEM\n" +
                 "    NAME: OneItem1\n" +
                 "    AMOUNT: 2 dutzend\n" +
-                "    CATEGORIES: Nintendo Switch Stuff ; Upload on PC\n" +
+                "    CATEGORIES: Game Consoles Stuff ; Upload on PC\n" +
                 "    TAKE: X\n" +
                 "ITEM\n" +
                 "    NAME: OneItem2\n" +

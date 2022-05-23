@@ -75,23 +75,23 @@ class AbstractItemTest {
 
         // add categories
         assert(optionalItem.addCategory(Category.ON_PC))
-        assert(optionalItem.addCategory(Category.NINTENDO_SWITCH))
+        assert(optionalItem.addCategory(Category.GAME_CONSOLES_STUFF))
 
         // check if categories are right
         assertEquals(2, optionalItem.categories.size)
         assert(optionalItem.categories.contains(Category.ON_PC))
-        assert(optionalItem.categories.contains(Category.NINTENDO_SWITCH))
+        assert(optionalItem.categories.contains(Category.GAME_CONSOLES_STUFF))
 
 
         // add categories
         assert(oneTimeItem.addCategory(Category.ON_PC))
         assert(! oneTimeItem.addCategory(Category.ON_PC))
-        assert(oneTimeItem.addCategory(Category.NINTENDO_SWITCH))
+        assert(oneTimeItem.addCategory(Category.GAME_CONSOLES_STUFF))
 
         // check if categories are right
         assertEquals(2, oneTimeItem.categories.size)
         assert(oneTimeItem.categories.contains(Category.ON_PC))
-        assert(oneTimeItem.categories.contains(Category.NINTENDO_SWITCH))
+        assert(oneTimeItem.categories.contains(Category.GAME_CONSOLES_STUFF))
 
     }
 

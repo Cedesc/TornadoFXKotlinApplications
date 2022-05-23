@@ -3,7 +3,7 @@ ESSENTIAL ITEMS
 ITEM
     NAME: Mainz
     AMOUNT: 3
-    CATEGORIES: Nintendo Switch Stuff
+    CATEGORIES: Game Consoles Stuff
     TAKE: O
 
 
@@ -16,10 +16,10 @@ ONE TIME ITEMS
 ITEM
     NAME: Both
     AMOUNT: 
-    CATEGORIES: Upload on PC ; Nintendo Switch Stuff
+    CATEGORIES: Upload on PC ; Game Consoles Stuff
     TAKE: X
 ITEM
     NAME: newBoth
     AMOUNT: 2
-    CATEGORIES: Nintendo Switch Stuff
+    CATEGORIES: Game Consoles Stuff
     TAKE: O

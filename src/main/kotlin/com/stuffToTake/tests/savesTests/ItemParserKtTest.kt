@@ -58,7 +58,7 @@ class ItemParserKtTest {
     fun txtToCode() {
         val expected: MutableList<String> = mutableListOf("Essential Item: EssItem1\n" +
                 "    Amount: -\n" +
-                "    Categories: [Upload on PC, Nintendo Switch Stuff]\n" +
+                "    Categories: [Upload on PC, Game Consoles Stuff]\n" +
                 "    To Take: true",
                 "Essential Item: EssItem2\n" +
                 "    Amount: 3\n" +
@@ -74,7 +74,7 @@ class ItemParserKtTest {
                 "    To Take: false",
                 "One Time Item: OneItem1\n" +
                 "    Amount: 2 dutzend\n" +
-                "    Categories: [Nintendo Switch Stuff, Upload on PC]\n" +
+                "    Categories: [Game Consoles Stuff, Upload on PC]\n" +
                 "    To Take: false",
                 "One Time Item: OneItem2\n" +
                 "    Amount: -\n" +
@@ -88,23 +88,23 @@ class ItemParserKtTest {
     fun extractAttributesFromString() {
         var expected =
             ItemAttributes("EssItem1", "",
-                           mutableListOf(Category.ON_PC, Category.NINTENDO_SWITCH), true)
+                           mutableListOf(Category.ON_PC, Category.GAME_CONSOLES_STUFF), true)
         var actual: ItemAttributes =
             itemParserEmpty.extractAttributesFromString(
                 "    NAME: EssItem1",
                 "    AMOUNT:",
-                "    CATEGORIES: Upload on PC ; Nintendo Switch Stuff",
+                "    CATEGORIES: Upload on PC ; Game Consoles Stuff",
                 "    TAKE: O")
         assertEquals(expected, actual)
 
         expected =
             ItemAttributes("OneItem1", "2 dutzend",
-                           mutableListOf(Category.NINTENDO_SWITCH, Category.ON_PC), false)
+                           mutableListOf(Category.GAME_CONSOLES_STUFF, Category.ON_PC), false)
         actual =
             itemParserEmpty.extractAttributesFromString(
                 "    NAME: OneItem1",
                 "    AMOUNT: 2 dutzend",
-                "    CATEGORIES: Nintendo Switch Stuff ; Upload on PC",
+                "    CATEGORIES: Game Consoles Stuff ; Upload on PC",
                 "    TAKE: X")
         assertEquals(expected, actual)
     }
@@ -123,8 +123,8 @@ class ItemParserKtTest {
         assertEquals(mutableListOf<Category>(), itemParserEmpty.categoriesStringToEnum(""))
         assertEquals(mutableListOf(Category.ON_PC),
             itemParserEmpty.categoriesStringToEnum("Upload on PC"))
-        assertEquals(mutableListOf(Category.ON_PC, Category.NINTENDO_SWITCH),
-            itemParserEmpty.categoriesStringToEnum("Upload on PC ; Nintendo Switch Stuff"))
+        assertEquals(mutableListOf(Category.ON_PC, Category.GAME_CONSOLES_STUFF),
+            itemParserEmpty.categoriesStringToEnum("Upload on PC ; Game Consoles Stuff"))
         assertEquals(mutableListOf<Category>(),
             itemParserEmpty.categoriesStringToEnum("something ; that fits in ; no category"))
     }
@@ -162,14 +162,14 @@ class ItemParserKtTest {
 
     @Test
     fun categoriesEnumToString() {
-        assertEquals("Upload on PC ; Nintendo Switch Stuff",
-            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.ON_PC, Category.NINTENDO_SWITCH)))
-        assertEquals("Nintendo Switch Stuff ; Upload on PC",
-            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.NINTENDO_SWITCH, Category.ON_PC)))
+        assertEquals("Upload on PC ; Game Consoles Stuff",
+            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.ON_PC, Category.GAME_CONSOLES_STUFF)))
+        assertEquals("Game Consoles Stuff ; Upload on PC",
+            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.GAME_CONSOLES_STUFF, Category.ON_PC)))
         assertEquals("Upload on PC",
             itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.ON_PC)))
-        assertEquals("Nintendo Switch Stuff",
-            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.NINTENDO_SWITCH)))
+        assertEquals("Game Consoles Stuff",
+            itemParserEmpty.categoriesEnumToString(mutableSetOf(Category.GAME_CONSOLES_STUFF)))
     }
 
     @Test
@@ -189,7 +189,7 @@ class ItemParserKtTest {
             "ITEM\n" +
             "    NAME: EssItem1\n" +
             "    AMOUNT: \n" +
-            "    CATEGORIES: Upload on PC ; Nintendo Switch Stuff\n" +
+            "    CATEGORIES: Upload on PC ; Game Consoles Stuff\n" +
             "    TAKE: O\n" +
             "ITEM\n" +
             "    NAME: EssItem2\n" +
@@ -222,7 +222,7 @@ class ItemParserKtTest {
             "ITEM\n" +
             "    NAME: OneItem1\n" +
             "    AMOUNT: 2 dutzend\n" +
-            "    CATEGORIES: Nintendo Switch Stuff ; Upload on PC\n" +
+            "    CATEGORIES: Game Consoles Stuff ; Upload on PC\n" +
             "    TAKE: X\n" +
             "ITEM\n" +
             "    NAME: OneItem2\n" +

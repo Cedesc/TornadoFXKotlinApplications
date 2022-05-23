@@ -20,7 +20,7 @@ class TestController : Controller() {  // TODO (afterwards) delete
     }
 
     fun categoryChange() {
-        testItem.addCategory(Category.NINTENDO_SWITCH)
+        testItem.addCategory(Category.GAME_CONSOLES_STUFF)
     }
 
     fun categoriesChange() {

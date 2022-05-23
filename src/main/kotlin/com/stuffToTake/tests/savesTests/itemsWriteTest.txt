@@ -3,7 +3,7 @@ ESSENTIAL ITEMS
 ITEM
     NAME: EssItem1
     AMOUNT: 
-    CATEGORIES: Upload on PC ; Nintendo Switch Stuff
+    CATEGORIES: Upload on PC ; Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: EssItem2
@@ -31,7 +31,7 @@ ONE TIME ITEMS
 ITEM
     NAME: OneItem1
     AMOUNT: 2 dutzend
-    CATEGORIES: Nintendo Switch Stuff ; Upload on PC
+    CATEGORIES: Game Consoles Stuff ; Upload on PC
     TAKE: X
 ITEM
     NAME: OneItem2

@@ -3,7 +3,7 @@ ESSENTIAL ITEMS
 ITEM
     NAME: newWesterwald
     AMOUNT: 
-    CATEGORIES: Upload on PC ; Nintendo Switch Stuff ; Clothing
+    CATEGORIES: Upload on PC ; Game Consoles Stuff ; Clothing
     TAKE: O
 
 
@@ -16,5 +16,5 @@ ONE TIME ITEMS
 ITEM
     NAME: newBoth
     AMOUNT: 2
-    CATEGORIES: Nintendo Switch Stuff
+    CATEGORIES: Game Consoles Stuff
     TAKE: O
