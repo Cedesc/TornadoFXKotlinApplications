@@ -25,4 +25,8 @@ class OneTimeItem(itemName: String,
         return "One Time ${super.toString()}"
     }
 
+    override fun copy(): OneTimeItem {  // TODO create tests
+        return OneTimeItem(this.name, this.amount, this.toTake, this.categories)
+    }
+
 }

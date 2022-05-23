@@ -25,4 +25,8 @@ class OptionalItem(itemName: String,
         return "Optional ${super.toString()}"
     }
 
+    override fun copy(): OptionalItem {  // TODO create tests
+        return OptionalItem(this.name, this.amount, this.toTake, this.categories)
+    }
+
 }

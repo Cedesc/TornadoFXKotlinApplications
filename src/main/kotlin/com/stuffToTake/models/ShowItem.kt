@@ -24,4 +24,8 @@ class ShowItem(val originalItem: AbstractItem)
         toTake = toTake.not()
     }
 
+    override fun copy(): ShowItem {  // TODO create tests
+        return ShowItem(originalItem.copy())
+    }
+
 }

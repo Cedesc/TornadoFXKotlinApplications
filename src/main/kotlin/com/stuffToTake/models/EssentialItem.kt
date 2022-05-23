@@ -25,4 +25,8 @@ class EssentialItem(itemName: String,
         return "Essential ${super.toString()}"
     }
 
+    override fun copy(): EssentialItem {  // TODO create tests
+        return EssentialItem(this.name, this.amount, this.toTake, this.categories)
+    }
+
 }

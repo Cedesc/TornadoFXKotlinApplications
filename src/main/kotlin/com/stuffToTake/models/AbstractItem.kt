@@ -105,4 +105,6 @@ abstract class AbstractItem(itemName: String,
         return result
     }
 
+    abstract fun copy(): AbstractItem
+
 }
