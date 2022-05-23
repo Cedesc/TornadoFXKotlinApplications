@@ -27,8 +27,15 @@ class MenuView : View("Menu") {
                 menuController.toListOfItemsView()
             }
         }
-        button("Choose Items") {
+        button("Choose Items for Mainz") {
             action {
+                itemsController.changeSelectedListToMainz()
+                menuController.toChooseItemsView()
+            }
+        }
+        button("Choose Items for WW") {
+            action {
+                itemsController.changeSelectedListToWW()
                 menuController.toChooseItemsView()
             }
         }

@@ -16,7 +16,7 @@ class MenuController : Controller() {
     }
 
     fun toChooseItemsView() {
-        println("Not yet implemented")
+        find(MenuView::class).replaceWith(ChooseItemsView::class, sizeToScene = true, centerOnScreen = true)
     }
 
     fun toHistoryView() {

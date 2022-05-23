@@ -109,4 +109,9 @@ class ItemsListController : Controller() {
         return item
     }
 
+    fun refreshItemsLists() {
+        itemsListToMainz.refreshShowItems()
+        itemsListToWW.refreshShowItems()
+    }
+
 }
