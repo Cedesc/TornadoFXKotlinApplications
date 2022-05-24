@@ -45,7 +45,7 @@ To Do List:
         -CHECK- to take view
             -2- items disappear or pushed to the end when they're clicked
         -3- history view
-    -4- fill with meaningful item
+    -CHECK- fill with meaningful item
     -CHECK- check out what to implement in controllers
     -3- make better views
         -1- Font in the middle (per example in the tableview)
