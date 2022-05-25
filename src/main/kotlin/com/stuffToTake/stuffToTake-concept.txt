@@ -52,6 +52,7 @@ To Do List:
             [useful keywords:
             fontWeight, fontSize, fontFamily, c(), textFill, backgroundColor, backgroundInsets, multi(Color...)
             padding, borderColor, rotate, hover, mixin (for reusing, so for "create stylesheet...")]
+        -3- make the windows bigger
         -3- add the style function to all labels etc and use them
         -3- create stylesheet for repetitive styles of components
         -1- Font in the middle (per example in the tableview)
