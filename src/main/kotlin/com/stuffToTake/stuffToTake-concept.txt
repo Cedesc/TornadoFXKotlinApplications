@@ -48,6 +48,12 @@ To Do List:
     -CHECK- fill with meaningful item
     -CHECK- check out what to implement in controllers
     -3- make better views
+            https://docs.tornadofx.io/0_subsection/6_css
+            [useful keywords:
+            fontWeight, fontSize, fontFamily, c(), textFill, backgroundColor, backgroundInsets, multi(Color...)
+            padding, borderColor, rotate, hover, mixin (for reusing, so for "create stylesheet...")]
+        -3- add the style function to all labels etc and use them
+        -3- create stylesheet for repetitive styles of components
         -1- Font in the middle (per example in the tableview)
     -2.5- create GUI tests (oh pls no...)
     -CHECK- add a method to AbstractItem to add multiple categories at once
