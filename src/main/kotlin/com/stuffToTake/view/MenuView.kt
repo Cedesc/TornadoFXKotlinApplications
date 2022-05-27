@@ -28,7 +28,7 @@ class MenuView : View("Menu") {
             }
             style {  // TODO repetitive, bring together
                 padding = box(10.px)
-                this.wrapText = true
+                wrapText = true
                 fontSize = 15.px
                 fontWeight = FontWeight.BOLD
                 textAlignment = TextAlignment.CENTER
@@ -46,7 +46,7 @@ class MenuView : View("Menu") {
             }
             style {  // TODO repetitive, bring together
                 padding = box(10.px)
-                this.wrapText = true
+                wrapText = true
                 fontSize = 15.px
                 fontWeight = FontWeight.BOLD
                 textAlignment = TextAlignment.CENTER
@@ -64,7 +64,7 @@ class MenuView : View("Menu") {
             }
             style {  // TODO repetitive, bring together
                 padding = box(10.px)
-                this.wrapText = true
+                wrapText = true
                 fontSize = 15.px
                 fontWeight = FontWeight.BOLD
                 textAlignment = TextAlignment.CENTER
@@ -82,7 +82,7 @@ class MenuView : View("Menu") {
             }
             style {  // TODO repetitive, bring together
                 padding = box(10.px)
-                this.wrapText = true
+                wrapText = true
                 fontSize = 15.px
                 fontWeight = FontWeight.BOLD
                 textAlignment = TextAlignment.CENTER
@@ -100,7 +100,7 @@ class MenuView : View("Menu") {
             }
             style {  // TODO repetitive, bring together
                 padding = box(10.px)
-                this.wrapText = true
+                wrapText = true
                 fontSize = 15.px
                 fontWeight = FontWeight.BOLD
                 textAlignment = TextAlignment.CENTER
@@ -119,7 +119,7 @@ class MenuView : View("Menu") {
             }
             style {  // TODO repetitive, bring together
                 padding = box(10.px)
-                this.wrapText = true
+                wrapText = true
                 fontSize = 15.px
                 fontWeight = FontWeight.BOLD
                 textAlignment = TextAlignment.CENTER
