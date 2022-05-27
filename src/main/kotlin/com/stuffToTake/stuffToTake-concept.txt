@@ -30,6 +30,8 @@ To Do List:
             https://github.com/edvin/tornadofx/wiki/Documentation to JSON???
         -CHECK- main view
         -CHECK- add item view
+            -3- make color changing buttons instead of checkboxes
+            -1- make javafx ListView to tornadofx listview
             -1- change the class of itemType to a better than just a string ? (It works fine as it is)
             -1- radio buttons instead of a view list for categories
         -CHECK- list of items view
