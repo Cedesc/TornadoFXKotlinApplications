@@ -13,7 +13,7 @@ class MenuView : View("Menu") {
 
     override val root = gridpane {
         // set size
-        setPrefSize(500.0, 195.0)
+        setPrefSize(435.0, 180.0)
 
         button("Add Item") {
             action {
@@ -44,7 +44,7 @@ class MenuView : View("Menu") {
             gridpaneConstraints {
                 columnRowIndex(0, 1)
             }
-            style {  // TODO repetitive, bring together
+            style {
                 padding = box(10.px)
                 wrapText = true
                 fontSize = 15.px
@@ -62,7 +62,7 @@ class MenuView : View("Menu") {
             gridpaneConstraints {
                 columnRowIndex(1, 1)
             }
-            style {  // TODO repetitive, bring together
+            style {
                 padding = box(10.px)
                 wrapText = true
                 fontSize = 15.px
@@ -80,7 +80,7 @@ class MenuView : View("Menu") {
             gridpaneConstraints {
                 columnRowIndex(0, 2)
             }
-            style {  // TODO repetitive, bring together
+            style {
                 padding = box(10.px)
                 wrapText = true
                 fontSize = 15.px
@@ -98,7 +98,7 @@ class MenuView : View("Menu") {
             gridpaneConstraints {
                 columnRowIndex(1, 2)
             }
-            style {  // TODO repetitive, bring together
+            style {
                 padding = box(10.px)
                 wrapText = true
                 fontSize = 15.px
@@ -117,7 +117,7 @@ class MenuView : View("Menu") {
                 columnSpan = 2
                 marginTop = 10.0
             }
-            style {  // TODO repetitive, bring together
+            style {
                 padding = box(10.px)
                 wrapText = true
                 fontSize = 15.px
