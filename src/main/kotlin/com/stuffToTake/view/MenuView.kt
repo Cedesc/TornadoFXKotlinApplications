@@ -13,7 +13,7 @@ class MenuView : View("Menu") {
 
     override val root = gridpane {
         // set size
-        setPrefSize(500.0, 195.0)
+        setPrefSize(435.0, 180.0)
 
         button("Add Item") {
             action {
@@ -26,13 +26,6 @@ class MenuView : View("Menu") {
                 columnSpan = 2
                 marginBottom = 10.0
             }
-            style {  // TODO repetitive, bring together
-                padding = box(10.px)
-                wrapText = true
-                fontSize = 15.px
-                fontWeight = FontWeight.BOLD
-                textAlignment = TextAlignment.CENTER
-            }
         }
         button("Full List of \"To Mainz\"-Items") {
             action {
@@ -43,13 +36,6 @@ class MenuView : View("Menu") {
             useMaxSize = true
             gridpaneConstraints {
                 columnRowIndex(0, 1)
-            }
-            style {  // TODO repetitive, bring together
-                padding = box(10.px)
-                wrapText = true
-                fontSize = 15.px
-                fontWeight = FontWeight.BOLD
-                textAlignment = TextAlignment.CENTER
             }
         }
         button("Full List of \"To WW\"-Items") {
@@ -62,13 +48,6 @@ class MenuView : View("Menu") {
             gridpaneConstraints {
                 columnRowIndex(1, 1)
             }
-            style {  // TODO repetitive, bring together
-                padding = box(10.px)
-                wrapText = true
-                fontSize = 15.px
-                fontWeight = FontWeight.BOLD
-                textAlignment = TextAlignment.CENTER
-            }
         }
         button("Choose Items for Mainz") {
             action {
@@ -80,13 +59,6 @@ class MenuView : View("Menu") {
             gridpaneConstraints {
                 columnRowIndex(0, 2)
             }
-            style {  // TODO repetitive, bring together
-                padding = box(10.px)
-                wrapText = true
-                fontSize = 15.px
-                fontWeight = FontWeight.BOLD
-                textAlignment = TextAlignment.CENTER
-            }
         }
         button("Choose Items for WW") {
             action {
@@ -97,13 +69,6 @@ class MenuView : View("Menu") {
             useMaxSize = true
             gridpaneConstraints {
                 columnRowIndex(1, 2)
-            }
-            style {  // TODO repetitive, bring together
-                padding = box(10.px)
-                wrapText = true
-                fontSize = 15.px
-                fontWeight = FontWeight.BOLD
-                textAlignment = TextAlignment.CENTER
             }
         }
         button("History View") {
@@ -117,25 +82,16 @@ class MenuView : View("Menu") {
                 columnSpan = 2
                 marginTop = 10.0
             }
-            style {  // TODO repetitive, bring together
-                padding = box(10.px)
-                wrapText = true
-                fontSize = 15.px
-                fontWeight = FontWeight.BOLD
-                textAlignment = TextAlignment.CENTER
-            }
         }
 
-//        button("Test View 1") {  // TODO (afterwards) delete
-//            action {
-//                menuController.toTestView1()
-//            }
-//        }
-//
-//        button("Test View 2") {  // TODO (afterwards) delete
-//            action {
-//                menuController.toTestView2()
-//            }
-//        }
+        // style attributes that are applied to every child
+        children.style(append = true) {
+            padding = box(10.px)
+            wrapText = true
+            fontWeight = FontWeight.BOLD
+            fontSize = 15.px
+            textAlignment = TextAlignment.CENTER
+        }
+
     }
 }

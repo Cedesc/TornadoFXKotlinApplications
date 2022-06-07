@@ -5,6 +5,7 @@ import com.stuffToTake.controllers.MenuController
 import com.stuffToTake.models.Category
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.beans.property.SimpleStringProperty
+import javafx.geometry.Pos
 import javafx.scene.control.ListView
 import javafx.scene.control.SelectionMode
 import tornadofx.*
@@ -23,25 +24,105 @@ class AddItemView : View("Add Item") {
     private val menuController: MenuController by inject()
     private val itemsListController: ItemsListController by inject()
 
-    override val root = vbox {
+    private val ownPrefWidth: Double = 350.0
+    private val ownPrefHeight: Double = 300.0
+
+    override val root = gridpane {
+        // set size
+        setPrefSize(ownPrefWidth, ownPrefHeight)
+
+        checkbox("To Mainz", toWW) {
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(0, 0)
+            }
+            style {  // TODO repetitive, bring together
+                alignment = Pos.CENTER
+                padding = box(10.px)
+            }
+        }
+        checkbox("To WW", toMainz) {
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(1, 0)
+            }
+            style {
+                alignment = Pos.CENTER
+                padding = box(10.px)
+            }
+        }
+
         fieldset("Name") {
             textfield(itemName).required()
+
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(0, 1)
+            }
+            style {
+                setPrefWidth(ownPrefWidth / 2)
+            }
         }
+
         fieldset("Amount") {
             textfield(itemAmount)
+
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(0, 2)
+            }
+            style {
+                setPrefWidth(ownPrefWidth / 2)
+            }
         }
+
         fieldset("Type") {
             combobox(itemType, observableListOf("Essential Item", "Optional Item", "One Time Item")).required()
+
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(0, 3)
+            }
+            style {
+                setPrefWidth(ownPrefWidth / 2)
+            }
         }
+
         fieldset("Categories") {
             categoriesListView.selectionModel.selectionMode = SelectionMode.MULTIPLE
             add(categoriesListView)
+
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(1, 1)
+                rowSpan = 3
+            }
+            style {
+                setPrefWidth(ownPrefWidth / 2)
+            }
         }
-        fieldset {
-            hbox {
-                checkbox("To Take", itemToTake)
-                checkbox("To Mainz", toMainz)
-                checkbox("To WW", toWW)
+
+
+        checkbox("To Take", itemToTake) {
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(0, 4)
+                columnSpan = 2
+            }
+            style {
+                alignment = Pos.CENTER
+                padding = box(10.px)
+            }
+        }
+
+        button("Back to Menu") {
+            action {
+                menuController.backToMenuView()
+            }
+
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(0, 5)
             }
         }
 
@@ -61,11 +142,10 @@ class AddItemView : View("Add Item") {
                 // clear fields and disable button = reset view
                 menuController.refresh()
             }
-        }
 
-        button("Back to Menu") {
-            action {
-                menuController.backToMenuView()
+            useMaxSize = true
+            gridpaneConstraints {
+                columnRowIndex(1, 5)
             }
         }
     }
