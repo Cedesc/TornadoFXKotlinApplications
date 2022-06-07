@@ -40,13 +40,8 @@ class AddItemView : View("Add Item") {
         fieldset {
             hbox {
                 checkbox("To Take", itemToTake)
-
                 checkbox("To Mainz", toMainz)
-
                 checkbox("To WW", toWW)
-
-                add(OwnButton("To Mainz"))
-
             }
         }
 
