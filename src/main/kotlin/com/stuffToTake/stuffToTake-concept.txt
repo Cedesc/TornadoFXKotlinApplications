@@ -58,17 +58,18 @@ To Do List:
             [useful keywords:
             fontWeight, fontSize, fontFamily, c(), textFill, backgroundColor, backgroundInsets, multi(Color...)
             padding, borderColor, rotate, hover, mixin (for reusing, so for "create stylesheet...")]
-        -4- windows
+        -CHECK- windows
             -CHECK- MenuView
             -CHECK- AddItemView
             -CHECK- ListOfItemsView
             -CHECK- ChooseItemsView
             -CHECK- EditItemView
             -CHECK- ToTakeView
-            -4- ConfirmView
+            -CHECK- ConfirmView
         -3- make the windows bigger
         -3- add the style function to all labels etc and use them
         -3- create stylesheet for repetitive styles of components
+        -2- more colors
         -1- Font in the middle (per example in the tableview)
     -2.5- create GUI tests (oh pls no...)
     -CHECK- add a method to AbstractItem to add multiple categories at once
