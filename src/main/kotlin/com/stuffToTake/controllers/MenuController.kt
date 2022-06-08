@@ -23,14 +23,6 @@ class MenuController : Controller() {
         println("Not yet implemented")
     }
 
-    fun toTestView1() {  // TODO (afterwards) delete
-        find(MenuView::class).replaceWith(TestView1::class, sizeToScene = true, centerOnScreen = true)
-    }
-
-    fun toTestView2() {  // TODO (afterwards) delete
-        find(MenuView::class).replaceWith(TestView2::class, sizeToScene = true, centerOnScreen = true)
-    }
-
 
     fun backToMenuView() {
         primaryStage.uiComponent<UIComponent>()?.replaceWith(MenuView::class, sizeToScene = true, centerOnScreen = true)
