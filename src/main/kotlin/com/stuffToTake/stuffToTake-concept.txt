@@ -48,6 +48,8 @@ To Do List:
             -1- disable the blue bar on selection
         -CHECK- to take view
             -2- items disappear or pushed to the end when they're clicked
+                https://github.com/edvin/tornadofx/issues/1016
+                https://github.com/edvin/tornadofx/wiki/Utilities
         -3- history view
     -CHECK- fill with meaningful item
     -CHECK- check out what to implement in controllers
@@ -62,7 +64,7 @@ To Do List:
             -4- ListOfItemsView
             -CHECK- ChooseItemsView
             -4- EditItemView
-            -4- ToTakeView
+            -CHECK- ToTakeView
             -4- ConfirmView
         -3- make the windows bigger
         -3- add the style function to all labels etc and use them
