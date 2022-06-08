@@ -38,7 +38,7 @@ class AddItemView : View("Add Item") {
             gridpaneConstraints {
                 columnRowIndex(0, 0)
             }
-            style {  // TODO repetitive, bring together
+            style {
                 alignment = Pos.CENTER
                 padding = box(10.px)
                 fontWeight = FontWeight.BOLD
