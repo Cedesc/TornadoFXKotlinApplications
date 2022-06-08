@@ -56,6 +56,12 @@ To Do List:
             [useful keywords:
             fontWeight, fontSize, fontFamily, c(), textFill, backgroundColor, backgroundInsets, multi(Color...)
             padding, borderColor, rotate, hover, mixin (for reusing, so for "create stylesheet...")]
+        -4- windows
+            -4- ListOfItemsView
+            -4- ChooseItemsView
+            -4- EditItemView
+            -4- ToTakeView
+            -4- ConfirmView
         -3- make the windows bigger
         -3- add the style function to all labels etc and use them
         -3- create stylesheet for repetitive styles of components
