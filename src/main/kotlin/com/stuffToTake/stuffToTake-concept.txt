@@ -57,8 +57,10 @@ To Do List:
             fontWeight, fontSize, fontFamily, c(), textFill, backgroundColor, backgroundInsets, multi(Color...)
             padding, borderColor, rotate, hover, mixin (for reusing, so for "create stylesheet...")]
         -4- windows
+            -CHECK- MenuView
+            -CHECK- AddItemView
             -4- ListOfItemsView
-            -4- ChooseItemsView
+            -CHECK- ChooseItemsView
             -4- EditItemView
             -4- ToTakeView
             -4- ConfirmView
@@ -75,6 +77,7 @@ To Do List:
     -1- simpler method to change the amount of clothing stuff
     -1- when an item is added to ItemsList it generates the whole observableShowItems list -> performance problems?
     -1- add a method to convert an item type to another (isn't necessary instead delete the old one and add the new one)
+    -1- add image to item and show it tiny in the list
 
 
 Classes:
