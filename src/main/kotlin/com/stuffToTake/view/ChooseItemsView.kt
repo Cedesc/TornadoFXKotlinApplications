@@ -57,14 +57,9 @@ class ChooseItemsView : View("Choose Items View") {
 
             smartResize()
 
-//            useMaxSize = true
-//            usePrefHeight = 600.0
+
             prefHeight = ownPrefHeight - (ownPrefHeight / 13)
             style {
-//                alignment = Pos.CENTER
-//                padding = box(10.px)
-//                fontWeight = FontWeight.BOLD
-//                wrapText = true
                 fontSize = 15.px
             }
         }
@@ -109,11 +104,6 @@ class ChooseItemsView : View("Choose Items View") {
                     fontWeight = FontWeight.BOLD
                 }
             }
-        }
-
-        // style attributes that are applied to every child
-        children.style(append = true) {
-//            fontSize = 15.px
         }
 
     }
