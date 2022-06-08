@@ -28,6 +28,7 @@ class AddItemView : View("Add Item") {
     private val ownPrefWidth: Double = 400.0
     private val ownPrefHeight: Double = 350.0
 
+
     override val root = gridpane {
         // set size
         setPrefSize(ownPrefWidth, ownPrefHeight)
