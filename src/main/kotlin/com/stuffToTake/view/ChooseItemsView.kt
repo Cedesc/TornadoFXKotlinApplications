@@ -6,7 +6,9 @@ import com.stuffToTake.controllers.ToTakeController
 import com.stuffToTake.models.ShowItem
 import javafx.beans.property.SimpleObjectProperty
 import javafx.collections.ObservableList
+import javafx.geometry.Pos
 import javafx.scene.control.SelectionMode
+import javafx.scene.text.FontWeight
 import tornadofx.*
 
 class ChooseItemsView : View("Choose Items View") {
@@ -18,13 +20,28 @@ class ChooseItemsView : View("Choose Items View") {
     private val selectedObservableItemsList: SimpleObjectProperty<ObservableList<ShowItem>> =
         SimpleObjectProperty(itemsListController.selectedItemList.observableShowItems)
 
+    private val ownPrefWidth: Double = 500.0
+    private val ownPrefHeight: Double = 900.0
+
 
     override val root = vbox {
+        // set size
+        setPrefSize(ownPrefWidth, ownPrefHeight)
+
         tableview(selectedObservableItemsList) {
             id = "chooseList"
             column("To Take", ShowItem::toTakeProperty).useCheckbox()
-            column("Name", ShowItem::nameProperty)
-            column("Amount", ShowItem::amountProperty)
+            column("Name", ShowItem::nameProperty) {
+                style {
+                    enableTextWrap()
+                }
+            }
+            column("Amount", ShowItem::amountProperty) {
+                style {
+                    alignment = Pos.CENTER
+//                    padding = box(10.px)
+                }
+            }
             column("Categories", ShowItem::categoriesProperty).cellFormat {
                 text = ""
                 it.forEach { category ->
@@ -33,14 +50,23 @@ class ChooseItemsView : View("Choose Items View") {
             }
 
             selectionModel.selectionMode = SelectionMode.SINGLE
-
             onUserSelect(clickCount = 1) {
                 it.changeToTake()
                 selectionModel.select(null)
             }
 
-
             smartResize()
+
+//            useMaxSize = true
+//            usePrefHeight = 600.0
+            prefHeight = ownPrefHeight - (ownPrefHeight / 13)
+            style {
+//                alignment = Pos.CENTER
+//                padding = box(10.px)
+//                fontWeight = FontWeight.BOLD
+//                wrapText = true
+                fontSize = 15.px
+            }
         }
 
         // TODO Idea:
@@ -51,18 +77,43 @@ class ChooseItemsView : View("Choose Items View") {
         //  so the Essential Items will stay as "toTake", oneTime will be false in toTake and so on
 
 
-        button("To \"ToTake\"-View") {
-            action {
-                val selectedItems: ObservableList<ShowItem> =
-                    toTakeController.createCopiedListOfSelectedItems(selectedObservableItemsList.value)
-                toTakeController.toToTakeView(selectedItems)
+        hbox {
+            button("Back") {
+                action {
+                    menuController.backToMenuView()
+                }
+
+                prefWidth = ownPrefWidth / 2
+                prefHeight = ownPrefHeight / 13
+                style {
+                    alignment = Pos.CENTER
+                    padding = box(10.px)
+                    fontSize = 15.px
+                    fontWeight = FontWeight.BOLD
+                }
+            }
+
+            button("To \"ToTake\"-View") {
+                action {
+                    val selectedItems: ObservableList<ShowItem> =
+                        toTakeController.createCopiedListOfSelectedItems(selectedObservableItemsList.value)
+                    toTakeController.toToTakeView(selectedItems)
+                }
+
+                prefWidth = ownPrefWidth / 2
+                prefHeight = ownPrefHeight / 13
+                style {
+                    alignment = Pos.CENTER
+                    padding = box(10.px)
+                    fontSize = 15.px
+                    fontWeight = FontWeight.BOLD
+                }
             }
         }
 
-        button("Back") {
-            action {
-                menuController.backToMenuView()
-            }
+        // style attributes that are applied to every child
+        children.style(append = true) {
+//            fontSize = 15.px
         }
 
     }
