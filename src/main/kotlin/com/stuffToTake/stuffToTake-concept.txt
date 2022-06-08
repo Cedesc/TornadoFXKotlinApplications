@@ -53,6 +53,7 @@ To Do List:
         -3- history view
     -CHECK- fill with meaningful item
     -CHECK- check out what to implement in controllers
+    -4- Implement the finish method in ToTakeController and the markedAsToTake() / unmarkedAsToTake()
     -3- make better views
             https://docs.tornadofx.io/0_subsection/6_css
             [useful keywords:
@@ -76,6 +77,7 @@ To Do List:
     -CHECK- add a constructor to AbstractItem to add categories at the beginning?
     -CHECK- fill Category.kt
     -OBSOLETE- fill items.txt with ItemParser.kt
+    -2- in EditItemView make it possible to change the identical item in the other list too
     -2- make it impossible to add two identical items to itemsList
     -1- simpler method to change the amount of clothing stuff
     -1- when an item is added to ItemsList it generates the whole observableShowItems list -> performance problems?
