@@ -39,7 +39,6 @@ class ChooseItemsView : View("Choose Items View") {
             column("Amount", ShowItem::amountProperty) {
                 style {
                     alignment = Pos.CENTER
-//                    padding = box(10.px)
                 }
             }
             column("Categories", ShowItem::categoriesProperty).cellFormat {

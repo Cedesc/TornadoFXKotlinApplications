@@ -31,7 +31,7 @@ class ToTakeController: Controller() {
      * Closes the modal and saves the items in the history.
      */
     fun finish() {
-        TODO("Not yet implemented")
+        TODO("Not yet implemented")  // see ChooseItemsView.kt Idea and notices application of the smartphone
     }
 
     /**
