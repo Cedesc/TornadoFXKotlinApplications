@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Pos
 import javafx.scene.control.ListView
 import javafx.scene.control.SelectionMode
+import javafx.scene.text.FontWeight
 import tornadofx.*
 
 class AddItemView : View("Add Item") {
@@ -24,8 +25,8 @@ class AddItemView : View("Add Item") {
     private val menuController: MenuController by inject()
     private val itemsListController: ItemsListController by inject()
 
-    private val ownPrefWidth: Double = 350.0
-    private val ownPrefHeight: Double = 300.0
+    private val ownPrefWidth: Double = 400.0
+    private val ownPrefHeight: Double = 350.0
 
     override val root = gridpane {
         // set size
@@ -39,6 +40,7 @@ class AddItemView : View("Add Item") {
             style {  // TODO repetitive, bring together
                 alignment = Pos.CENTER
                 padding = box(10.px)
+                fontWeight = FontWeight.BOLD
             }
         }
         checkbox("To WW", toMainz) {
@@ -49,6 +51,7 @@ class AddItemView : View("Add Item") {
             style {
                 alignment = Pos.CENTER
                 padding = box(10.px)
+                fontWeight = FontWeight.BOLD
             }
         }
 
@@ -62,6 +65,10 @@ class AddItemView : View("Add Item") {
             style {
                 setPrefWidth(ownPrefWidth / 2)
             }
+            // only affects the text "Name"
+            this.children[0].style {
+                fontWeight = FontWeight.BOLD
+            }
         }
 
         fieldset("Amount") {
@@ -74,6 +81,10 @@ class AddItemView : View("Add Item") {
             style {
                 setPrefWidth(ownPrefWidth / 2)
             }
+            // only affects the text "Name"
+            this.children[0].style {
+                fontWeight = FontWeight.BOLD
+            }
         }
 
         fieldset("Type") {
@@ -85,6 +96,10 @@ class AddItemView : View("Add Item") {
             }
             style {
                 setPrefWidth(ownPrefWidth / 2)
+            }
+            // only affects the text "Name"
+            this.children[0].style {
+                fontWeight = FontWeight.BOLD
             }
         }
 
@@ -100,6 +115,10 @@ class AddItemView : View("Add Item") {
             style {
                 setPrefWidth(ownPrefWidth / 2)
             }
+            // only affects the text "Name"
+            this.children[0].style {
+                fontWeight = FontWeight.BOLD
+            }
         }
 
 
@@ -112,6 +131,7 @@ class AddItemView : View("Add Item") {
             style {
                 alignment = Pos.CENTER
                 padding = box(10.px)
+                fontWeight = FontWeight.BOLD
             }
         }
 
@@ -123,6 +143,9 @@ class AddItemView : View("Add Item") {
             useMaxSize = true
             gridpaneConstraints {
                 columnRowIndex(0, 5)
+            }
+            style {
+                fontWeight = FontWeight.BOLD
             }
         }
 
@@ -147,7 +170,16 @@ class AddItemView : View("Add Item") {
             gridpaneConstraints {
                 columnRowIndex(1, 5)
             }
+            style {
+                fontWeight = FontWeight.BOLD
+            }
         }
+
+        // style attributes that are applied to every child
+        children.style(append = true) {
+            fontSize = 15.px
+        }
+
     }
 
     override fun onDock() {
