@@ -61,7 +61,7 @@ To Do List:
         -4- windows
             -CHECK- MenuView
             -CHECK- AddItemView
-            -4- ListOfItemsView
+            -CHECK- ListOfItemsView
             -CHECK- ChooseItemsView
             -4- EditItemView
             -CHECK- ToTakeView
