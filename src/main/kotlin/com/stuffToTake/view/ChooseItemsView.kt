@@ -63,13 +63,6 @@ class ChooseItemsView : View("Choose Items View") {
             }
         }
 
-        // TODO Idea:
-        //  a click on the button "To ToTake-View" first call the function of each element "markAsToTake"
-        //  respectively "unmarkAsToTake" depending on the toTake checkBox
-        //  (so maybe it should be called "markedAsToTake" and "unmarkedAsToTake")
-        //  to call the related functions for the Essential Items etc,
-        //  so the Essential Items will stay as "toTake", oneTime will be false in toTake and so on
-
 
         hbox {
             button("Back") {
