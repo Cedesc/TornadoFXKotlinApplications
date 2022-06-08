@@ -66,11 +66,11 @@ To Do List:
             -CHECK- EditItemView
             -CHECK- ToTakeView
             -CHECK- ConfirmView
-        -3- make the windows bigger
-        -3- add the style function to all labels etc and use them
+        -CHECK- make the windows bigger
+        -CHECK- add the style function to all labels etc and use them
         -3- create stylesheet for repetitive styles of components
         -2- more colors
-        -1- Font in the middle (per example in the tableview)
+        -CHECK- Font in the middle (per example in the tableview)
     -2.5- create GUI tests (oh pls no...)
     -CHECK- add a method to AbstractItem to add multiple categories at once
     -CHECK- add a constructor to AbstractItem to add categories at the beginning?
