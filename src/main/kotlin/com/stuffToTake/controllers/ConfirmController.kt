@@ -24,7 +24,7 @@ class ConfirmController : Controller() {
      */
     fun confirmDeletion(item: AbstractItem) {
         title.value = "Confirm Deletion"
-        text.value = "Are you sure you want to delete \"${item.name}\"?"
+        text.value = "Are you sure you want to delete \n\"${item.name}\"?"
         find(ConfirmView::class).openModal()
     }
 
@@ -33,7 +33,7 @@ class ConfirmController : Controller() {
      */
     fun confirmChanges(item: AbstractItem) {
         title.value = "Confirm Changes"
-        text.value = "Are you sure you want to apply the changes to \"${item.name}\"?"
+        text.value = "Are you sure you want to apply the changes to \n\"${item.name}\"?"
         find(ConfirmView::class).openModal()
     }
 
