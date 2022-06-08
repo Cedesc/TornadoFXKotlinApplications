@@ -51,25 +51,6 @@ class ChooseItemsView : View("Choose Items View") {
         //  so the Essential Items will stay as "toTake", oneTime will be false in toTake and so on
 
 
-        button("Print all selected") {  // TODO (afterwards) delete
-            action {
-                selectedObservableItemsList.value.forEach { item ->
-                    if (item.toTake)
-                        println(item)
-                }
-                println("\n------------------------\n")
-            }
-        }
-        button("Print all unselected") {  // TODO (afterwards) delete
-            action {
-                selectedObservableItemsList.value.forEach { item ->
-                    if (! item.toTake)
-                        println(item)
-                }
-                println("\n------------------------\n")
-            }
-        }
-
         button("To \"ToTake\"-View") {
             action {
                 val selectedItems: ObservableList<ShowItem> =
