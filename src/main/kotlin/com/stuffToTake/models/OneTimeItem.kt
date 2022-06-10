@@ -11,16 +11,20 @@ class OneTimeItem(itemName: String,
             : this(itemName, itemAmount.toString(), itemToTake, itemCategories)
 
 
-    override fun markedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests
-        TODO("Not yet implemented")
-        // delete this item (how? with a return true and so the item will be deleted? in this case the method to set the
-        // toTake in ShowItem should be modified...
-        // or give the item as a parameter and delete it with a function call here???
-        // or create more abstract methods "itemShouldDeleted(): Boolean" and "itemShouldBeModified(): Boolean"???)
+    /**
+     * The return value is 2, so the (OneTime)Item will be deleted.
+     */
+    override fun markedAsToTake(): Int {  // TODO create tests
+        toTake = false
+        return 2
     }
 
-    override fun unmarkedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests
-        return false
+    /**
+     * Returns always 0.
+     */
+    override fun unmarkedAsToTake(): Int {  // TODO create tests
+        toTake = true
+        return 0
     }
 
     override fun toString(): String {

@@ -32,7 +32,7 @@ class ToTakeController: Controller() {
 
     /**
      * Closes the modal and saves the items in the history.
-     * // TODO Idea:
+     * // TODO Idea: (write as documentation)
     //  a click on the button "To ToTake-View" first create an entry in history,
     //  then call the function of each element (ShowItem) "checked", which calls "markAsToTake"
     //  or "unmarkAsToTake" depending on the toTake checkBox,
@@ -45,7 +45,9 @@ class ToTakeController: Controller() {
     //  One Time Items will be deleted if they was "toTake", and nothing happens otherwise.
      */
     fun finish() {
-        TODO("Not yet implemented")  // see ChooseItemsView.kt
+        itemsListController.selectedItemList.observableShowItems.forEach { showItem ->
+            showItem.checked()
+        }
     }
 
     /**

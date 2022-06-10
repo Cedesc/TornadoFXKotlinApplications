@@ -11,14 +11,20 @@ class EssentialItem(itemName: String,
             : this(itemName, itemAmount.toString(), itemToTake, itemCategories)
 
 
-    override fun markedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests
+    /**
+     * Returns always 0.
+     */
+    override fun markedAsToTake(): Int {  // TODO create tests
         toTake = true
-        return toTake
+        return 0
     }
 
-    override fun unmarkedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests
+    /**
+     * Returns always 0.
+     */
+    override fun unmarkedAsToTake(): Int {  // TODO create tests
         toTake = true
-        return toTake
+        return 0
     }
 
     override fun toString(): String {

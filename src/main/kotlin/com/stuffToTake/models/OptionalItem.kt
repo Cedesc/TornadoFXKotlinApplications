@@ -11,16 +11,26 @@ class OptionalItem(itemName: String,
             : this(itemName, itemAmount.toString(), itemToTake, itemCategories)
 
 
-    override fun markedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests
-        if (! showItemToTake)
-            // set the identical Optional Item in the other list to "toTake"
-            TODO("Not yet implemented")
+    /**
+     * If the return is 0, nothing happens.
+     * If the return is 1, the identical (Optional)Item will be changed to "toTake".
+     */
+    override fun markedAsToTake(): Int {  // TODO create tests
+        val oldToTake = toTake
         toTake = false
-        return toTake
+        return if (oldToTake)
+            0
+        else
+            // set the identical Optional Item in the other list to "toTake"
+            1
     }
 
-    override fun unmarkedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests
-        return false
+    /**
+     * Returns always 0.
+     */
+    override fun unmarkedAsToTake(): Int {  // TODO create tests
+        toTake = false
+        return 0
     }
 
     override fun toString(): String {

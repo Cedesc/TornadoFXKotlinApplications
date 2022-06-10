@@ -35,14 +35,41 @@ abstract class AbstractItem(itemName: String,
     }
 
     /**
-     * Changes the "to_take" variable to true.
+     * If the return is 0, nothing happens.
+     * If the return is 1, the identical (Optional)Item will be changed to "toTake".
+     * If the return is 2, the (OneTime)Item will be deleted.
+     * If the return is something else, an Exception will be given.
+     *
+     *
+     * EssentialItem:
+     *  true, 0
+     *
+     * OptionalItem:
+     *  original true -> false, 0
+     *  original false -> false, 1
+     *
+     * EssentialItem:
+     *  false, 2
      */
-    abstract fun markedAsToTake(showItemToTake: Boolean): Boolean
+    abstract fun markedAsToTake(): Int
 
     /**
-     * Changes the "to_take" variable to false.
+     * If the return is 0, nothing happens.
+     * If the return is 1, the identical (Optional)Item will be changed to "toTake".
+     * If the return is 2, the (OneTime)Item will be deleted.
+     * If the return is something else, an Exception will be given.
+     *
+     *
+     * EssentialItem:
+     *  true, 0
+     *
+     * OptionalItem:
+     *  false, 0
+     *
+     * EssentialItem:
+     *  true, 0
      */
-    abstract fun unmarkedAsToTake(showItemToTake: Boolean): Boolean
+    abstract fun unmarkedAsToTake(): Int
 
     /**
      * Returns true if "amount" has a valid value, false if it's empty.

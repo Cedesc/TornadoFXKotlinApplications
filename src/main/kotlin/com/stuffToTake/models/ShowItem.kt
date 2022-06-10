@@ -8,21 +8,35 @@ class ShowItem(val originalItem: AbstractItem)
             throw Exception("Cannot build a ShowedItem of a ShowedItem")
     }
 
-    fun checked() {  // TODO create tests
-        if (toTake)
-            markedAsToTake(true)
+    fun checked(): Int {  // TODO create tests
+        return if (toTake)
+            markedAsToTake()
         else
-            unmarkedAsToTake(false)
+            unmarkedAsToTake()
     }
 
-    override fun markedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests or obsolete, write it in checked() and throw Error if called?
-        toTake = originalItem.markedAsToTake(toTake)
-        return toTake
+    /**
+     * If the return is 0, nothing happens.
+     * If the return is 1, the identical (Optional)Item will be changed to "toTake".
+     * If the return is 2, the (OneTime)Item will be deleted.
+     * If the return is something else, an Exception will be given.
+     */
+    override fun markedAsToTake(): Int {  // TODO create tests or obsolete, write it in checked() and throw Error if called?
+        val action: Int = originalItem.markedAsToTake()  // TODO more efficient in the order of lines
+        toTake = originalItem.toTake
+        return action
     }
 
-    override fun unmarkedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests or obsolete, write it in checked() and throw Error if called?
-        toTake = originalItem.markedAsToTake(toTake)
-        return toTake
+    /**
+     * If the return is 0, nothing happens.
+     * If the return is 1, the identical (Optional)Item will be changed to "toTake".
+     * If the return is 2, the (OneTime)Item will be deleted.
+     * If the return is something else, an Exception will be given.
+     */
+    override fun unmarkedAsToTake(): Int {  // TODO create tests or obsolete, write it in checked() and throw Error if called?
+        val action: Int = originalItem.markedAsToTake()  // TODO more efficient in the order of lines
+        toTake = originalItem.toTake
+        return action
     }
 
     override fun toString(): String {
