@@ -31,19 +31,19 @@ class ToTakeController: Controller() {
      * Closes the modal and saves the items in the history.
      * // TODO Idea:
     //  a click on the button "To ToTake-View" first create an entry in history,
-    //  then call the function of each element "markAsToTake"
-    //  or "unmarkAsToTake" depending on the toTake checkBox
-    //  (so maybe it should be called "markedAsToTake" and "unmarkedAsToTake")
+    //  then call the function of each element (ShowItem) "checked", which calls "markAsToTake"
+    //  or "unmarkAsToTake" depending on the toTake checkBox,
     //  to call the related functions for the Essential Items, Optional Items and One Time Items.
     //  Essential Items will stay as or changed to "toTake".
-    //  Optional Items will be set the identical Optional Item in the other list to "toTake" if it wasn't.
+    //  Optional Items will set the identical Optional Item in the other list to "toTake" if it wasn't.
     //      This is possible because the ShowedItem.toTake can be different from the originalItem.toTake and the
     //      ShowedItem.markedAsToTake() can call the originalItem.markedAsToTake() which could get the ShowedItem.toTake
     //      as input.
     //  One Time Items will be deleted if they was "toTake", and nothing happens otherwise.
      */
     fun finish() {
-        TODO("Not yet implemented")  // see ChooseItemsView.kt Idea and notices application of the smartphone
+        TODO("Not yet implemented")  // see ChooseItemsView.kt
+
     }
 
     /**
