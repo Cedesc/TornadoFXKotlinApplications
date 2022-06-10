@@ -1,6 +1,5 @@
 package com.stuffToTake.view
 
-import com.stuffToTake.controllers.ItemsListController
 import com.stuffToTake.controllers.ToTakeController
 import com.stuffToTake.models.ShowItem
 import javafx.beans.property.SimpleObjectProperty
@@ -13,7 +12,6 @@ import tornadofx.*
 class ToTakeView : View("To Take View") {
 
     private val toTakeController: ToTakeController by inject()
-    private val itemsListController: ItemsListController by inject()
 
     private val items: SimpleObjectProperty<ObservableList<ShowItem>> =
         SimpleObjectProperty(toTakeController.itemsListToTake)
@@ -90,7 +88,7 @@ class ToTakeView : View("To Take View") {
     }
 
     override fun onDock() {
-        title = itemsListController.selectedItemList.name
+        title = toTakeController.getItemListName()
         items.set(toTakeController.itemsListToTake)
         super.onDock()
     }

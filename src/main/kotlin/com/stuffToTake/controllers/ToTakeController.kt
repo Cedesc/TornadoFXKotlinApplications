@@ -7,10 +7,13 @@ import tornadofx.*
 
 class ToTakeController: Controller() {
 
+    private val itemsListController: ItemsListController by inject()
+
     var itemsListToTake: ObservableList<ShowItem> = observableListOf()
 
-    fun toToTakeView(showItemsList: ObservableList<ShowItem>) {
-        itemsListToTake.setAll(showItemsList)
+
+    fun toToTakeView(selectedItems: ObservableList<ShowItem>) {
+        itemsListToTake.setAll(selectedItems)
         find(ToTakeView::class).openModal()
     }
 
@@ -43,7 +46,6 @@ class ToTakeController: Controller() {
      */
     fun finish() {
         TODO("Not yet implemented")  // see ChooseItemsView.kt
-
     }
 
     /**
@@ -51,6 +53,13 @@ class ToTakeController: Controller() {
      */
     fun closeToTakeView() {
         find(ToTakeView::class).close()
+    }
+
+    /**
+     * Returns the name of the list.
+     */
+    fun getItemListName(): String {
+        return itemsListController.selectedItemList.name
     }
 
 }
