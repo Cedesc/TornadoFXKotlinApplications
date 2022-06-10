@@ -8,12 +8,21 @@ class ShowItem(val originalItem: AbstractItem)
             throw Exception("Cannot build a ShowedItem of a ShowedItem")
     }
 
-    override fun markAsToTake() {
-        super.markAsToTake()
+    fun checked() {  // TODO create tests
+        if (toTake)
+            markedAsToTake(true)
+        else
+            unmarkedAsToTake(false)
     }
 
-    override fun unmarkAsToTake() {
-        super.unmarkAsToTake()
+    override fun markedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests or obsolete, write it in checked() and throw Error if called?
+        toTake = originalItem.markedAsToTake(toTake)
+        return toTake
+    }
+
+    override fun unmarkedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests or obsolete, write it in checked() and throw Error if called?
+        toTake = originalItem.markedAsToTake(toTake)
+        return toTake
     }
 
     override fun toString(): String {

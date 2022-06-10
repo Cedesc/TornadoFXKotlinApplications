@@ -11,14 +11,16 @@ class OptionalItem(itemName: String,
             : this(itemName, itemAmount.toString(), itemToTake, itemCategories)
 
 
-    override fun markAsToTake() {
-        super.markAsToTake()
-        TODO("Not yet implemented")
+    override fun markedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests
+        if (! showItemToTake)
+            // set the identical Optional Item in the other list to "toTake"
+            TODO("Not yet implemented")
+        toTake = false
+        return toTake
     }
 
-    override fun unmarkAsToTake() {
-        super.unmarkAsToTake()
-        TODO("Not yet implemented")
+    override fun unmarkedAsToTake(showItemToTake: Boolean): Boolean {  // TODO create tests
+        return false
     }
 
     override fun toString(): String {

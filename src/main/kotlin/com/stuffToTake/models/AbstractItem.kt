@@ -37,16 +37,12 @@ abstract class AbstractItem(itemName: String,
     /**
      * Changes the "to_take" variable to true.
      */
-    open fun markAsToTake() {
-        toTake = true
-    }
+    abstract fun markedAsToTake(showItemToTake: Boolean): Boolean
 
     /**
      * Changes the "to_take" variable to false.
      */
-    open fun unmarkAsToTake() {
-        toTake = false
-    }
+    abstract fun unmarkedAsToTake(showItemToTake: Boolean): Boolean
 
     /**
      * Returns true if "amount" has a valid value, false if it's empty.
