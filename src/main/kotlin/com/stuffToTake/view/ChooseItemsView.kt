@@ -101,7 +101,7 @@ class ChooseItemsView : View("Choose Items View") {
     }
 
     override fun onDock() {
-        title = "Choose Items of the\"${itemsListController.selectedItemList.name}\"-List"
+        title = "Choose Items of the \"${itemsListController.selectedItemList.name}\"-List"
         selectedObservableItemsList.set(itemsListController.selectedItemList.observableShowItems)
         super.onDock()
     }
