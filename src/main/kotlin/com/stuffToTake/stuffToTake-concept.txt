@@ -14,92 +14,38 @@ Should have:
     6. list of clothes that are in Mainz
 
 
-Plan:
-    1. UML Diagram
-    ...
 
-
-Source Code: https://github.com/edvin/tornadofx/tree/master/src/main/java/tornadofx
+TornadoFX Source Code: https://github.com/edvin/tornadofx/tree/master/src/main/java/tornadofx
 
 To Do List:
-    -CHECK- inform how I can show an interactive list with tornadofx
-    -CHECK- create the first beta views (just functional, not pretty)
-            https://edvin.gitbooks.io/tornadofx-guide/content/part1/4_Basic_Controls.html
-            https://edvin.gitbooks.io/tornadofx-guide/content/part1/5_Data_Controls.html
-            https://youtu.be/-y0F-wkrryo?t=2320 bind label (and more)
-            https://github.com/edvin/tornadofx-samples/blob/master/itemviewmodel/withFXproperties/src/main/kotlin/no/tornadofx/fxsamples/withfxproperties/views/PersonList.kt tableview
-            https://docs.tornadofx.io/0_subsection/5_data_controls#tableview
-            https://github.com/edvin/tornadofx/wiki/Documentation to JSON???
-        -CHECK- main view
-        -CHECK- add item view
+    -4- Implement the finish method in ToTakeController and the markedAsToTake() / unmarkedAsToTake()
+    -3- views
+        -3- add item view
             -3- make color changing buttons instead of checkboxes
             -1- make javafx ListView to tornadofx listview ? (why?)
             -1- change the class of itemType to a better than just a string ? (It works fine as it is)
             -1- radio buttons instead of a view list for categories ? (It works fine as it is)
-        -CHECK- list of items view
-            -CHECK- full list of toMainz items view
-            -CHECK- full list of toWW items view
-            -CHECK- edit item per double click
-            -2- deactivate sort by category or make it meaningful
+        -2- list of items view
             -2- add search bar for searching by name or by category
-        -CHECK- edit item view
-            -CHECK- possible to delete items
-        -CHECK- item list for choosing
+            -1- deactivate sort by category or make it meaningful
+        -2- item list for choosing
             -1- disable the blue bar on selection
-        -CHECK- to take view
+        -2- to take view
             -2- items disappear or pushed to the end when they're clicked
                 https://github.com/edvin/tornadofx/issues/1016
                 https://github.com/edvin/tornadofx/wiki/Utilities
         -3- history view
-    -CHECK- fill with meaningful item
-    -CHECK- check out what to implement in controllers
-    -4- Implement the finish method in ToTakeController and the markedAsToTake() / unmarkedAsToTake()
     -3- make better views
             https://docs.tornadofx.io/0_subsection/6_css
             [useful keywords:
             fontWeight, fontSize, fontFamily, c(), textFill, backgroundColor, backgroundInsets, multi(Color...)
             padding, borderColor, rotate, hover, mixin (for reusing, so for "create stylesheet...")]
-        -CHECK- windows
-            -CHECK- MenuView
-            -CHECK- AddItemView
-            -CHECK- ListOfItemsView
-            -CHECK- ChooseItemsView
-            -CHECK- EditItemView
-            -CHECK- ToTakeView
-            -CHECK- ConfirmView
-        -CHECK- make the windows bigger
-        -CHECK- add the style function to all labels etc and use them
         -3- create stylesheet for repetitive styles of components
-        -2- more colors
-        -CHECK- Font in the middle (per example in the tableview)
+        -2- more colors / dark mode
     -2.5- create GUI tests (oh pls no...)
-    -CHECK- add a method to AbstractItem to add multiple categories at once
-    -CHECK- add a constructor to AbstractItem to add categories at the beginning?
-    -CHECK- fill Category.kt
-    -OBSOLETE- fill items.txt with ItemParser.kt
     -2- in EditItemView make it possible to change the identical item in the other list too
     -2- make it impossible to add two identical items to itemsList
     -1- simpler method to change the amount of clothing stuff
     -1- when an item is added to ItemsList it generates the whole observableShowItems list -> performance problems?
     -1- add a method to convert an item type to another (isn't necessary instead delete the old one and add the new one)
     -1- add image to item and show it tiny in the list
-
-
-Classes:
-    AbstractItem
-        EssentialItem - item which is (nearly) every time taken
-        OptionalItem - item which is often taken
-        OneTimeItem - item which is (nearly) only one time taken
-    ShowedItem
-    Category
-
-
-Views:
-    View 0 - Main Menu
-    View 1 - Create New Item
-    View 2 - See the full list of items (in a table to sort by categories, names, etc?)
-    View 3 - See the full list of items, that I will take
-
-
-Further:
-    - lorem ipsum
