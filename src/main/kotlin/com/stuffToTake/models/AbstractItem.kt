@@ -48,7 +48,7 @@ abstract class AbstractItem(itemName: String,
      *  original true -> false, 0
      *  original false -> false, 1
      *
-     * EssentialItem:
+     * OneTimeItem:
      *  false, 2
      */
     abstract fun markedAsToTake(): Int
@@ -66,7 +66,7 @@ abstract class AbstractItem(itemName: String,
      * OptionalItem:
      *  false, 0
      *
-     * EssentialItem:
+     * OneTimeItem:
      *  true, 0
      */
     abstract fun unmarkedAsToTake(): Int
