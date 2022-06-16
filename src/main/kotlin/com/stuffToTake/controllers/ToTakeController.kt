@@ -46,8 +46,17 @@ class ToTakeController: Controller() {
      */
     fun finish() {
         itemsListController.selectedItemList.observableShowItems.forEach { showItem ->
-            showItem.checked()
+            when(showItem.checked()) {
+                // Nothing happens.
+                0 -> Unit
+                // Identical optional item in the other list will be changed, if any.
+                1 -> itemsListController.changeToTakeOfOptionalItem(showItem.originalItem)
+                // Delete the one time item.
+                2 -> itemsListController.deleteItem(showItem.originalItem)
+                else -> throw Exception("Return value isn't a valid number.")
+            }
         }
+        // TODO save the itemsList for HistoryView
     }
 
     /**
