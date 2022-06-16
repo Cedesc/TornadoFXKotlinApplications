@@ -213,4 +213,16 @@ class ItemsList(val name: String,
         return true
     }
 
+    /**
+     * Returns true if the item is in the optionalItems-List, returns false if it isn't.
+     * An error will be thrown if there are multiple copies of this item in the list because this shouldn't be possible.
+     */
+    fun checkIfOptionalItemExists(item: AbstractItem): Boolean {
+        return when(optionalItems.count { it == item }) {
+            0 -> false
+            1 -> true
+            else -> throw Exception("Multiple copies of the item are in the list. This shouldn't be possible.")
+        }
+    }
+
 }
