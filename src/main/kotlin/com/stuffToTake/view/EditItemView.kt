@@ -123,7 +123,7 @@ class EditItemView : View("PLACEHOLDER") {
                     find(ConfirmView::class).whenUndockedOnce {
                         // if the confirmation is given, apply the changes
                         if (confirmController.confirmed)
-                            itemsListController.deleteItem(item)
+                            itemsListController.manualDeleteItem(item)
                     }
                 }
             }
@@ -147,7 +147,7 @@ class EditItemView : View("PLACEHOLDER") {
                     find(ConfirmView::class).whenUndockedOnce {
                         // if the confirmation is given, apply the changes
                         if (confirmController.confirmed)
-                            itemsListController.saveItemChanges(
+                            itemsListController.manualSaveItemChanges(
                                 item,
                                 itemName.value, itemAmount.value, itemType.value,
                                 categoriesListView.selectionModel.selectedItems, itemToTake.value
