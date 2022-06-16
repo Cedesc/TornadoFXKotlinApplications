@@ -33,7 +33,7 @@ class AddItemView : View("Add Item") {
         // set size
         setPrefSize(ownPrefWidth, ownPrefHeight)
 
-        checkbox("To Mainz", toWW) {
+        checkbox("To Mainz", toMainz) {
             useMaxSize = true
             gridpaneConstraints {
                 columnRowIndex(0, 0)
@@ -44,7 +44,7 @@ class AddItemView : View("Add Item") {
                 fontWeight = FontWeight.BOLD
             }
         }
-        checkbox("To WW", toMainz) {
+        checkbox("To WW", toWW) {
             useMaxSize = true
             gridpaneConstraints {
                 columnRowIndex(1, 0)
