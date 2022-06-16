@@ -57,38 +57,51 @@ class ItemsListController : Controller() {
     }
 
     fun deleteItem(item: AbstractItem) {
-
         // Throw Exception if two identical items are found or no item was found.
         if (! selectedItemList.deleteArbitraryItem(item))
             throw Exception("No or multiple identical items are found. Exactly one match must exist.")
 
+        println("Deleted \n$item\n")  // TODO delete!
+    }
+
+    fun manualDeleteItem(item: AbstractItem) {
+        // Delete item
+        deleteItem(item)
+
         // Close the "Edit Item"-View
         find(EditItemView::class).close()
 
-        println("Deleted \n$item\n")  // TODO (afterwards) delete
-
+        println("Deleted \n$item\n")
     }
 
-    fun saveItemChanges(originalItem: AbstractItem, name: String, amount: String, type: String,
-                        categories: List<Category>, toTake: Boolean) {
+    private fun saveItemChanges(originalItem: AbstractItem, editedItem: AbstractItem,
+                        chosenItemList: ItemsList = selectedItemList) {
+        // Save item changes
+        if (! chosenItemList.editArbitraryItem(originalItem, editedItem))
+            throw Exception("Something went wrong while saving the changes of the edited item.")
+
+        println("Changed from \n$originalItem\nto \n$editedItem\n")  // TODO delete!
+    }
+
+    fun manualSaveItemChanges(originalItem: AbstractItem, name: String, amount: String, type: String,
+                              categories: List<Category>, toTake: Boolean) {
 
         // Create new item of the given parameters.
-        val editedItem: AbstractItem = createItem(name, amount, type, categories, toTake)
+        val newItem: AbstractItem = createItem(name, amount, type, categories, toTake)
 
         // Check if created item and old item are same, if so give a warning and return.
-        if (editedItem == originalItem) {
+        if (newItem == originalItem) {
             println("Warning! No changes were made")
             return
         }
 
         // Save item changes
-        if (! selectedItemList.editArbitraryItem(originalItem, editedItem))
-            throw Exception("Something went wrong while saving the changes of the edited item.")
+        saveItemChanges(originalItem, newItem)
 
         // Close the "Edit Item"-View
         find(EditItemView::class).close()
 
-        println("Changed from \n$originalItem\nto \n$editedItem\n")  // TODO (afterwards) delete
+        println("Changed from \n$originalItem\nto \n$newItem\n")
 
     }
 
@@ -107,6 +120,35 @@ class ItemsListController : Controller() {
         }
 
         return item
+    }
+
+    /**
+     * ToTake of the identical optional item in the other list will be changed, if any.
+     */
+    fun changeToTakeOfOptionalItem(item: AbstractItem) {
+
+        // Create the edited item
+        val editedItem = OptionalItem(item.name, item.amount, true, item.categories)
+
+        // Get the other list
+        val otherList: ItemsList = getUnselectedList()
+
+        // Check if the item is in the other list
+        if (otherList.checkIfOptionalItemExists(editedItem))
+            // Save changes
+            saveItemChanges(item, editedItem, chosenItemList = otherList)
+
+    }
+
+    /**
+     * Returns the list that isn't currently selected.
+     */
+    private fun getUnselectedList(): ItemsList {
+        return when(selectedItemList.name) {
+            itemsListToWW.name -> itemsListToMainz
+            itemsListToMainz.name -> itemsListToWW
+            else -> throw Exception("Not a valid items list selected.")
+        }
     }
 
     fun refreshItemsLists() {
