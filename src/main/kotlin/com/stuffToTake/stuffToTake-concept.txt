@@ -44,6 +44,9 @@ To Do List:
         -3- create stylesheet for repetitive styles of components
         -2- more colors / dark mode
     -2.5- create GUI tests (oh pls no...)
+    -2- change the comparison of two items to compare both names including the item type (first line of toString())
+        instead of the full string (simple but unlikely problem of the current implementation: if 3 sport trousers are
+        an optional item, the 2 sport trousers in the other list won't be changed)
     -2- in EditItemView make it possible to change the identical item in the other list too
     -2- make it impossible to add two identical items to itemsList
     -1- simpler method to change the amount of clothing stuff
