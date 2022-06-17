@@ -22,7 +22,7 @@ ITEM
 ITEM
     NAME: opt2 mainz not
     AMOUNT: 2
-    CATEGORIES:
+    CATEGORIES: 
     TAKE: X
 
 
@@ -31,7 +31,7 @@ ONE TIME ITEMS
 ITEM
     NAME: one1
     AMOUNT: 1
-    CATEGORIES:
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: one2

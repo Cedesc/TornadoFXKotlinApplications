@@ -31,15 +31,15 @@ ONE TIME ITEMS
 ITEM
     NAME: one1
     AMOUNT: 1
-    CATEGORIES:
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: one2
     AMOUNT: 2
-    CATEGORIES:
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: one3 ww not
     AMOUNT: 3
-    CATEGORIES:
+    CATEGORIES: 
     TAKE: X
