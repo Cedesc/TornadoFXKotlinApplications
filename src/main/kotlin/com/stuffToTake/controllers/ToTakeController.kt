@@ -57,6 +57,7 @@ class ToTakeController: Controller() {
             }
         }
         // TODO save the itemsList for HistoryView
+        closeToTakeView()
     }
 
     /**
