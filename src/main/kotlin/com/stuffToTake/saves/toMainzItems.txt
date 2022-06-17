@@ -2,82 +2,82 @@ ESSENTIAL ITEMS
 
 ITEM
     NAME: Suitcase
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: To Carry
     TAKE: O
 ITEM
     NAME: Backpack
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: To Carry
     TAKE: O
 ITEM
     NAME: Food
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Food and Beverages
     TAKE: O
 ITEM
     NAME: PS4
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: PS4 Power Supply
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: Code
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Upload on PC
     TAKE: O
 ITEM
     NAME: YGO Pro Decks Data
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Upload on PC
     TAKE: O
 ITEM
     NAME: Save Game Data
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Upload on PC
     TAKE: O
 ITEM
     NAME: Nintendo Switch
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: Switch Docking Station
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: Switch HDMI
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: Switch Docking Station Power Supply
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: Switch Controller
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: Switch Controller Charger
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: Switch Kick Stand
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: Switch Controller Frame
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
@@ -87,33 +87,33 @@ ITEM
     TAKE: O
 ITEM
     NAME: Glasses (for PC)
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: Electric Razor
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Care Products
     TAKE: O
 ITEM
     NAME: SodaStream Bottles
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Food and Beverages
     TAKE: O
 ITEM
     NAME: On-Ear Headphones
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: O
 ITEM
     NAME: Cheap Earphones
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: O
 ITEM
     NAME: Motivation Plan
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: Underpants
@@ -151,132 +151,132 @@ OPTIONAL ITEMS
 
 ITEM
     NAME: iPad
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: X
 ITEM
     NAME: Robin's Stuff
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: To Carry
     TAKE: X
 ITEM
     NAME: University Bag
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: To Carry
     TAKE: X
 ITEM
     NAME: Laptop
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: O
 ITEM
     NAME: Laptop Charger
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: X
 ITEM
     NAME: PS4 Controller
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
     NAME: PS4 Controller Charger
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
     NAME: PS4 Games
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
     NAME: University Data
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Upload on PC
     TAKE: X
 ITEM
     NAME: Contact Lenses
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: Contact Lenses Liquid
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: Cheap Razor
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Care Products
     TAKE: O
 ITEM
     NAME: Money
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: Nintendo DS
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
     NAME: DS Charger
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
     NAME: DS Games
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
     NAME: Snacks
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Food and Beverages
     TAKE: O
 ITEM
     NAME: Alcohol
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Food and Beverages
     TAKE: O
 ITEM
     NAME: Shampoo
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Care Products
     TAKE: X
 ITEM
     NAME: Shower Gel
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Care Products
     TAKE: X
 ITEM
     NAME: University Sheets
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: X
 ITEM
     NAME: Iron
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Care Products
     TAKE: X
 ITEM
     NAME: B12
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Care Products
     TAKE: X
 ITEM
     NAME: Pencil Case
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: X
 ITEM
     NAME: Lip Butter
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Care Products
     TAKE: O
 ITEM
     NAME: Hand Cream
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Care Products
     TAKE: O
 ITEM
@@ -286,27 +286,27 @@ ITEM
     TAKE: O
 ITEM
     NAME: Shoes
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Clothing
     TAKE: O
 ITEM
     NAME: Tea Can
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Food and Beverages
     TAKE: X
 ITEM
     NAME: Book
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: Ukulele
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: O
 ITEM
     NAME: Swimming Trunks
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Clothing
     TAKE: X
 ITEM
@@ -326,13 +326,13 @@ ITEM
     TAKE: X
 ITEM
     NAME: Wireless In-Ear Headphones
-    AMOUNT:
+    AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: X
 ITEM
     NAME: Calculator
-    AMOUNT:
-    CATEGORIES:
+    AMOUNT: 
+    CATEGORIES: 
     TAKE: X
 
 
