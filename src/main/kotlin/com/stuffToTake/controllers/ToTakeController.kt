@@ -30,6 +30,7 @@ class ToTakeController: Controller() {
         return copiedList
     }
 
+    // TODO write this as documentation
     /**
      * Closes the modal and saves the items in the history.
      * // TODO Idea: (write as documentation)
@@ -45,22 +46,30 @@ class ToTakeController: Controller() {
     //  One Time Items will be deleted if they was "toTake", and nothing happens otherwise.
      */
     fun finish() {
-        // TODO error if result is 2.
-        //  Suspected Problem: The iteration list changes.
-        //  Proposal: Instead of deleting the items in the iteration, fill a list with this items and
-        //            delete them after the iteration.
+
+        // Create list for saving the OneTimeItems which will be deleted. It's mandatory to delete them after
+        // the iteration the observableShowItems because in the process of deletion, the observableShowItems
+        // will be updated and this would throw an error.
+        val itemsToDelete: MutableList<ShowItem> = mutableListOf()
+
         itemsListController.selectedItemList.observableShowItems.forEach { showItem ->
             when(showItem.checked()) {
                 // Nothing happens.
                 0 -> Unit
                 // Identical optional item in the other list will be changed, if any.
                 1 -> itemsListController.changeToTakeOfOptionalItem(showItem.originalItem)
-                // Delete the one time item.
-                2 -> itemsListController.deleteItem(showItem.originalItem)
+                // Add the item to the list, so it will be deleted afterwards.
+                2 -> itemsToDelete.add(showItem)
                 else -> throw Exception("Return value isn't a valid number.")
             }
         }
+        // Delete items.
+        itemsToDelete.forEach { itemsListController.deleteItem(it.originalItem) }
+
+
         // TODO save the itemsList for HistoryView
+
+
         closeToTakeView()
     }
 
