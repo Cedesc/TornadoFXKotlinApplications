@@ -45,6 +45,10 @@ class ToTakeController: Controller() {
     //  One Time Items will be deleted if they was "toTake", and nothing happens otherwise.
      */
     fun finish() {
+        // TODO error if result is 2.
+        //  Suspected Problem: The iteration list changes.
+        //  Proposal: Instead of deleting the items in the iteration, fill a list with this items and
+        //            delete them after the iteration.
         itemsListController.selectedItemList.observableShowItems.forEach { showItem ->
             when(showItem.checked()) {
                 // Nothing happens.
