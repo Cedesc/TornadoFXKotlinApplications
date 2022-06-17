@@ -18,6 +18,7 @@ Should have:
 TornadoFX Source Code: https://github.com/edvin/tornadofx/tree/master/src/main/java/tornadofx
 
 To Do List:
+    -4- fill with meaningful items (look over them) and delete allTo...Items
     -4- Work through the To-Do's
     -4- Implement the finish method in ToTakeController and the markedAsToTake() / unmarkedAsToTake()
     -4- Make the savings meaningful (not everytime the app is closed)
