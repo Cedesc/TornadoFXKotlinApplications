@@ -134,7 +134,7 @@ class ItemsListController : Controller() {
         val otherList: ItemsList = getUnselectedList()
 
         // Check if the item is in the other list
-        if (otherList.checkIfOptionalItemExists(editedItem))
+        if (otherList.checkIfUnmarkedOptionalItemExists(editedItem))
             // Save changes
             saveItemChanges(item, editedItem, chosenItemList = otherList)
 
