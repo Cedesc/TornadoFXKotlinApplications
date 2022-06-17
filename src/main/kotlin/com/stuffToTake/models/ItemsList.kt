@@ -1,5 +1,7 @@
 package com.stuffToTake.models
 
+import com.stuffToTake.BACKUP_AS_SINGLE_FILE
+import com.stuffToTake.CREATE_BACKUP_WHEN_CLOSED
 import com.stuffToTake.saves.ItemParser
 import javafx.beans.property.SimpleListProperty
 import javafx.collections.ObservableList
@@ -104,7 +106,7 @@ class ItemsList(val name: String,
     }
 
     /**
-     * Saves the items in this instance in the txt file. Additionally, it creates a backup.
+     * Saves the items in this instance in the txt file. Additionally, it can create a backup.
      */
     fun saveItems(): Boolean {
 
@@ -113,8 +115,23 @@ class ItemsList(val name: String,
             return false
 
         itemParser.codeToTxt(essentialItems, optionalItems, oneTimeItems)
-        itemParser.createBackup(inSingleFile = false)
+
+        if (CREATE_BACKUP_WHEN_CLOSED)
+            itemParser.createBackup(BACKUP_AS_SINGLE_FILE)
+
         return true
+    }
+
+    /**
+     * Creates history entry.
+     */
+    fun createHistoryEntry(): Boolean {
+
+        // Return false if the item parser has an empty filepath.
+        if (itemParser.filepath.isEmpty())
+            return false
+
+        return itemParser.createHistoryEntry()
     }
 
     /**

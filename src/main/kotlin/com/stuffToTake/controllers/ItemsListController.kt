@@ -44,6 +44,10 @@ class ItemsListController : Controller() {
         itemsListToWW.saveItems()
     }
 
+    fun createHistoryEntry() {
+        selectedItemList.createHistoryEntry()
+    }
+
     fun changeSelectedListToMainz() {
         selectedItemList = itemsListToMainz
     }

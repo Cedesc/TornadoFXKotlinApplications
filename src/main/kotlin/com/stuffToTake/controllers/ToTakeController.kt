@@ -1,5 +1,6 @@
 package com.stuffToTake.controllers
 
+import com.stuffToTake.KEEP_HISTORY
 import com.stuffToTake.models.ShowItem
 import com.stuffToTake.view.ToTakeView
 import javafx.collections.ObservableList
@@ -67,8 +68,8 @@ class ToTakeController: Controller() {
         itemsToDelete.forEach { itemsListController.deleteItem(it.originalItem) }
 
 
-        // TODO save the itemsList for HistoryView
-
+        if (KEEP_HISTORY)
+            itemsListController.createHistoryEntry()
 
         closeToTakeView()
     }

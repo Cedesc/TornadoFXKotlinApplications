@@ -260,12 +260,20 @@ class ItemParser(val filepath: String = "src/main/kotlin/com/stuffToTake/saves/i
     }
 
     /**
+     * Returns the actual date and time with the year-month-day hour-minutes.
+     * In this order the sort order is temporal correct.
+     */
+    private fun getActualDateAndTime(): String {
+        return SimpleDateFormat("yyyy-MM-dd HH-mm").format(Date())
+    }
+
+    /**
      * Creates a backup of the txt file with a similar name.
      */
     fun createBackup(inSingleFile: Boolean = false): Boolean {
         if (filepath.endsWith(".txt")) {
             try {
-                val currentDate: String = SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(Date())
+                val currentDate: String = getActualDateAndTime()
                 val file = File(filepath)
                 // Remove the ".txt" part and add "_Backup.txt" or "Backups/-DateAndTime-.txt"
                 val newFilePath: String = when {
@@ -273,7 +281,27 @@ class ItemParser(val filepath: String = "src/main/kotlin/com/stuffToTake/saves/i
                     else -> filepath.dropLast(4) + "Backups/" + currentDate + ".txt"
                 }
                 // Overwrite possibly already existing file.
-                file.copyTo(File(newFilePath), overwrite = false)
+                file.copyTo(File(newFilePath), overwrite = true)
+                return true
+            } catch (e: IOException) {
+                throw Exception("An error occurred while copying the txt file.")
+            }
+        }
+        return false
+    }
+
+    /**
+     * Creates history entry.
+     */
+    fun createHistoryEntry(): Boolean {
+        if (filepath.endsWith(".txt")) {
+            try {
+                val currentDate: String = getActualDateAndTime()
+                val file = File(filepath)
+                // Remove the ".txt" part and add "Backups/-DateAndTime-.txt"
+                val newFilePath: String = filepath.dropLast(4) + "History/" + currentDate + ".txt"
+                // Overwrite possibly already existing file.
+                file.copyTo(File(newFilePath), overwrite = true)
                 return true
             } catch (e: IOException) {
                 throw Exception("An error occurred while copying the txt file.")
