@@ -34,7 +34,7 @@ class ShowItem(val originalItem: AbstractItem)
      * If the return is something else, an Exception will be given.
      */
     override fun unmarkedAsToTake(): Int {  // TODO create tests or obsolete, write it in checked() and throw Error if called?
-        val action: Int = originalItem.markedAsToTake()  // TODO more efficient in the order of lines
+        val action: Int = originalItem.unmarkedAsToTake()  // TODO more efficient in the order of lines
         toTake = originalItem.toTake
         return action
     }
