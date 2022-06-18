@@ -69,6 +69,7 @@ class ToTakeController: Controller() {
 
 
         if (KEEP_HISTORY)
+            // Save as a history entry.
             itemsListController.createHistoryEntry()
 
         closeToTakeView()
