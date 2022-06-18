@@ -19,6 +19,8 @@ TornadoFX Source Code: https://github.com/edvin/tornadofx/tree/master/src/main/j
 
 To Do List:
     -5- test history entries
+        - only save items that are marked as toTake
+        - at this point, one time items won't be saved because they are deleted before
     -4- fill with meaningful items (look over them) and delete allTo...Items
     -4- Work through the To-Do's
     -4- Implement the finish method in ToTakeController and the markedAsToTake() / unmarkedAsToTake()
