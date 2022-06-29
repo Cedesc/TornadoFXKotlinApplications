@@ -131,7 +131,7 @@ class ItemsList(val name: String,
         if (itemParser.filepath.isEmpty())
             return false
 
-        return itemParser.createHistoryEntry()
+        return itemParser.createHistoryEntry(observableShowItems)
     }
 
     /**

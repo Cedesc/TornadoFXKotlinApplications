@@ -48,6 +48,11 @@ class ToTakeController: Controller() {
      */
     fun finish() {
 
+        if (KEEP_HISTORY)
+        // Save the list of all ToTake-Items as a history entry.
+            itemsListController.createHistoryEntry()
+
+
         // Create list for saving the OneTimeItems which will be deleted. It's mandatory to delete them after
         // the iteration the observableShowItems because in the process of deletion, the observableShowItems
         // will be updated and this would throw an error.
@@ -67,10 +72,6 @@ class ToTakeController: Controller() {
         // Delete items.
         itemsToDelete.forEach { itemsListController.deleteItem(it.originalItem) }
 
-
-        if (KEEP_HISTORY)
-            // Save as a history entry.
-            itemsListController.createHistoryEntry()
 
         closeToTakeView()
     }

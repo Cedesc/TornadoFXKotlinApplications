@@ -1,6 +1,7 @@
 package com.stuffToTake.saves
 
 import com.stuffToTake.models.*
+import javafx.collections.ObservableList
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -161,13 +162,13 @@ class ItemParser(val filepath: String = "src/main/kotlin/com/stuffToTake/saves/i
      */
     fun codeToTxt(
         essentialItems: MutableList<EssentialItem>, optionalItems: MutableList<OptionalItem>,
-        oneTimeItems: MutableList<OneTimeItem>
+        oneTimeItems: MutableList<OneTimeItem>, chosenFilepath: String = filepath
     ) {
 
         if (!checkFileExists())
             throw Exception("File doesn't exist.")
 
-        val fileWriter = FileWriter(filepath)
+        val fileWriter = FileWriter(chosenFilepath)
 
         fileWriter.write(
             "ESSENTIAL ITEMS\n" +
@@ -293,21 +294,55 @@ class ItemParser(val filepath: String = "src/main/kotlin/com/stuffToTake/saves/i
     /**
      * Creates history entry.
      */
-    fun createHistoryEntry(): Boolean {
+    fun createHistoryEntry(items: ObservableList<ShowItem>): Boolean {
+
+        // get three copied lists of the item types and change the toTake to true
+        val allItems = getItemTypes(items)
+        val essItems: MutableList<EssentialItem> = allItems.first
+        essItems.forEach { it.toTake = true }
+        val optItems: MutableList<OptionalItem> = allItems.second
+        optItems.forEach { it.toTake = true }
+        val oneItems: MutableList<OneTimeItem> = allItems.third
+        oneItems.forEach { it.toTake = true }
+
         if (filepath.endsWith(".txt")) {
             try {
                 val currentDate: String = getActualDateAndTime()
-                val file = File(filepath)
+//                val file = File(filepath)
                 // Remove the ".txt" part and add "Backups/-DateAndTime-.txt"
                 val newFilePath: String = filepath.dropLast(4) + "History/" + currentDate + ".txt"
                 // Overwrite possibly already existing file.
-                file.copyTo(File(newFilePath), overwrite = true)
+//                file.copyTo(File(newFilePath), overwrite = true)
+                codeToTxt(essItems, optItems, oneItems, chosenFilepath = newFilePath)
                 return true
             } catch (e: IOException) {
                 throw Exception("An error occurred while copying the txt file.")
             }
         }
         return false
+    }
+
+    /**
+     * Get a list of EssentialItems, a list of OptionalItems and a list of OneTimeItems out of a list of ShowItems.
+     * The included items aren't the original but a copy.
+     */
+    private fun getItemTypes(items: ObservableList<ShowItem>): Triple<MutableList<EssentialItem>,
+            MutableList<OptionalItem>, MutableList<OneTimeItem>> {
+
+        val essItems = mutableListOf<EssentialItem>()
+        val optItems = mutableListOf<OptionalItem>()
+        val oneItems = mutableListOf<OneTimeItem>()
+
+        items.forEach { item ->
+            when (item.originalItem) {
+                is EssentialItem -> essItems.add(item.originalItem.copy())
+                is OptionalItem -> optItems.add(item.originalItem.copy())
+                is OneTimeItem -> oneItems.add(item.originalItem.copy())
+                else -> throw Exception("Not a valid item type.")
+            }
+        }
+
+        return Triple(essItems, optItems, oneItems)
     }
 
 }
