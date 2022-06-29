@@ -1,17 +1,17 @@
 ESSENTIAL ITEMS
 
 ITEM
-    NAME: Suitcase
+    NAME: Koffer
     AMOUNT: 
     CATEGORIES: To Carry
     TAKE: O
 ITEM
-    NAME: Backpack
+    NAME: Rucksack
     AMOUNT: 
     CATEGORIES: To Carry
     TAKE: O
 ITEM
-    NAME: Food
+    NAME: Essen
     AMOUNT: 
     CATEGORIES: Food and Beverages
     TAKE: O
@@ -21,7 +21,7 @@ ITEM
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
-    NAME: PS4 Power Supply
+    NAME: PS4 Stromkabel
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
@@ -31,12 +31,12 @@ ITEM
     CATEGORIES: Upload on PC
     TAKE: O
 ITEM
-    NAME: YGO Pro Decks Data
+    NAME: YGO Pro Decks
     AMOUNT: 
     CATEGORIES: Upload on PC
     TAKE: O
 ITEM
-    NAME: Save Game Data
+    NAME: Spielstände
     AMOUNT: 
     CATEGORIES: Upload on PC
     TAKE: O
@@ -56,7 +56,7 @@ ITEM
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
-    NAME: Switch Docking Station Power Supply
+    NAME: Switch Docking Station Stromkabel
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
@@ -66,7 +66,7 @@ ITEM
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
-    NAME: Switch Controller Charger
+    NAME: Switch Controller Ladekabel
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
@@ -81,47 +81,52 @@ ITEM
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
-    NAME: Switch Controller Attachment
+    NAME: Switch Controller Aufsätze
     AMOUNT: 2
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
-    NAME: Glasses (for PC)
+    NAME: Zweite Brille
     AMOUNT: 
     CATEGORIES: 
     TAKE: O
 ITEM
-    NAME: Electric Razor
+    NAME: Dritte Brille
+    AMOUNT: 
+    CATEGORIES: 
+    TAKE: O
+ITEM
+    NAME: Electric Rasierer
     AMOUNT: 
     CATEGORIES: Care Products
     TAKE: O
 ITEM
-    NAME: SodaStream Bottles
-    AMOUNT: 
+    NAME: SodaStream Flaschen
+    AMOUNT: 2
     CATEGORIES: Food and Beverages
     TAKE: O
 ITEM
-    NAME: On-Ear Headphones
+    NAME: On-Ear Kopfhörer
     AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: O
 ITEM
-    NAME: Cheap Earphones
+    NAME: Billige Earphones
     AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: O
 ITEM
-    NAME: Motivation Plan
+    NAME: Motivationsplan
     AMOUNT: 
     CATEGORIES: 
     TAKE: O
 ITEM
-    NAME: Underpants
+    NAME: Unterhosen
     AMOUNT: 5
     CATEGORIES: Clothing
     TAKE: O
 ITEM
-    NAME: Pair of Socks
+    NAME: Sockenpaare
     AMOUNT: 5
     CATEGORIES: Clothing
     TAKE: O
@@ -136,12 +141,12 @@ ITEM
     CATEGORIES: Clothing
     TAKE: O
 ITEM
-    NAME: Short Jeans
+    NAME: Kurze Jeans
     AMOUNT: 1
     CATEGORIES: Clothing
     TAKE: O
 ITEM
-    NAME: Towel
+    NAME: Handtücher
     AMOUNT: 4
     CATEGORIES: Clothing
     TAKE: O
@@ -155,12 +160,12 @@ ITEM
     CATEGORIES: Technical Stuff
     TAKE: X
 ITEM
-    NAME: Robin's Stuff
+    NAME: Robins Zeug
     AMOUNT: 
     CATEGORIES: To Carry
     TAKE: X
 ITEM
-    NAME: University Bag
+    NAME: Unitasche
     AMOUNT: 
     CATEGORIES: To Carry
     TAKE: X
@@ -170,7 +175,7 @@ ITEM
     CATEGORIES: Technical Stuff
     TAKE: O
 ITEM
-    NAME: Laptop Charger
+    NAME: Laptop Ladekabel
     AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: X
@@ -180,37 +185,37 @@ ITEM
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
-    NAME: PS4 Controller Charger
+    NAME: PS4 Controller Kabel
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
-    NAME: PS4 Games
+    NAME: PS4 Spiele
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: O
 ITEM
-    NAME: University Data
+    NAME: Uni Daten
     AMOUNT: 
     CATEGORIES: Upload on PC
     TAKE: X
 ITEM
-    NAME: Contact Lenses
+    NAME: Kontaktlinsen
     AMOUNT: 
     CATEGORIES: 
     TAKE: O
 ITEM
-    NAME: Contact Lenses Liquid
+    NAME: Kontaktlinsenflüssigkeit
     AMOUNT: 
     CATEGORIES: 
     TAKE: O
 ITEM
-    NAME: Cheap Razor
+    NAME: Billiger Rasierer
     AMOUNT: 
     CATEGORIES: Care Products
     TAKE: O
 ITEM
-    NAME: Money
+    NAME: Geld
     AMOUNT: 
     CATEGORIES: 
     TAKE: O
@@ -220,42 +225,32 @@ ITEM
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
-    NAME: DS Charger
+    NAME: DS Kabel
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: X
 ITEM
-    NAME: DS Games
+    NAME: DS Spiele
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
     TAKE: X
-ITEM
-    NAME: Snacks
-    AMOUNT: 
-    CATEGORIES: Food and Beverages
-    TAKE: O
-ITEM
-    NAME: Alcohol
-    AMOUNT: 
-    CATEGORIES: Food and Beverages
-    TAKE: O
 ITEM
     NAME: Shampoo
     AMOUNT: 
     CATEGORIES: Care Products
     TAKE: X
 ITEM
-    NAME: Shower Gel
+    NAME: Duschgel
     AMOUNT: 
     CATEGORIES: Care Products
     TAKE: X
 ITEM
-    NAME: University Sheets
+    NAME: Uni Blätter
     AMOUNT: 
     CATEGORIES: 
     TAKE: X
 ITEM
-    NAME: Iron
+    NAME: Eisen
     AMOUNT: 
     CATEGORIES: Care Products
     TAKE: X
@@ -265,7 +260,7 @@ ITEM
     CATEGORIES: Care Products
     TAKE: X
 ITEM
-    NAME: Pencil Case
+    NAME: Mäppchen
     AMOUNT: 
     CATEGORIES: 
     TAKE: X
@@ -275,7 +270,7 @@ ITEM
     CATEGORIES: Care Products
     TAKE: O
 ITEM
-    NAME: Hand Cream
+    NAME: Handcreme
     AMOUNT: 
     CATEGORIES: Care Products
     TAKE: O
@@ -285,17 +280,17 @@ ITEM
     CATEGORIES: Care Products
     TAKE: O
 ITEM
-    NAME: Shoes
+    NAME: Schuhe
     AMOUNT: 
     CATEGORIES: Clothing
     TAKE: O
 ITEM
-    NAME: Tea Can
+    NAME: Teekanne
     AMOUNT: 
     CATEGORIES: Food and Beverages
     TAKE: X
 ITEM
-    NAME: Book
+    NAME: Buch
     AMOUNT: 
     CATEGORIES: 
     TAKE: O
@@ -305,32 +300,32 @@ ITEM
     CATEGORIES: 
     TAKE: O
 ITEM
-    NAME: Swimming Trunks
+    NAME: Badehose
     AMOUNT: 
     CATEGORIES: Clothing
     TAKE: X
 ITEM
-    NAME: Sport Pants
+    NAME: Sporthose
     AMOUNT: 2
     CATEGORIES: Clothing
     TAKE: X
 ITEM
-    NAME: Sport Shirts
+    NAME: Sportshirt
     AMOUNT: 2
     CATEGORIES: Clothing
     TAKE: O
 ITEM
-    NAME: Sweatpants
+    NAME: Jogginghose
     AMOUNT: 1
     CATEGORIES: Clothing
     TAKE: X
 ITEM
-    NAME: Wireless In-Ear Headphones
+    NAME: Kabelose In-Ear Kopfhörer
     AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: X
 ITEM
-    NAME: Calculator
+    NAME: Taschenrechner
     AMOUNT: 
     CATEGORIES: 
     TAKE: X
