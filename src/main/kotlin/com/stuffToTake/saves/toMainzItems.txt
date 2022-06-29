@@ -96,7 +96,7 @@ ITEM
     CATEGORIES: 
     TAKE: O
 ITEM
-    NAME: Electric Rasierer
+    NAME: Elektrischer Rasierer
     AMOUNT: 
     CATEGORIES: Care Products
     TAKE: O
@@ -111,7 +111,7 @@ ITEM
     CATEGORIES: Technical Stuff
     TAKE: O
 ITEM
-    NAME: Billige Earphones
+    NAME: Billige Kopfhörer
     AMOUNT: 
     CATEGORIES: Technical Stuff
     TAKE: O
