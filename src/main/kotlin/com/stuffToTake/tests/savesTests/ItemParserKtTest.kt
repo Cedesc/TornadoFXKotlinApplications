@@ -1,5 +1,6 @@
 package com.stuffToTake.tests.savesTests
 
+import com.stuffToTake.CREATE_BACKUP_WHEN_CLOSED
 import com.stuffToTake.models.*
 import org.junit.After
 import org.junit.Before
@@ -254,41 +255,61 @@ class ItemParserKtTest {
 
     @Test
     fun createBackup() {
-        assertEquals(false,
-            itemParserBackup.checkFileExists())
-        assertEquals(true,
-            itemParserBackup.createFile())
+        if (CREATE_BACKUP_WHEN_CLOSED) {
 
-        val items = testUtils.generateItems()
-        itemParserBackup.codeToTxt(items.first, items.second, items.third)
+            assertEquals(
+                false,
+                itemParserBackup.checkFileExists()
+            )
+            assertEquals(
+                true,
+                itemParserBackup.createFile()
+            )
 
-        assertEquals(true,
-            itemParserBackup.createBackup(inSingleFile = true))
+            val items = testUtils.generateItems()
+            itemParserBackup.codeToTxt(items.first, items.second, items.third)
 
-        // Check if the Backup is complete.
-        val backupParser =
-            ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsBackupTest_Backup.txt")
-        assertEquals(itemParserBackup.txtToCode().toString(),
-            backupParser.txtToCode().toString())
+            assertEquals(
+                true,
+                itemParserBackup.createBackup(inSingleFile = true)
+            )
 
-        // Check if createBackup throws an error on trying to overwrite the file.
-        val someOptionalItem = OptionalItem("thing", 2, false)
-        itemParserBackup.codeToTxt(
-            mutableListOf(),
-            mutableListOf(someOptionalItem),
-            mutableListOf())
-        assertThrows(Exception::class.java) {
-            itemParserBackup.createBackup(inSingleFile = true)
+            // Check if the Backup is complete.
+            val backupParser =
+                ItemParser("src/main/kotlin/com/stuffToTake/tests/savesTests/itemsBackupTest_Backup.txt")
+            assertEquals(
+                itemParserBackup.txtToCode().toString(),
+                backupParser.txtToCode().toString()
+            )
+
+            // Check if createBackup throws an error on trying to overwrite the file.
+            val someOptionalItem = OptionalItem("thing", 2, false)
+            itemParserBackup.codeToTxt(
+                mutableListOf(),
+                mutableListOf(someOptionalItem),
+                mutableListOf()
+            )
+            assertThrows(Exception::class.java) {
+                itemParserBackup.createBackup(inSingleFile = true)
+            }
+
+            assertEquals(
+                true,
+                itemParserBackup.deleteFile()
+            )
+            assertEquals(
+                true,
+                backupParser.deleteFile()
+            )
+            assertEquals(
+                false,
+                itemParserBackup.checkFileExists()
+            )
+            assertEquals(
+                false,
+                backupParser.checkFileExists()
+            )
         }
-
-        assertEquals(true,
-            itemParserBackup.deleteFile())
-        assertEquals(true,
-            backupParser.deleteFile())
-        assertEquals(false,
-            itemParserBackup.checkFileExists())
-        assertEquals(false,
-            backupParser.checkFileExists())
     }
 
 }
