@@ -173,7 +173,7 @@ ITEM
     NAME: Laptop
     AMOUNT: 
     CATEGORIES: Technical Stuff
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Laptop Ladekabel
     AMOUNT: 
@@ -193,7 +193,7 @@ ITEM
     NAME: PS4 Spiele
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Uni Daten
     AMOUNT: 
@@ -203,22 +203,22 @@ ITEM
     NAME: Kontaktlinsen
     AMOUNT: 
     CATEGORIES: 
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Kontaktlinsenflüssigkeit
     AMOUNT: 
     CATEGORIES: 
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Billiger Rasierer
     AMOUNT: 
     CATEGORIES: Care Products
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Geld
     AMOUNT: 
     CATEGORIES: 
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Nintendo DS
     AMOUNT: 
@@ -268,22 +268,22 @@ ITEM
     NAME: Lip Butter
     AMOUNT: 
     CATEGORIES: Care Products
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Handcreme
     AMOUNT: 
     CATEGORIES: Care Products
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Tests
     AMOUNT: 3
     CATEGORIES: Care Products
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Schuhe
     AMOUNT: 
     CATEGORIES: Clothing
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Teekanne
     AMOUNT: 
@@ -293,12 +293,12 @@ ITEM
     NAME: Buch
     AMOUNT: 
     CATEGORIES: 
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Ukulele
     AMOUNT: 
     CATEGORIES: 
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Badehose
     AMOUNT: 
@@ -313,7 +313,7 @@ ITEM
     NAME: Sportshirt
     AMOUNT: 2
     CATEGORIES: Clothing
-    TAKE: O
+    TAKE: X
 ITEM
     NAME: Jogginghose
     AMOUNT: 1
@@ -329,6 +329,36 @@ ITEM
     AMOUNT: 
     CATEGORIES: 
     TAKE: X
+ITEM
+    NAME: PS4 VR Brille
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: X
+ITEM
+    NAME: PS4 VR Motion Controller
+    AMOUNT: 2
+    CATEGORIES: Game Consoles Stuff
+    TAKE: X
+ITEM
+    NAME: PS4 VR Kasten
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: X
+ITEM
+    NAME: PS4 VR Camera
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: X
+ITEM
+    NAME: PS4 VR Kabel
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: X
+ITEM
+    NAME: PS VR HDMI
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: O
 
 
 ONE TIME ITEMS

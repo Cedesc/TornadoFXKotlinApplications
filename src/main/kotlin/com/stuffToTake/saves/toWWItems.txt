@@ -155,11 +155,6 @@ ITEM
     CATEGORIES: Technical Stuff
     TAKE: O
 ITEM
-    NAME: Laptop Ladekabel
-    AMOUNT: 
-    CATEGORIES: Technical Stuff
-    TAKE: X
-ITEM
     NAME: PS4 Controller
     AMOUNT: 
     CATEGORIES: Game Consoles Stuff
@@ -280,11 +275,6 @@ ITEM
     CATEGORIES: Clothing
     TAKE: X
 ITEM
-    NAME: Sporthose
-    AMOUNT: 2
-    CATEGORIES: Clothing
-    TAKE: X
-ITEM
     NAME: Sportshirt
     AMOUNT: 2
     CATEGORIES: Clothing
@@ -304,7 +294,52 @@ ITEM
     AMOUNT: 
     CATEGORIES: 
     TAKE: X
+ITEM
+    NAME: PS4 VR Brille
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: O
+ITEM
+    NAME: PS4 VR Motion Controller
+    AMOUNT: 2
+    CATEGORIES: Game Consoles Stuff
+    TAKE: O
+ITEM
+    NAME: PS4 VR Kasten
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: O
+ITEM
+    NAME: PS4 VR Camera
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: O
+ITEM
+    NAME: PS4 VR Kabel
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: O
+ITEM
+    NAME: Sporthose
+    AMOUNT: 2
+    CATEGORIES: Clothing
+    TAKE: O
+ITEM
+    NAME: Laptop Ladekabel
+    AMOUNT: 
+    CATEGORIES: Technical Stuff
+    TAKE: O
+ITEM
+    NAME: PS VR HDMI
+    AMOUNT: 
+    CATEGORIES: Game Consoles Stuff
+    TAKE: O
 
 
 ONE TIME ITEMS
 
+ITEM
+    NAME: Anzug
+    AMOUNT: 
+    CATEGORIES: Clothing
+    TAKE: O
